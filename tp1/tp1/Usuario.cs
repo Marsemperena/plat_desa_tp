@@ -1,4 +1,5 @@
 ﻿using System;
+using Carro;
 
 namespace tp1
 {
@@ -9,7 +10,7 @@ namespace tp1
         public string nombre { get; set; };
         public string mail { get; set; };
         public string password { get; set; };
-            
+        public Carro MiCarro;
     }
     
     public Usuario(int id, int dni, string nombre, string mail, string password)
@@ -18,8 +19,12 @@ namespace tp1
         this.dni = dni;
         this.nombre = nombre;
         this.mail = mail;
-        this.password = password;
-        
+        this.password = password;  
+    }
+
+    string override toString()
+    {
+        return "Usuario: " + this.id + " - dni " + this.dni + " - nombre " + this.nombre + " - mail " + this.mail + " - password " + this.password + " - Carro :" + MiCarro.toString();
     }
 }
 }

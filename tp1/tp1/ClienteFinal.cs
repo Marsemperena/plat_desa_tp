@@ -4,9 +4,16 @@ namespace tp1
 {
     class ClienteFinal
     {
-        static void Main(string[] args)
+        int id { get; set };
+
+        public ClienteFinal(int id)
         {
-            Console.WriteLine("Hello World!");
+            this.id = id;
+        }
+
+        string override toString()
+        {
+            return "id: " + this.id;
         }
     }
 }

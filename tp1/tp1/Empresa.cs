@@ -1,12 +1,19 @@
 ﻿using System;
 
+
 namespace tp1
 {
-    class Empresa
-    {
-        static void Main(string[] args)
+    class Empresa : Usuario 
         {
-            Console.WriteLine("Hello World!");
+            
         }
+
+
+
+    string override toString()
+    {
+        //modificar para empresa
+        return "Producto: " + this.ID + " - nombre " + this.nombre + " - precio " + this.precio + " - cantidad " + this.cantidad + " - categoria " + this.categoria;
     }
 }
+

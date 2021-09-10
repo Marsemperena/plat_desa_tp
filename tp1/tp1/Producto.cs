@@ -3,14 +3,14 @@ using Categoria;
 
 namespace tp1
 {
-    class Profucto
+    class Producto
     {
         public int ID;
-        public string nombre { get; set; }
-        public double precio { get; set; }
-        public int cantidad  { get; set; }
-        public Categoria cat { get; set; }
-
+        public string nombre { get; set; };
+        public double precio { get; set; };
+        public int cantidad { get; set; };
+        public Categoria cat { get; set; };
+        
         public Producto(String nombre,double precio, int cantidad, Categoria categoria){
 
             this.nombre = nombre;
@@ -20,6 +20,11 @@ namespace tp1
         
         
         
+        }
+
+        string override toString()
+        {
+            return "Producto: " + this.ID + " - nombre " + this.nombre + " - precio " + this.precio + " - cantidad " + this.cantidad + " - categoria " + this.categoria;
         }
     }
 }
