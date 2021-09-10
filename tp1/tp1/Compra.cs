@@ -9,21 +9,24 @@ namespace tp1
     {
         public int id { get; set; };
         public Usuario comprador { get; set; };
-        public Dictionary <Producto;int> productos;
+        public Dictionary <Producto,int> productos;
         public double total;
 
-        public Compra(Usuario comprador, double total, List<Producto> productosMercado) {
+        public Compra(Usuario comprador, double total, Dictionary<Producto,int> productosCarrito) {
             this.comprador = comprador;
-            this.total = total;
-            productos = new Dictionary<Producto, int>;
-            foreach (Producto product in productosMercado) {
-                i = 0;
-                productos.add(product, product.getId());
-            
+            productos = productosCarrito;
+
+            foreach (KeyValuePair<Producto, int> kvp in productosCarrito)
+            {
+                total += kvp.Key.getPrecio() * kvp.Value;
             }
 
-        
-        
+
+        }
+
+        string override toString()
+        {
+            return "ID: "this.id + "- Usuario: " this.comprador.toString() + "- Productos: " this.productos + "- Total: " + total;
         }
 
 

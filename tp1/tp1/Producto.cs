@@ -5,7 +5,7 @@ namespace tp1
 {
     class Producto
     {
-        public int ID;
+        public int id;
         public string nombre { get; set; };
         public double precio { get; set; };
         public int cantidad { get; set; };
@@ -17,8 +17,6 @@ namespace tp1
             this.precio = precio;
             this.cantidad = cantidad;
             this.categoria = categoria;
-        
-        
         
         }
 

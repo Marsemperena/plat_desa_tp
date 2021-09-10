@@ -4,19 +4,23 @@ namespace tp1
 {
     class Carro
     {
-        int ID { get; set; }
+        int id { get; set; }
         Dictionary<Producto, int> productos { get; set; };
 
-        public Carro(int id; Dictionary<Producto, int> productos){
-            this.ID = id;
-            this.productos = productos;
-    }
+        public Carro(int id){
+            this.id = id;
+        }
+        public agregarProducto(Producto producto,int cantidad){
+            productos.add(producto,cantidad);
+        }
+        public sacarProductos(){
+            
+        }
 
-
-    string override toString()
-    {
-        return "Carro: " + this.ID + " - " + this.productos.toString();
-    }
+        string override toString()
+        {
+            return "Carro: " + this.ID + " - " + this.productos.toString();
+        }
 
 }
 }

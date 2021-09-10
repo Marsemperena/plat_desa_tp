@@ -4,16 +4,18 @@ namespace tp1
 {
     class ClienteFinal
     {
-        int id { get; set };
+        public int cuit { get; set; };
 
-        public ClienteFinal(int id)
+        public ClienteFinal(int cuit)
         {
-            this.id = id;
+            this.cuit = cuit;
         }
 
         string override toString()
         {
-            return "id: " + this.id;
+            return "cuit: " + this.cuit;
         }
     }
 }
+
+
