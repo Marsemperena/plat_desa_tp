@@ -1,12 +1,15 @@
 ﻿using System;
-
+using Usuario;
 namespace tp1
 {
     class Compra
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
+        public int id { get; set; }
+        public Usuario comprador { get; set; }
+        public 
+
+
+
+
     }
 }
