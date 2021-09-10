@@ -1,28 +1,28 @@
 using System;
-using Categoria;
+
 
 namespace tp1
 {
     class Producto
     {
         public int id;
-        public string nombre { get; set; };
-        public double precio { get; set; };
-        public int cantidad { get; set; };
-        public Categoria cat { get; set; };
+        public string nombre { get; set; }
+        public double precio { get; set; }
+        public int cantidad { get; set; }
+        public Categoria cat { get; set; }
         
         public Producto(String nombre,double precio, int cantidad, Categoria categoria){
 
             this.nombre = nombre;
             this.precio = precio;
             this.cantidad = cantidad;
-            this.categoria = categoria;
+            this.cat = categoria;
         
         }
 
-        string override toString()
+        public override string toString()
         {
-            return "Producto: " + this.ID + " - nombre " + this.nombre + " - precio " + this.precio + " - cantidad " + this.cantidad + " - categoria " + this.categoria;
+            return "Producto: " + this.id + " - nombre " + this.nombre + " - precio " + this.precio + " - cantidad " + this.cantidad + " - categoria " + this.cat.toString();
         }
     }
 }

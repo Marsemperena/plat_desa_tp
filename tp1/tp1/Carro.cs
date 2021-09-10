@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace tp1
 {
@@ -10,16 +11,17 @@ namespace tp1
         public Carro(int id){
             this.id = id;
         }
-        public agregarProducto(Producto producto,int cantidad){
-            productos.add(producto,cantidad);
+        public bool agregarProducto(Producto producto,int cantidad){
+            //productos.add(producto,cantidad);
+            return true;
         }
         public sacarProductos(){
             
         }
 
-        string override toString()
+        public override string toString()
         {
-            return "Carro: " + this.ID + " - " + this.productos.toString();
+            return "Carro: " + this.id + " - " + this.productos.toString();
         }
 
 }

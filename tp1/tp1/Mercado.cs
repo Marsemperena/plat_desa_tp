@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace tp1
 {
     class Mercado
     {
     
-            public int maxCategorias { get; set; };
-            public int cantCategorias { get; set; };
-            public categorias[] categorias;
+            public int maxCategorias { get; set; }
+            public int cantCategorias { get; set; }
+            public Categorias[] categorias;
 
             List<Productos> producto = new List<Productos>() {
                 new Productos() { nombre = "", precio = 42 },

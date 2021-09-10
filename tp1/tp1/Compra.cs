@@ -1,14 +1,13 @@
 ﻿using System;
-using Usuario;
-using Producto;
-using Mercado;
+
+using System.Collections.Generic;
 
 namespace tp1
 {
     class Compra
     {
-        public int id { get; set; };
-        public Usuario comprador { get; set; };
+        public int id { get; set; }
+        public Usuario comprador { get; set; }
         public Dictionary <Producto,int> productos;
         public double total;
 

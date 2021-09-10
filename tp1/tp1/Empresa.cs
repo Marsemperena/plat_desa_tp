@@ -5,7 +5,7 @@ namespace tp1
 {
     class Empresa : Usuario 
         {
-        public int cuit { get; set; };
+        public int cuit { get; set; }
         }
 
 
@@ -13,8 +13,7 @@ namespace tp1
     string override toString()
     {
         //modificar para empresa
-        return "Producto: " + this.ID + " - nombre " + this.nombre + " - precio " + this.precio + 
-        " - cantidad " + this.cantidad + " - categoria " + this.categoria;
+        return "empresa" + this.cuit;
     }
 }
 
