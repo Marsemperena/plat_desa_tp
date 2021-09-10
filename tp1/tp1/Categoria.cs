@@ -4,9 +4,20 @@ namespace tp1
 {
     class Categoria
     {
-        static void Main(string[] args)
+         int ID { get; set; }
+        string nombre { get; set; }
+
+
+
+public Categoria(int id, string nombre)
         {
-            Console.WriteLine("Hello World!");
+            this.ID = id;
+            this.nombre = nombre;
+        }
+
+        string override toString()
+        {
+            return "Categoria: " + this.ID + " - " + this.nombre;
         }
     }
 }
