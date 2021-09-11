@@ -45,7 +45,7 @@ namespace tp1
         }
             
             
-            public bool agregarProducto (string nombre, double precio, int cantidad, int id_Categoria)
+            public bool agregarProducto (int id, string nombre, double precio, int cantidad, int id_Categoria)
             {
 
             try
