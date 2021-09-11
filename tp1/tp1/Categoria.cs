@@ -15,7 +15,7 @@ public Categoria(int id, string nombre)
             this.nombre = nombre;
         }
 
-        string override toString()
+       public string  toString()
         {
             return "Categoria: " + this.ID + " - " + this.nombre;
         }

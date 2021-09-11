@@ -17,15 +17,15 @@ namespace tp1
 
             foreach (KeyValuePair<Producto, int> kvp in productosCarrito)
             {
-                total += kvp.Key.getPrecio() * kvp.Value;
+                //total += kvp.Key.getPrecio() * kvp.Value; //getPrecio tira error
             }
 
 
         }
 
-        string override toString()
+        string  toString()
         {
-            return "ID: "this.id + "- Usuario: " this.comprador.toString() + "- Productos: " this.productos + "- Total: " + total;
+            return "ID: "+ this.id + "- Usuario: " + this.comprador.ToString() + "- Productos: " + this.productos.ToString() + "- Total: " + total;
         }
 
 

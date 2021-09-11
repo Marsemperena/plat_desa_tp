@@ -6,7 +6,7 @@ namespace tp1
     class Carro
     {
         int id { get; set; }
-        Dictionary<Producto, int> productos { get; set; };
+        Dictionary<Producto, int> productos { get; set; }
 
         public Carro(int id){
             this.id = id;
@@ -15,13 +15,13 @@ namespace tp1
             //productos.add(producto,cantidad);
             return true;
         }
-        public sacarProductos(){
+        public void sacarProductos(){
             
         }
 
-        public override string toString()
+        public  string toString()
         {
-            return "Carro: " + this.id + " - " + this.productos.toString();
+            return "Carro: " + this.id + " - " + this.productos.ToString();
         }
 
 }
