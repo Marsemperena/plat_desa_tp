@@ -7,7 +7,10 @@ namespace tp1
         {
         public int cuit { get; set; }
 
-
+        public Empresa()
+        {
+            //constructor
+        }
 
         public string toString()
         {
