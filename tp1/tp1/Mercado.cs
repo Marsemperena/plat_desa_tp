@@ -12,15 +12,11 @@ namespace tp1
             public Categoria[] categorias;
 
         public List<Producto> producto = new List<Producto>();
-               // new Productos() { nombre = "", precio = 42 },
-               //new Productos() { nombre = "", precio = 34 },
-              //  new Productos() { nombre = "", precio = 8 },
+
          
 
         public List<Usuario> usuario = new List<Usuario>();
-               // new Usuarios() { nombre = "", apellido = "" },
-               // new Usuarios() { nombre = "", apellido = "" },
-               // new Usuarios() { nombre = "", apellido = "" },
+
            
 
        public List<Compra> compra;
@@ -60,8 +56,8 @@ namespace tp1
             }
 
 
-            public bool modificarProducto (int id, string nombre, double precio, int cantidad, int id_Categoria)
-            {
+        public bool modificarProducto(int id, string nombre, double precio, int cantidad, int id_Categoria)
+        {
             foreach (Producto prod in producto)
             {
                 if (prod.id == id)
@@ -70,24 +66,24 @@ namespace tp1
                     {
                         prod.nombre = nombre;
                     }
-                    if (precio != null)
+                    if (precio > 0)
                     {
                         prod.precio = precio;
                     }
-                    if (cantidad != null)
+                    if (cantidad > 0)
                     {
                         prod.cantidad = cantidad;
                     }
-                    if (id_Categoria != null)
-                    {
-                        prod.id_Categoria = id_Categoria;
+                    if (id_Categoria >= 0 ) 
+                   {
+                        prod.cat.id= id_Categoria;
                     }
-                    return True;
+                    return true;
                 }
 
-                }
-
-
+            }
+            return false;
+        }
                 public bool eliminarProducto (int id)
             {
             bool flag = false;
@@ -174,7 +170,7 @@ namespace tp1
             {
                 if (us.id == id)
                 {
-                   if (dni != null)
+                   if (dni > 0)
                      {
                       us.dni = dni;
                       }
@@ -196,31 +192,48 @@ namespace tp1
                         us.password = password;
                     }
 
-                        if (cuit_Cuil != null) {
-                            if (us.GetType() == Empresa)
-                            
-                            {
+                    if(us is Empresa)
+                    {
+                         us.cuit = cuit_Cuil;
+                    }
+                    else
+                    {
+                        us.cuil = cuit_Cuil;
+                    }
+                    /* if (cuit_Cuil != null) { //revisar
+                     *
+                         if (us.GetType() == Empresa)
 
-                               (Empresa) us.cuit = cuit_Cuil;
-                            }
-                            else
-                            {
-                                us.cuil = cuit_Cuil;
-                            }
+                         {
 
-                        }
+                            (Empresa) us.cuit = cuit_Cuil;
+                         }
+                         else
+                         {
+                             us.cuil = cuit_Cuil;
+                         }
+
+                     }*/
+
+
+                    if (dni > 0)
+                    {
+                        us.dni = dni;
 
 
                     }
-            }
-
-        if (dni != null){
-            
-                usuario
+                   
             }
 
 
-        public bool eliminarUsuario (int id)
+
+               
+            }
+            return false;
+        }
+
+
+            public bool eliminarUsuario (int id)
             {
             bool flag = false;
             foreach (Usuario us in usuario)
@@ -375,7 +388,7 @@ namespace tp1
         */
             public void mostrarTodosProductos()
         {
-            producto.Sort(a, b) => a.id.CompareTo(b.id);
+            producto.Sort((a, b) => a.id.CompareTo(b.id));
             foreach (Producto pr in producto)
             {
                 Console.WriteLine(pr.toString());
