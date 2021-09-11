@@ -43,20 +43,25 @@ namespace tp1
         }
             
             
-            public bool agregarProducto (string nombre, double precio, int cantidad, int id_Categoria)
+            public bool agregarProducto (int id, string nombre, double precio, int cantidad, int id_Categoria)
             {
-              
-            
-            
-            
-            return true;
+            if (string.IsNullOrEmpty(nombre) || precio == 0 || cantidad == 0 || id_Categoria == 0)
+            {
+                Console.WriteLine("El producto no puede registrarse porque contiene un dato invalido.");
+                return false;
+
+            } else {
+                producto = new Producto(nombre, precio, cantidad, id_Categoria);
+                return true;
+            }
             }
 
 
             public bool modificarProducto (int id, string nombre, double precio, int cantidad, int id_Categoria)
             {
+
             return true;
-        }
+            }
 
             
             public bool eliminarProducto (int id)
