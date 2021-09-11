@@ -20,7 +20,7 @@ namespace tp1
             if(this.productos.Where(k=>k.Key== producto && k.Value<= cantidad)){
                 productos.Remove(producto);
             }else{
-                this.productos.Where(k => k.Key == producto) k.Value == k.Value - cantidad;
+                this.productos[producto]=producto.Value - cantidad;
                
             }
         }
