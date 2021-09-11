@@ -41,7 +41,14 @@ namespace tp1
 
                 Console.WriteLine("ingrese su opcion");
                 string inputUsuario = Console.ReadLine();
+                int id;
                 string nombre = "";
+                string nombreProducto ;
+                double precio ;
+                int cantidad ;
+                int id_categ ;
+
+
                 switch (inputUsuario)
                 {
                     case "1":
@@ -79,16 +86,29 @@ namespace tp1
                         break;
                     case "9":
                         Console.WriteLine("Alta de producto - Ingrese: nombre, precio, cantidad, id de categoría");
-
+                         nombreProducto = Console.ReadLine();
+                         precio = Convert.ToDouble(Console.ReadLine());
+                         cantidad = Convert.ToInt32(Console.ReadLine());
+                         id_categ = Convert.ToInt32(Console.ReadLine());
+                        mercado.agregarProducto(nombreProducto, precio, cantidad, id_categ);
                         break;
                     case "10":
                         Console.WriteLine("Baja de producto - Ingrese el ID del producto a eliminar");
+                        id = Convert.ToInt32(Console.ReadLine());
+                        mercado.eliminarProducto(id);
                         break;
                     case "11":
                         Console.WriteLine("Modificación de producto - Ingrese el ID del producto a modificar, seguido de: nombre, precio, cantidad, id de la categoría");
+                        id = Convert.ToInt32(Console.ReadLine());
+                        nombreProducto = Console.ReadLine();
+                         precio = Convert.ToDouble(Console.ReadLine());
+                         cantidad = Convert.ToInt32(Console.ReadLine());
+                         id_categ = Convert.ToInt32(Console.ReadLine());
+                        mercado.modificarProducto(id, nombreProducto, precio, cantidad, id_categ);
                         break;
                     case "12":
                         Console.WriteLine("Los productos son:");
+                        mercado.mostrarTodosProductos();
                         break;
                     case "13":
                         Console.WriteLine("Productos ordenados por precio");
@@ -110,7 +130,7 @@ namespace tp1
                         Console.WriteLine("Opción no valida");
                         break;
                     }
-                }
+            }
 
              }
 

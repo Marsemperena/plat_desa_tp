@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace tp1
 {
@@ -37,7 +38,8 @@ namespace tp1
             this.usuario.Add(new ClienteFinal(2, 1, 234123, "test 1", "mail@gmail.com", "pkjj11"));
 
             this.producto.Add(new Producto("producto 1", 1500, 10, this.categorias[0]));
-            this.producto.Add(new Producto("producto 2", 1500, 10, this.categorias[1]));
+            this.producto.Add(new Producto("producto 2", 1, 10, this.categorias[1]));
+            this.producto.Add(new Producto("producto 2", 561, 10, this.categorias[1]));
 
 
         }
@@ -45,17 +47,33 @@ namespace tp1
             
             public bool agregarProducto (string nombre, double precio, int cantidad, int id_Categoria)
             {
-              
-            
-            
-            
-            return true;
+
+            try
+            {
+                this.producto.Add(new Producto(nombre, precio, cantidad, this.categorias[id_Categoria]));
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Ocurrio un error al intentar dar de alta el producto, por favor intente nuevamente");
+                return false;
+            }
             }
 
 
             public bool modificarProducto (int id, string nombre, double precio, int cantidad, int id_Categoria)
             {
-            return true;
+            try
+            {
+
+                producto[producto.FindIndex(pr => pr.id==id)] = new Producto(nombre, precio, cantidad, categorias[id_Categoria]);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ocurrio un error al intentar modificar el producto, por favor intente de nuevo");
+            }
+            return false;
         }
 
             
@@ -232,17 +250,38 @@ namespace tp1
             public bool EliminarCompra (int id){}
 
         */
+            public void mostrarTodosProductos()
+        {
+         
+            foreach (Producto pr in producto)
+            {
+                Console.WriteLine(pr.toString());
+
+            }
+
+        }
 
             public void mostrarTodosProductosPorPrecio() //MUESTRA TODOS LOS PRODUCTOS DEL MERCADO, ORDENADO POR PRECIO
             {
 
+
+            IEnumerable<Producto> aux = producto.OrderBy(pr => pr.precio);
+            foreach (Producto pr in aux)
+            {
+                Console.WriteLine(pr.toString());
             }
+
+        }
 
 
             public void mostrarTodosProductosPorCategoria() //MUESTRA TODAS LAS CATEGORIAS DEL MERCADO Y PARA CADA UNA DE ELLAS, LOS PRODUCTOS DENTRO DE LA MISMA.
-            { 
-        
+            {
+            IEnumerable<Producto> aux = producto.OrderBy(pr => pr.cat.id);
+            foreach (Producto pr in aux)
+            {
+                Console.WriteLine(pr.toString());
             }
+        }
 
 
     }

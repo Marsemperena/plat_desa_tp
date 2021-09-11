@@ -22,7 +22,7 @@ namespace tp1
 
         public  string toString()
         {
-            return "Producto: " + this.id + " - nombre " + this.nombre + " - precio " + this.precio + " - cantidad " + this.cantidad + " - categoria " + this.cat.toString();
+            return "Producto: id " + this.id + " - nombre " + this.nombre + " - precio " + this.precio + " - cantidad " + this.cantidad + " - categoria " + this.cat.toString();
         }
     }
 }

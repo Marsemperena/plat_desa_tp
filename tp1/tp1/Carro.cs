@@ -17,17 +17,18 @@ namespace tp1
            return true;
         }
         public void sacarProductos(Producto producto, int cantidad){
-            if(this.productos.Where(k=>k.Key== producto && k.Value<= cantidad)){
+           /* if(this.productos.Where(k=>k.Key== producto && k.Value<= cantidad)){
                 productos.Remove(producto);
             }else{
                 this.productos[producto]=producto.Value - cantidad;
                
             }
+           */
         }
 
         public  string toString()
         {
-            return "Carro: " + this.id + " - " + this.Productos.ToString();
+            return "Carro: " + this.id + " - " + this.productos.ToString();
         }
 
 }
