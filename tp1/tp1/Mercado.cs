@@ -44,8 +44,7 @@ namespace tp1
 
         }
             
-            
-            public bool agregarProducto (int id, string nombre, double precio, int cantidad, int id_Categoria)
+            public bool agregarProducto (string nombre, double precio, int cantidad, int id_Categoria)
             {
 
             try
@@ -63,21 +62,33 @@ namespace tp1
 
             public bool modificarProducto (int id, string nombre, double precio, int cantidad, int id_Categoria)
             {
-            try
+            foreach (Producto prod in producto)
             {
+                if (prod.id == id)
+                {
+                    if (nombre != null)
+                    {
+                        prod.nombre = nombre;
+                    }
+                    if (precio != null)
+                    {
+                        prod.precio = precio;
+                    }
+                    if (cantidad != null)
+                    {
+                        prod.cantidad = cantidad;
+                    }
+                    if (id_Categoria != null)
+                    {
+                        prod.id_Categoria = id_Categoria;
+                    }
+                    return True;
+                }
 
-                producto[producto.FindIndex(pr => pr.id==id)] = new Producto(nombre, precio, cantidad, categorias[id_Categoria]);
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("ocurrio un error al intentar modificar el producto, por favor intente de nuevo");
-            }
-            return false;
-        }
+                }
 
-            
-            public bool eliminarProducto (int id)
+
+                public bool eliminarProducto (int id)
             {
             bool flag = false;
             foreach(Producto prod in producto)
@@ -94,20 +105,45 @@ namespace tp1
             
             public void buscarProductos (string query) // ORDENADO POR NOMBRE LOS PRODUCTOS QUE CONTIENEN EN SU NOMBRE LA CADENA INGRESADA
             {
-            
-        }
+                foreach(Producto pr in producto)
+                {
+                    if (pr.nombre.Contains(query))
+                    {
+                        Console.WriteLine(pr.toString());
+                    }
+                }
+            }
 
 
             public void buscarProductosPorPrecio (string query) //ORDENADO POR PRECIO DE MENOR A MAYOR LOS PRODUCTOS QUE CONTIENEN EN SU NOMBRE LA CADENA INGRESADA
             {
-         
+                IEnumerable<Producto> aux = producto.OrderBy(pr => pr.precio);
+                foreach (Producto pr in aux)
+                {
+                    if (pr.nombre.Contains(query))
+                    {
+                        Console.WriteLine(pr.toString());
+                    }
+            }
         }
 
 
             public void buscarProductosPorCategoria (int id_Categoria) //ORDENADO POR NOMBRE LOS PRODUCTOS QUE PERTENCEN A LA CATEGORIA CON EL ID INGRESADO
             {
-            
-        }
+            List<Producto> listProd = new List<Producto>();
+            foreach (Producto pr in producto)
+            {
+                if(pr.cat.id == id_Categoria)
+                {
+                    listProd.Add(pr);
+                }   
+            }
+            IEnumerable<Producto> resultado = listProd.OrderBy(pr => pr.nombre);
+            foreach (Producto resul in resultado)
+            {
+                Console.WriteLine(resul);
+            }    
+            }
 
             
             public bool agregarUsuario (int dni, string nombre, string apellido, string mail, string password, int cuit_Cuil, bool esEmpresa)
@@ -118,12 +154,12 @@ namespace tp1
             Usuario us;
             if (esEmpresa)
             {
-               us = new Empresa(1, cuit_Cuil, dni, nombre, mail, password);
+               us = new Empresa(usuario.Last().id + 1, cuit_Cuil, dni, nombre, mail, password);
 
             }
             else
             {
-              us =  new ClienteFinal(1, cuit_Cuil, dni, nombre, mail, password);
+              us =  new ClienteFinal(usuario.Last().id + 1, cuit_Cuil, dni, nombre, mail, password);
             }
 
             usuario.Add(us);
@@ -132,13 +168,59 @@ namespace tp1
             }
 
 
-            public bool modificarUsuario (int id, int dni, string nombre, string apellido, string mail, string password, int cuit_Cuil, bool esEmpresa)
+        public bool modificarUsuario(int id, int dni, string nombre, string apellido, string mail, string password, int cuit_Cuil, bool esEmpresa)
+        {
+            foreach (Usuario us in usuario)
             {
-            return true;
-        }
+                if (us.id == id)
+                {
+                   if (dni != null)
+                     {
+                      us.dni = dni;
+                      }
+                    if (nombre != null)
+                    {
+                        us.nombre = nombre;
+                    }
+                      
+                    if (apellido != null)
+                    {
+                     us.apellido = apellido;
+                    }
+                    if (mail != null)
+                    {
+                        us.mail = mail;
+                    }
+                    if (password != null)
+                    {
+                        us.password = password;
+                    }
+
+                        if (cuit_Cuil != null) {
+                            if (us.GetType() == Empresa)
+                            
+                            {
+
+                               (Empresa) us.cuit = cuit_Cuil;
+                            }
+                            else
+                            {
+                                us.cuil = cuit_Cuil;
+                            }
+
+                        }
 
 
-            public bool eliminarUsuario (int id)
+                    }
+            }
+
+        if (dni != null){
+            
+                usuario
+            }
+
+
+        public bool eliminarUsuario (int id)
             {
             bool flag = false;
             foreach (Usuario us in usuario)
@@ -158,6 +240,7 @@ namespace tp1
 
             public void mostrarUsuarios () // MUESTRA TODOS LOS USUARIOS ORDENADOS POR DNI
             {
+            usuario = usuario.OrderBy(o  =>  o.dni).ToList();
              foreach(Usuario us in usuario)
             {
                 us.ToString();
@@ -168,11 +251,11 @@ namespace tp1
             
             public bool agregarCategoria (string nombre)
             {
-            bool flag = true;
+            int id = 0;
+            bool flag = false;
             for (var i = 0; i < categorias.Length; i++)
             {
-                if (categorias[i].nombre == nombre) {
-                    flag = false;
+                if (categorias[i].nombre == nombre || maxCategorias == cantCategorias) {
                     Console.WriteLine("La categoria ya existe");
                     break;
                 
@@ -182,25 +265,50 @@ namespace tp1
                     {
                         if (categorias[a] == null)
                         {
-                            //Contructor de categorias
+                            for (var c = 0; c < categorias.Length; c++)
+                            {
+                                if(categorias[c].id >= id)
+                                {
+                                    id = categorias[c].id;
+                                }
+
+                            }
+                            categorias[a] = new Categoria(id+1,nombre);
+                            cantCategorias +=1;
+                            flag = true;
                             break;
                         }
-                    }
 
+                    }
 
                 }
            
+                if ( flag == true)
+                {
+                    break;
+                }
             
             }
 
-                return true;
+                return flag;
         }
 
 
             public bool modificarCategoria (int id, string nombre)
             {
-            return true;
-        }
+                bool flag = false;
+
+                for(var i = 0; i < categorias.Length; i++)
+                {
+                    if (categorias[i].id == id)
+                    {
+                        categorias[i].nombre = nombre;
+                        flag = true;
+                    }
+                }
+
+                return flag;
+            }
 
 
             public bool eliminarCategoria (int id)
@@ -211,6 +319,7 @@ namespace tp1
                 if (categorias[i].id == id)
                 {
                     categorias[i] = null;
+                    cantCategorias -= 1;
                     flag = true;
                 }
 
@@ -222,7 +331,21 @@ namespace tp1
 
             public void mostrarCategoria() //MAL EN EL ENUNCIADO PERO MOSTRAR TODOS LAS CATEGORIAS ORDENADAS POR ID
             {
+            Categoria temp;
             String cats = "";
+            for (int i = 0; i < categorias.Length - 1; i++) { 
+
+                for (int j = i + 1; j < categorias.Length; j++) { 
+
+                if (categorias[i].id > categorias[j].id)
+                    {
+
+                        temp = categorias[i];
+                        categorias[i] = categorias[j];
+                        categorias[j] = temp;
+                    }
+                }
+            }
 
             for (var i = 0; i < categorias.Length; i++)
             {
@@ -252,7 +375,7 @@ namespace tp1
         */
             public void mostrarTodosProductos()
         {
-         
+            producto.Sort(a, b) => a.id.CompareTo(b.id);
             foreach (Producto pr in producto)
             {
                 Console.WriteLine(pr.toString());
