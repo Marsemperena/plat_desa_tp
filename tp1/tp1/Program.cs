@@ -1,13 +1,14 @@
 ﻿using System;
 
+
 namespace tp1
 {
-     class Program
+    public class Program
 
     {
         static void Main(string[] args)
         {
-            App app = new App();
+            MercadoTest app = new MercadoTest();
             app.iniciar();
         }
     }

@@ -1,17 +1,18 @@
 ﻿using System;
 
+
 namespace tp1
 {
-    class ClienteFinal
+    public class ClienteFinal : Usuario
     {
         public int cuit { get; set; }
 
-        public ClienteFinal(int cuit)
+        public ClienteFinal ( int id, int cuit, int dni, string nombre, string mail, string password) : base(id, dni, nombre, mail, password)
         {
             this.cuit = cuit;
         }
 
-        string  toString()
+       public  string  toString()
         {
             return "cuit: " + this.cuit;
         }

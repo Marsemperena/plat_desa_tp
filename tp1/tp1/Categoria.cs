@@ -2,22 +2,22 @@
 
 namespace tp1
 {
-    class Categoria
+    public class Categoria
     {
-         int ID { get; set; }
+         public int id { get; set; }
         string nombre { get; set; }
 
 
 
 public Categoria(int id, string nombre)
         {
-            this.ID = id;
+            this.id = id;
             this.nombre = nombre;
         }
 
        public string  toString()
         {
-            return "Categoria: " + this.ID + " - " + this.nombre;
+            return "Categoria: " + this.id + " - " + this.nombre;
         }
     }
 }

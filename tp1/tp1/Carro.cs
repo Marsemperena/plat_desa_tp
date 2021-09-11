@@ -3,25 +3,31 @@ using System.Collections.Generic;
 
 namespace tp1
 {
-    class Carro
+   public class Carro
     {
-        int id { get; set; }
-        Dictionary<Producto, int> productos { get; set; }
+        public int id { get; set; }
+        public Dictionary<Producto, int> productos { get; set; }
 
         public Carro(int id){
             this.id = id;
         }
-        public bool agregarProducto(Producto producto,int cantidad){
-            //productos.add(producto,cantidad);
-            return true;
+
+       public bool agregarProducto(Producto producto,int cantidad){
+            productos.Add(producto,cantidad);
+           return true;
         }
-        public void sacarProductos(){
-            
+        public void sacarProductos(Producto producto, int cantidad){
+            if(this.productos.Where(k=>k.Key== producto && k.Value<= cantidad)){
+                productos.Remove(producto);
+            }else{
+                this.productos.Where(k => k.Key == producto) k.Value == k.Value - cantidad;
+               
+            }
         }
 
         public  string toString()
         {
-            return "Carro: " + this.id + " - " + this.productos.ToString();
+            return "Carro: " + this.id + " - " + this.Productos.ToString();
         }
 
 }

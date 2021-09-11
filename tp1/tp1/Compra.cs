@@ -4,20 +4,22 @@ using System.Collections.Generic;
 
 namespace tp1
 {
-    class Compra
+    public class Compra
     {
         public int id { get; set; }
         public Usuario comprador { get; set; }
         public Dictionary <Producto,int> productos;
-        public double total;
+        public double total { get; set; }
 
         public Compra(Usuario comprador, double total, Dictionary<Producto,int> productosCarrito) {
             this.comprador = comprador;
-            productos = productosCarrito;
+            this.productos = productosCarrito;
+            this.total = total;
 
             foreach (KeyValuePair<Producto, int> kvp in productosCarrito)
             {
-                //total += kvp.Key.getPrecio() * kvp.Value; //getPrecio tira error
+                this.total += kvp.Key.precio * kvp.Value; //revisar getter
+
             }
 
 
@@ -25,7 +27,7 @@ namespace tp1
 
         string  toString()
         {
-            return "ID: "+ this.id + "- Usuario: " + this.comprador.ToString() + "- Productos: " + this.productos.ToString() + "- Total: " + total;
+            return "ID: "+ this.id + "- Usuario: " + this.comprador.ToString() + "- Productos: " + this.productos.ToString() + "- Total: " + this.total;
         }
 
 

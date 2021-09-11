@@ -3,18 +3,28 @@
 
 namespace tp1
 {
-    class Empresa : Usuario 
+    public class Empresa : Usuario 
         {
-        public int cuit { get; set; }
+        public int cuit { get; set;}
 
-        public Empresa()
+
+        public Empresa (int id, int cuit, int dni, string nombre, string mail, string password) : base( id,  dni,  nombre,  mail,  password)
         {
-            //constructor
+            this.cuit = cuit;
+
         }
+
+
+        //public Empresa (int cuit)
+        //{
+         ///   this.cuit = cuit;
+
+       // }
+ 
 
         public string toString()
         {
-            //modificar para empresa
+            //modificar para empresa asasas 
             return "empresa "; // + this.cuit;
         }
     }

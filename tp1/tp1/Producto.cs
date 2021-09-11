@@ -3,7 +3,7 @@ using System;
 
 namespace tp1
 {
-    class Producto
+    public class Producto
     {
         public int id;
         public string nombre { get; set; }

@@ -3,34 +3,52 @@ using System.Collections.Generic;
 
 namespace tp1
 {
-    class Mercado
+    public class Mercado
     {
     
             public int maxCategorias { get; set; }
             public int cantCategorias { get; set; }
             public Categoria[] categorias;
 
-            List<Producto> producto = new List<Producto>() {
+        public List<Producto> producto = new List<Producto>();
                // new Productos() { nombre = "", precio = 42 },
-//new Productos() { nombre = "", precio = 34 },
+               //new Productos() { nombre = "", precio = 34 },
               //  new Productos() { nombre = "", precio = 8 },
-            };
+         
 
-            List<Usuario> usuario = new List<Usuario>() {
+        public List<Usuario> usuario = new List<Usuario>();
                // new Usuarios() { nombre = "", apellido = "" },
                // new Usuarios() { nombre = "", apellido = "" },
                // new Usuarios() { nombre = "", apellido = "" },
-            };
+           
 
-            List<Compra> compra = new List<Compra>() {
-               // new Compras() { id = 1, comprador = 1, total = 32, producto ????????? }, //ARRAY DE PRODUCTOS?
-               // new Compras() { id = 2, comprador = 2, total = 232, producto ????????? },
-//new Compras() { id = 3, comprador = 3, total = 132, producto ????????? },
-            };
+       public List<Compra> compra;
 
+            public Mercado()
+        {
+            this.categorias = new Categoria[5];
+            this.usuario = new List<Usuario>();
+            this.compra = new List<Compra>();
+
+            this.categorias[0] = new Categoria(0, "categ 0");
+            this.categorias[1] = new Categoria(0, "categ 1");
+
+            this.usuario.Add(new Empresa(1,0, 234123, "test 0", "mail@mail.com", "pass"));
+            this.usuario.Add(new ClienteFinal(2, 1, 234123, "test 1", "mail@gmail.com", "pkjj11"));
+
+            this.producto.Add(new Producto("producto 1", 1500, 10, this.categorias[0]));
+            this.producto.Add(new Producto("producto 2", 1500, 10, this.categorias[1]));
+
+
+        }
+            
             
             public bool agregarProducto (string nombre, double precio, int cantidad, int id_Categoria)
             {
+              
+            
+            
+            
             return true;
             }
 
@@ -43,8 +61,17 @@ namespace tp1
             
             public bool eliminarProducto (int id)
             {
-            return true;
-        }
+            bool flag = false;
+            foreach(Producto prod in producto)
+            {
+                if  (prod.id == id)
+                {
+                     producto.RemoveAt(producto.IndexOf(prod));
+                     flag = true;
+                }
+            }
+            return flag;
+            }
 
             
             public void buscarProductos (string query) // ORDENADO POR NOMBRE LOS PRODUCTOS QUE CONTIENEN EN SU NOMBRE LA CADENA INGRESADA
@@ -67,8 +94,24 @@ namespace tp1
             
             public bool agregarUsuario (int dni, string nombre, string apellido, string mail, string password, int cuit_Cuil, bool esEmpresa)
             {
+            //calcular id
+            //(int id, int cuit, int dni, string nombre, string mail, string password)
+            //int id, int cuit, int dni, string nombre, string mail, string password
+            Usuario us;
+            if (esEmpresa)
+            {
+               us = new Empresa(1, cuit_Cuil, dni, nombre, mail, password);
+
+            }
+            else
+            {
+              us =  new ClienteFinal(1, cuit_Cuil, dni, nombre, mail, password);
+            }
+
+            usuario.Add(us);
+           
             return true;
-        }
+            }
 
 
             public bool modificarUsuario (int id, int dni, string nombre, string apellido, string mail, string password, int cuit_Cuil, bool esEmpresa)
@@ -79,19 +122,60 @@ namespace tp1
 
             public bool eliminarUsuario (int id)
             {
-            return true;
+            bool flag = false;
+            foreach (Usuario us in usuario)
+            {
+                if (us.id == id)
+                {
+                    usuario.RemoveAt(usuario.IndexOf(us));
+                    flag = true;
+                }
+
+            }
+
+
+            return flag;
         }
 
 
             public void mostrarUsuarios () // MUESTRA TODOS LOS USUARIOS ORDENADOS POR DNI
             {
-          
+             foreach(Usuario us in usuario)
+            {
+                us.ToString();
+                
+            }
         }
 
             
             public bool agregarCategoria (string nombre)
             {
-            return true;
+            bool flag = true;
+            for (var i = 0; i < categorias.Length; i++)
+            {
+                if (categorias[i].nombre == nombre) {
+                    flag = false;
+                    Console.WriteLine("La categoria ya existe");
+                    break;
+                
+                } else
+                {
+                    for (var a = 0; a < categorias.Length; a++)
+                    {
+                        if (categorias[a] == null)
+                        {
+                            //Contructor de categorias
+                            break;
+                        }
+                    }
+
+
+                }
+           
+            
+            }
+
+                return true;
         }
 
 
@@ -103,14 +187,34 @@ namespace tp1
 
             public bool eliminarCategoria (int id)
             {
-            return true;
+            bool flag = false;
+            for(var i = 0; i < categorias.Length; i++)
+            {
+                if (categorias[i].id == id)
+                {
+                    categorias[i] = null;
+                    flag = true;
+                }
+
             }
+
+            return flag;
+        }
 
 
             public void mostrarCategoria() //MAL EN EL ENUNCIADO PERO MOSTRAR TODOS LAS CATEGORIAS ORDENADAS POR ID
             {
+            String cats = "";
+
+            for (var i = 0; i < categorias.Length; i++)
+            {
+                if(categorias[i]!=null)
+                cats += categorias[i].toString() + " \n";
 
             }
+
+            Console.WriteLine(cats);
+        }
 
 
         /* ESTOS SON OPCIONALES EN LA PRIMER ENTREGA

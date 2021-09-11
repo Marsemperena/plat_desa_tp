@@ -10,8 +10,7 @@ namespace tp1
         public string nombre { get; set; }
         public string mail { get; set; }
         public string password { get; set; }
-        public Carro MiCarro { get; set; }
-
+        public Carro MiCarro { get; set ;  }
 
 
         public Usuario(int id, int dni, string nombre, string mail, string password)
@@ -21,14 +20,15 @@ namespace tp1
             this.nombre = nombre;
             this.mail = mail;
             this.password = password;
+
         }
 
-        string  toString()
+            public string toString()
         {
-            return "Usuario: " + this.id + " - dni " + this.dni + " - nombre " + this.nombre + " - mail " + this.mail + " - password " + this.password + " - Carro :" + MiCarro.toString();
+            return "Usuario: " + this.id + " - dni " + this.dni + " - nombre " + this.nombre + " - mail " + this.mail + " - Carro :" + MiCarro.toString();
         }
     }
-    
-    
+
+
 }
 
