@@ -8,8 +8,8 @@ namespace tp1
 {
     public class Mercado
     {
-    
-            public int maxCategorias { get; set; }
+
+            public const int MAX_CATEGORIAS  = 5;
             public int cantCategorias { get; set; }
             public Categoria[] categorias;
 
@@ -25,7 +25,7 @@ namespace tp1
 
             public Mercado()
         {
-            this.categorias = new Categoria[5];
+            this.categorias = new Categoria[MAX_CATEGORIAS];
             this.usuario = new List<Usuario>();
             this.compra = new List<Compra>();
 
@@ -114,6 +114,7 @@ namespace tp1
                     else
                     {
                         Console.WriteLine("El id es invalido");
+                        break;
                     }
 
                 }
@@ -194,14 +195,51 @@ namespace tp1
 
         public bool modificarUsuario(int id, int dni, string nombre, string apellido, string mail, string password, int cuit_Cuil, bool esEmpresa)
         {
+            bool flag = false;
             foreach (Usuario us in usuario)
             {
                 if (us.id == id)
                 {
-                   if (dni > 0)
+
+                    if (cuit_Cuil > 0)
+                    {
+                        if (esEmpresa == true)
+                        {
+                            if (us is Empresa)
+                            {
+
+                                ((Empresa)us).cuit = cuit_Cuil;
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("El id ingresado no corresponde a una empresa");
+                                flag = false;
+                                break;
+                            }
+                        }
+
+                        else
+                        {
+                            if (us is ClienteFinal)
+                            {
+                                ((ClienteFinal)us).cuil = cuit_Cuil;
+                            }
+                            else
+                            {
+                                Console.WriteLine("El id ingresado no corresponde a un ClienteFinal");
+                                flag = false;
+                                break;
+
+                            }
+                        }
+                    }
+
+                    if (dni > 0)
                      {
                       us.dni = dni;
                       }
+
                     if (!(string.IsNullOrEmpty(nombre)))
                     {
                         us.nombre = nombre;
@@ -209,7 +247,7 @@ namespace tp1
                       
                     if (!(string.IsNullOrEmpty(apellido)))
                     {
-                     us.apellido = apellido;
+                        us.apellido = apellido;
                     }
                     if (!(string.IsNullOrEmpty(mail)))
                     {
@@ -219,25 +257,13 @@ namespace tp1
                     {
                         us.password = password;
                     }
-                    if (cuit_Cuil > 0)
-                    {
-                        if (esEmpresa == true)
-                        {
-                            ((Empresa)us).cuit = cuit_Cuil;
-                           
-                        }
-                    
-                    else
-                    {
-                        ((ClienteFinal)us).cuil = cuit_Cuil;
-                    }
-                    }
-                             
-                   
-            }
+
+
+                    flag = true;
+                }
  
             }
-            return false;
+            return flag;
         }
 
 
@@ -257,6 +283,7 @@ namespace tp1
                 else
                 {
                     Console.WriteLine("El id es invalido");
+                    break;
                 }
 
             }
@@ -286,44 +313,50 @@ namespace tp1
             {
             int id = 0;
             bool flag = false;
-            for (var i = 0; i < categorias.Length; i++)
-            {
-                if (categorias[i] != null && categorias[i].nombre == nombre || maxCategorias == cantCategorias) {
-                    Console.WriteLine("La categoria ya existe");
-                    break;
-                
-                } else
+            if (!(string.IsNullOrEmpty(nombre))) { 
+                for (var i = 0; i < categorias.Length; i++)
                 {
-                    for (var a = 0; a < categorias.Length; a++)
+                    if (categorias[i] != null && categorias[i].nombre == nombre || MAX_CATEGORIAS == cantCategorias) {
+                        Console.WriteLine("La categoria ya existe");
+                        break;
+                
+                    } else
                     {
-                        if (categorias[a] == null)
+                        for (var a = 0; a < categorias.Length; a++)
                         {
-                            for (var c = 0; c < categorias.Length; c++)
+                            if (categorias[a] == null)
                             {
-                                if(categorias[c] != null && categorias[c].id >= id)
+                                for (var c = 0; c < categorias.Length; c++)
                                 {
-                                    id = categorias[c].id;
-                                }
+                                    if(categorias[c] != null && categorias[c].id >= id)
+                                    {
+                                        id = categorias[c].id;
+                                    }
 
+                                }
+                                categorias[a] = new Categoria(id+1,nombre);
+                                cantCategorias +=1;
+                                flag = true;
+                                break;
                             }
-                            categorias[a] = new Categoria(id+1,nombre);
-                            cantCategorias +=1;
-                            flag = true;
-                            break;
+
                         }
 
                     }
-
-                }
            
-                if ( flag == true)
-                {
-                    break;
-                }
+                    if ( flag == true)
+                    {
+                        break;
+                    }
             
+                }
+            } else
+            {
+                Console.WriteLine("El nombre de la categoría no puede estar vacío.");
+                flag = false;
             }
 
-                return flag;
+            return flag;
         }
 
 
