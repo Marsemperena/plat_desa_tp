@@ -40,15 +40,15 @@ namespace tp1
                                 14.Mostrar productos que existen en el sistema ordenados por categoría
                                 15.Salir";
 
-          
+            while (continuar)
+            {
                 Console.WriteLine(opcionesPrincipales);
 
                 Console.WriteLine("Ingrese su opcion:");
 
                 string inputInicial = Console.ReadLine();
 
-                while (continuar)
-                {
+                
                     if (inputInicial == "1")
                     {
                         Console.WriteLine(opcionesAdministrar);
@@ -201,9 +201,7 @@ namespace tp1
                     } else
                     {
                     Console.WriteLine("Bajo construcción, próximamente en TP2!");
-                    //Console.WriteLine(opcionesPrincipales);
-                    //Console.WriteLine("Ingrese su opcion:");
-                    //inputInicial = Console.ReadLine();
+
                 }
                 }
 
