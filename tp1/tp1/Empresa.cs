@@ -8,7 +8,7 @@ namespace tp1
         public int cuit { get; set;}
 
 
-        public Empresa (int id, int cuit, int dni, string nombre, string mail, string password) : base( id,  dni,  nombre,  mail,  password)
+        public Empresa (int id, int cuit, int dni, string nombre, string apellido, string mail, string password) : base( id,  dni,  nombre, apellido,  mail,  password)
         {
             this.cuit = cuit;
 
@@ -25,7 +25,7 @@ namespace tp1
         public string toString()
         {
             //modificar para empresa asasas 
-            return "empresa "; // + this.cuit;
+            return "Empresa - " + base.toString()  + " cuit: " + cuit;
         }
     }
 

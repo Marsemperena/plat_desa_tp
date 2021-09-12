@@ -30,8 +30,8 @@ namespace tp1
             this.categorias[0] = new Categoria(0, "categ 0");
             this.categorias[1] = new Categoria(0, "categ 1");
 
-            this.usuario.Add(new Empresa(1,0, 234123, "test 0", "mail@mail.com", "pass"));
-            this.usuario.Add(new ClienteFinal(2, 1, 234123, "test 1", "mail@gmail.com", "pkjj11"));
+            this.usuario.Add(new Empresa(1,0, 234123, "test 0", "test 00", "mail@mail.com", "pass"));
+            this.usuario.Add(new ClienteFinal(2, 1, 234123, "test 1", "test 00", "mail@gmail.com", "pkjj11"));
 
             this.producto.Add(new Producto("producto 1", 1500, 10, this.categorias[0]));
             this.producto.Add(new Producto("producto 2", 1, 10, this.categorias[1]));
@@ -150,12 +150,12 @@ namespace tp1
             Usuario us;
             if (esEmpresa)
             {
-               us = new Empresa(usuario.Last().id + 1, cuit_Cuil, dni, nombre, mail, password);
+               us = new Empresa(usuario.Last().id + 1, cuit_Cuil, dni, nombre, apellido, mail, password);
 
             }
             else
             {
-              us =  new ClienteFinal(usuario.Last().id + 1, cuit_Cuil, dni, nombre, mail, password);
+              us =  new ClienteFinal(usuario.Last().id + 1, cuit_Cuil, dni, nombre, apellido, mail, password);
             }
 
             usuario.Add(us);
@@ -198,8 +198,9 @@ namespace tp1
                     }
                     else
                     {
-                        us.cuil = cuit_Cuil;
+                        us.cuit = cuit_Cuil;
                     }
+
                     /* if (cuit_Cuil != null) { //revisar
                      *
                          if (us.GetType() == Empresa)

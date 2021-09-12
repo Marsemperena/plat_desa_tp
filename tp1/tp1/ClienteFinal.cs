@@ -7,14 +7,14 @@ namespace tp1
     {
         public int cuit { get; set; }
 
-        public ClienteFinal ( int id, int cuit, int dni, string nombre, string mail, string password) : base(id, dni, nombre, mail, password)
+        public ClienteFinal( int id, int cuit, int dni, string nombre, string apellido, string mail, string password) : base(id, dni, nombre, apellido, mail, password)
         {
             this.cuit = cuit;
         }
 
-       public  string  toString()
+       public string toString()
         {
-            return "cuit: " + this.cuit;
+            return "Cliente Final - " + base.toString() + "cuit: " + cuit;
         }
 
     }
