@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
+
+
 namespace tp1
 {
     public class Mercado
@@ -27,25 +29,38 @@ namespace tp1
             this.usuario = new List<Usuario>();
             this.compra = new List<Compra>();
 
-            this.categorias[0] = new Categoria(0, "categ 0");
-            this.categorias[1] = new Categoria(0, "categ 1");
+            this.categorias[0] = new Categoria(2, "categ 0");
+            this.categorias[1] = new Categoria(1, "categ 1");
+            this.categorias[2] = new Categoria(4, "categ 3");
+            for (var a = 0; a < categorias.Length; a++)
+            {
+                if  (categorias[a] != null)
+                {
+                    cantCategorias++;
+                }
+            }
 
             this.usuario.Add(new Empresa(1,0, 234123, "test 0", "test 00", "mail@mail.com", "pass"));
             this.usuario.Add(new ClienteFinal(2, 1, 234123, "test 1", "test 00", "mail@gmail.com", "pkjj11"));
 
-            this.producto.Add(new Producto("producto 1", 1500, 10, this.categorias[0]));
-            this.producto.Add(new Producto("producto 2", 1, 10, this.categorias[1]));
-            this.producto.Add(new Producto("producto 2", 561, 10, this.categorias[1]));
+            this.producto.Add(new Producto(1,"producto 1", 1500, 10, this.categorias[0]));
+            this.producto.Add(new Producto(2,"producto 2", 1, 10, this.categorias[1]));
+            this.producto.Add(new Producto(4,"producto 2", 561, 10, this.categorias[1]));
 
 
         }
             
             public bool agregarProducto (string nombre, double precio, int cantidad, int id_Categoria)
             {
+            int idActual = 0;
+            foreach (Producto prod in producto)
+            {
 
+                if (prod.id > idActual) { idActual = prod.id; }
+            }
             try
             {
-                this.producto.Add(new Producto(nombre, precio, cantidad, this.categorias[id_Categoria]));
+                this.producto.Add(new Producto(idActual +1,nombre, precio, cantidad, this.categorias[id_Categoria]));
                 return true;
             }
             catch (Exception e)
@@ -62,8 +77,8 @@ namespace tp1
             {
                 if (prod.id == id)
                 {
-                    if (nombre != null)
-                    {
+                    if (!(string.IsNullOrEmpty(nombre)))
+                        {
                         prod.nombre = nombre;
                     }
                     if (precio > 0)
@@ -84,19 +99,26 @@ namespace tp1
             }
             return false;
         }
-                public bool eliminarProducto (int id)
-            {
-            bool flag = false;
-            foreach(Producto prod in producto)
-            {
-                if  (prod.id == id)
+                public bool eliminarProducto (int id) { 
+                bool flag = false;
+                int indice;
+                for (var i = 0; i<producto.Count(); i++)
                 {
-                     producto.RemoveAt(producto.IndexOf(prod));
-                     flag = true;
+                    if (producto[i] != null && producto[i].id == id)
+                    {
+                         indice = producto.IndexOf(producto[i]);
+                        producto.RemoveAt(indice);
+                        flag = true;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("El id es invalido");
+                    }
+
                 }
-            }
             return flag;
-            }
+        }
 
             
             public void buscarProductos (string query) // ORDENADO POR NOMBRE LOS PRODUCTOS QUE CONTIENEN EN SU NOMBRE LA CADENA INGRESADA
@@ -105,7 +127,7 @@ namespace tp1
                 {
                     if (pr.nombre.Contains(query))
                     {
-                        Console.WriteLine(pr.toString());
+                    Console.WriteLine(pr.toString());
                     }
                 }
             }
@@ -148,14 +170,20 @@ namespace tp1
             //(int id, int cuit, int dni, string nombre, string mail, string password)
             //int id, int cuit, int dni, string nombre, string mail, string password
             Usuario us;
-            if (esEmpresa)
+            int idActual = 0;
+            foreach (Usuario user in usuario)
             {
-               us = new Empresa(usuario.Last().id + 1, cuit_Cuil, dni, nombre, apellido, mail, password);
+                
+                if (user.id > idActual) { idActual = user.id; }
+            }
+            if (esEmpresa)
+            {   
+               us = new Empresa(idActual + 1, cuit_Cuil, dni, nombre, apellido, mail, password);
 
             }
             else
             {
-              us =  new ClienteFinal(usuario.Last().id + 1, cuit_Cuil, dni, nombre, apellido, mail, password);
+              us =  new ClienteFinal(idActual + 1, cuit_Cuil, dni, nombre, apellido, mail, password);
             }
 
             usuario.Add(us);
@@ -174,61 +202,40 @@ namespace tp1
                      {
                       us.dni = dni;
                       }
-                    if (nombre != null)
+                    if (!(string.IsNullOrEmpty(nombre)))
                     {
                         us.nombre = nombre;
                     }
                       
-                    if (apellido != null)
+                    if (!(string.IsNullOrEmpty(apellido)))
                     {
                      us.apellido = apellido;
                     }
-                    if (mail != null)
+                    if (!(string.IsNullOrEmpty(mail)))
                     {
                         us.mail = mail;
                     }
-                    if (password != null)
+                    if (!(string.IsNullOrEmpty(password)))
                     {
                         us.password = password;
                     }
-
-                    if(us is Empresa)
+                    if (cuit_Cuil > 0)
                     {
-                         us.cuit = cuit_Cuil;
-                    }
+                        if (esEmpresa == true)
+                        {
+                            ((Empresa)us).cuit = cuit_Cuil;
+                           
+                        }
+                    
                     else
                     {
-                        us.cuit = cuit_Cuil;
+                        ((ClienteFinal)us).cuil = cuit_Cuil;
                     }
-
-                    /* if (cuit_Cuil != null) { //revisar
-                     *
-                         if (us.GetType() == Empresa)
-
-                         {
-
-                            (Empresa) us.cuit = cuit_Cuil;
-                         }
-                         else
-                         {
-                             us.cuil = cuit_Cuil;
-                         }
-
-                     }*/
-
-
-                    if (dni > 0)
-                    {
-                        us.dni = dni;
-
-
                     }
+                             
                    
             }
-
-
-
-               
+ 
             }
             return false;
         }
@@ -237,17 +244,22 @@ namespace tp1
             public bool eliminarUsuario (int id)
             {
             bool flag = false;
-            foreach (Usuario us in usuario)
+            int indice;
+            for (var i = 0; i < usuario.Count(); i++)
             {
-                if (us.id == id)
+                if (usuario[i] != null && usuario[i].id == id)
                 {
-                    usuario.RemoveAt(usuario.IndexOf(us));
+                     indice = usuario.IndexOf(usuario[i]);
+                    usuario.RemoveAt(indice);
                     flag = true;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("El id es invalido");
                 }
 
-            } 
-
-
+            }
             return flag;
         }
 
@@ -257,8 +269,15 @@ namespace tp1
             usuario = usuario.OrderBy(o  =>  o.dni).ToList();
              foreach(Usuario us in usuario)
             {
-                us.ToString();
-                
+                if  (us is Empresa)
+                {
+                    Console.WriteLine(((Empresa)us).toString());
+                }
+                else
+                {
+                    Console.WriteLine(((ClienteFinal)us).toString());
+                }
+
             }
         }
 
@@ -269,7 +288,7 @@ namespace tp1
             bool flag = false;
             for (var i = 0; i < categorias.Length; i++)
             {
-                if (categorias[i].nombre == nombre || maxCategorias == cantCategorias) {
+                if (categorias[i] != null && categorias[i].nombre == nombre || maxCategorias == cantCategorias) {
                     Console.WriteLine("La categoria ya existe");
                     break;
                 
@@ -281,7 +300,7 @@ namespace tp1
                         {
                             for (var c = 0; c < categorias.Length; c++)
                             {
-                                if(categorias[c].id >= id)
+                                if(categorias[c] != null && categorias[c].id >= id)
                                 {
                                     id = categorias[c].id;
                                 }
@@ -314,7 +333,7 @@ namespace tp1
 
                 for(var i = 0; i < categorias.Length; i++)
                 {
-                    if (categorias[i].id == id)
+                    if (categorias[i] != null && categorias[i].id == id)
                     {
                         categorias[i].nombre = nombre;
                         flag = true;
@@ -330,7 +349,7 @@ namespace tp1
             bool flag = false;
             for(var i = 0; i < categorias.Length; i++)
             {
-                if (categorias[i].id == id)
+                if (categorias[i] != null && categorias[i].id == id)
                 {
                     categorias[i] = null;
                     cantCategorias -= 1;
@@ -349,14 +368,15 @@ namespace tp1
             String cats = "";
             for (int i = 0; i < categorias.Length - 1; i++) { 
 
-                for (int j = i + 1; j < categorias.Length; j++) { 
-
+                for (int j = i + 1; j < categorias.Length; j++) {
+                    if  (categorias[i] != null && categorias[j] != null) { 
                 if (categorias[i].id > categorias[j].id)
                     {
 
                         temp = categorias[i];
                         categorias[i] = categorias[j];
                         categorias[j] = temp;
+                    }
                     }
                 }
             }

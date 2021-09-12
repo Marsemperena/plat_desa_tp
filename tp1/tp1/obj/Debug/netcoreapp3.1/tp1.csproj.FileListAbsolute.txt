@@ -19,3 +19,17 @@ C:\Users\MarisolSemperena\source\repos\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp
 C:\Users\MarisolSemperena\source\repos\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.csproj.CoreCompileInputs.cache
 C:\Users\MarisolSemperena\source\repos\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.dll
 C:\Users\MarisolSemperena\source\repos\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.pdb
+C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.csproj.AssemblyReference.cache
+C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.AssemblyInfoInputs.cache
+C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.AssemblyInfo.cs
+C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.csproj.CoreCompileInputs.cache
+C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.dll
+C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.pdb
+C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\bin\Debug\netcoreapp3.1\tp1.exe
+C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\bin\Debug\netcoreapp3.1\tp1.deps.json
+C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\bin\Debug\netcoreapp3.1\tp1.runtimeconfig.json
+C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\bin\Debug\netcoreapp3.1\tp1.runtimeconfig.dev.json
+C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\bin\Debug\netcoreapp3.1\tp1.dll
+C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\bin\Debug\netcoreapp3.1\tp1.pdb
+C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.genruntimeconfig.cache

@@ -14,18 +14,10 @@ namespace tp1
 
         }
 
-
-        //public Empresa (int cuit)
-        //{
-         ///   this.cuit = cuit;
-
-       // }
- 
-
         public string toString()
         {
             //modificar para empresa asasas 
-            return "Empresa - " + base.toString()  + " cuit: " + cuit;
+            return "Empresa - " + base.toString()  + " - cuit: " + cuit;
         }
     }
 

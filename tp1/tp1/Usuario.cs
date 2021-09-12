@@ -27,7 +27,7 @@ namespace tp1
 
             public string toString()
         {
-            return "Usuario: " + this.id + " - dni " + this.dni + " - nombre " + this.nombre + " - mail " + this.mail + " - Carro :" + MiCarro.toString();
+            return "Usuario: " + this.id + " - dni " + this.dni + " - nombre " + this.nombre + " - apellido " + this.apellido + " - mail " + this.mail; // " - Carro :" + MiCarro.toString();
         }
     }
 

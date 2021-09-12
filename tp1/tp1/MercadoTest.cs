@@ -52,32 +52,33 @@ namespace tp1
                 string mail = "";
                 string password = "";
                 int cuit_Cuil = 0;
+                string boolaux = "";
                 bool esEmpresa = false;
 
                 switch (inputUsuario)
                 {
-                    case "1":
+                    case "1": //Agregar Categorias
                         Console.WriteLine("Ingrese el nombre de la categoría");
                         inputUsuario = Console.ReadLine();
                         mercado.agregarCategoria(inputUsuario);
                         break;
-                    case "2":
+                    case "2": //Eliminar Categorias
                         Console.WriteLine("Ingrese el ID de la categoría a eliminar");
                         inputUsuario = Console.ReadLine();
                         mercado.eliminarCategoria(Int32.Parse(inputUsuario));
                         break;
-                    case "3":
+                    case "3": //Modificar Categorias
                         Console.WriteLine("Ingrese el ID de la categoría a editar");
                         inputUsuario = Console.ReadLine();
                         Console.WriteLine("Ingrese el nombre nuevo");
                         nombre = Console.ReadLine();
                         mercado.modificarCategoria(Int32.Parse(inputUsuario), nombre);
                         break;
-                    case "4":
+                    case "4": //Mostrar Categorias
                         Console.WriteLine("Las categorías son: ");
                         mercado.mostrarCategoria();
                         break;
-                    case "5":
+                    case "5": //Agregar Usuarios
                         Console.WriteLine("Alta de usuario - Ingrese el dni");
                         dni = int.Parse(Console.ReadLine());
                         Console.WriteLine("Alta de usuario - Ingrese el nombre");
@@ -88,20 +89,25 @@ namespace tp1
                         mail = Console.ReadLine();
                         Console.WriteLine("Alta de usuario - Ingrese el password");
                         password = Console.ReadLine();
-                        Console.WriteLine("Alta de usuario - Ingrese el cuit/cuil");
+                        Console.WriteLine("Alta de usuario - Ingrese el cuit/cuil ");
                         cuit_Cuil = int.Parse(Console.ReadLine());
                         Console.WriteLine("Alta de usuario - Ingrese: si es empresa o no (V/F)");
-                        //LEER BOOL POR CONSOLA
+                        boolaux = Console.ReadLine();
+                        if (boolaux.Equals("v", StringComparison.OrdinalIgnoreCase))
+                        {
+                            esEmpresa = true;
+                        }
                         mercado.agregarUsuario(dni, nombre, apellido, mail, password, cuit_Cuil, esEmpresa);
                         break;
-                    case "6":
+                    case "6": //Eliminar Usuarios
                         Console.WriteLine("Baja de usuario - Ingrese el ID del usuario a eliminar");
+                        inputUsuario = Console.ReadLine();
                         mercado.eliminarUsuario(Int32.Parse(inputUsuario));
                         break;
-                    case "7":
+                    case "7": //Modificar Usuarios
                         Console.WriteLine("Modificación de usuario - Ingrese el ID del usuario a modificar");
                         id = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("Modificación de usuario - Ingrese el dni");
+                        Console.WriteLine("Modificación de usuario - Ingrese el dni para mantener actual ingrese -1");
                         dni = int.Parse(Console.ReadLine());
                         Console.WriteLine("Modificación de usuario - Ingrese el nombre");
                         nombre = Console.ReadLine();
@@ -111,17 +117,21 @@ namespace tp1
                         mail = Console.ReadLine();
                         Console.WriteLine("Modificación de usuario - Ingrese el password");
                         password = Console.ReadLine();
-                        Console.WriteLine("Modificación de usuario - Ingrese el cuit/cuil");
+                        Console.WriteLine("Modificación de usuario - Ingrese el cuit/cuil para mantener actual ingrese -1");
                         cuit_Cuil = int.Parse(Console.ReadLine());
                         Console.WriteLine("Modificación de usuario - Ingrese si es empresa o no (V/F)");
-                        //esEmpresa = 
+                        boolaux = Console.ReadLine();
+                        if (boolaux.Equals("v", StringComparison.OrdinalIgnoreCase))
+                        {
+                            esEmpresa = true;
+                        }
                         mercado.modificarUsuario(id, dni, nombre, apellido, mail, password, cuit_Cuil, esEmpresa);
                         break;
-                    case "8":
-                        Console.WriteLine("Mostrar usuarios que existen en el sistema");
+                    case "8": //Mostrar Usuarios
+                        Console.WriteLine("Los usuarios existentes son:");
                         mercado.mostrarUsuarios();
                         break;
-                    case "9":
+                    case "9": //Agregar Productos
                         Console.WriteLine("Alta de producto - Ingrese el nombre");
                         nombre = Console.ReadLine();
                         Console.WriteLine("Alta de producto - Ingrese el precio");
@@ -132,37 +142,37 @@ namespace tp1
                         id_categ = Convert.ToInt32(Console.ReadLine());
                         mercado.agregarProducto(nombre,  precio, cantidad, id_categ);
                         break;
-                    case "10":
+                    case "10": //Eliminar Productos
                         Console.WriteLine("Baja de producto - Ingrese el ID del producto a eliminar");
                         id = Convert.ToInt32(Console.ReadLine());
                         mercado.eliminarProducto(id);
                         break;
-                    case "11":
+                    case "11": //Modificar Productos
                         Console.WriteLine("Modificación de producto - Ingrese el ID del producto a modificar");
                         id = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("Modificación de producto - Ingrese el nombre del producto");
                         nombreProducto = Console.ReadLine();
-                        Console.WriteLine("Modificación de producto - Ingrese el precio");
+                        Console.WriteLine("Modificación de producto - Ingrese el precio para mantener actual ingrese -1");
                         precio = Convert.ToDouble(Console.ReadLine());
-                        Console.WriteLine("Modificación de producto - Ingrese la cantidad");
+                        Console.WriteLine("Modificación de producto - Ingrese la cantidad para mantener actual ingrese -1");
                         cantidad = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("Modificación de producto - Ingrese el ID de la categoría");
+                        Console.WriteLine("Modificación de producto - Ingrese el ID de la categoría para mantener actual ingrese -1");
                         id_categ = Convert.ToInt32(Console.ReadLine());
                         mercado.modificarProducto(id, nombreProducto, precio, cantidad, id_categ);
                         break;
-                    case "12":
+                    case "12": //Mostrar Productos
                         Console.WriteLine("Los productos son:");
                         mercado.mostrarTodosProductos();
                         break;
-                    case "13":
+                    case "13": //Mostrar Productos x precio
                         Console.WriteLine("Productos ordenados por precio");
                         mercado.mostrarTodosProductosPorPrecio();
                         break;
-                    case "14":
+                    case "14": //Mostrar Productos x categoria
                         Console.WriteLine("Productos ordenados por categoría");
                         mercado.mostrarTodosProductosPorCategoria();
                         break;
-                    case "15":
+                    case "15": //Salir del sistema
                         Console.WriteLine("salir");
                         continuar = false;
                         break;

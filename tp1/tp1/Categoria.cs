@@ -17,7 +17,7 @@ public Categoria(int id, string nombre)
 
        public string  toString()
         {
-            return "Categoria: " + this.id + " - " + this.nombre;
+            return "Categoria: " + this.id + " - Nombre: " + this.nombre;
         }
     }
 }

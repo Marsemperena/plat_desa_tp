@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\MarisolSemperena\\.nuget\\packages\\": {}
+    "C:\\Users\\Luciano\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MarisolSemperena\\source\\repos\\plat_desa_tp\\tp1\\tp1\\tp1.csproj",
+      "projectUniqueName": "C:\\Users\\Luciano\\Source\\Repos\\plat_desa_tp\\tp1\\tp1\\tp1.csproj",
       "projectName": "tp1",
-      "projectPath": "C:\\Users\\MarisolSemperena\\source\\repos\\plat_desa_tp\\tp1\\tp1\\tp1.csproj",
-      "packagesPath": "C:\\Users\\MarisolSemperena\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MarisolSemperena\\source\\repos\\plat_desa_tp\\tp1\\tp1\\obj\\",
+      "projectPath": "C:\\Users\\Luciano\\Source\\Repos\\plat_desa_tp\\tp1\\tp1\\tp1.csproj",
+      "packagesPath": "C:\\Users\\Luciano\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Luciano\\Source\\Repos\\plat_desa_tp\\tp1\\tp1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\MarisolSemperena\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Luciano\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

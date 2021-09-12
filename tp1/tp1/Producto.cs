@@ -11,8 +11,9 @@ namespace tp1
         public int cantidad { get; set; }
         public Categoria cat { get; set; }
         
-        public Producto(String nombre,double precio, int cantidad, Categoria categoria){
+        public Producto(int id, string nombre,double precio, int cantidad, Categoria categoria){
 
+            this.id = id;
             this.nombre = nombre;
             this.precio = precio;
             this.cantidad = cantidad;
@@ -22,7 +23,7 @@ namespace tp1
 
         public  string toString()
         {
-            return "Producto: id " + this.id + " - nombre " + this.nombre + " - precio " + this.precio + " - cantidad " + this.cantidad + " - categoria " + this.cat.toString();
+            return "Producto: id " + this.id + " - nombre " + this.nombre + " - precio " + this.precio + " - cantidad " + this.cantidad + " - " + this.cat.toString();
         }
     }
 }
