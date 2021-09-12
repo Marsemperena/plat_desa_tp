@@ -4,7 +4,7 @@ TP Plataformas de Desarrollo
 
 ## 🛒 Eccomerce 🛒
 
-_Este programa representa un eccomerce que se inicia ejecutándose la clase MercadoTest presentando una consola que pregunta que acción quiere realizar el usuario, estas acciones son:_
+_Este programa representa un eccomerce que se inicia ejecutándose la clase Program presentando una consola que pregunta que acción quiere realizar el usuario, estas acciones son:_
 
 * 1-Administrar
 * 2-Comprar
@@ -38,7 +38,7 @@ _En la consigna se aclara que Se debe crear una clase program con una aplicació
 
 _Al iniciar el programa, se crea un “mercado” que es la clase principal con un arreglo de categorías de tamaño definido en la constante MaxCategorias y el resto de las listas vacías._
 
-_El cambio que realizamos nosotros es que en nuestro trabajo la clase program se pasó a llamar MercadoTest y la clase program contiene un método iniciar que se llama en la clase MercadoTest. Esto se realizó para tener un mayor orden en el código y que se vea más limpio._
+_Se añadio la clase MercadoTest como intermediario entre la clase program y el resto del sistema para organizar el menu y poder generar un metodo que valide las flags para corroborar las ejecuciones y los retornos de cada metodo._
 
 
 ## Integrantes 
