@@ -30,7 +30,6 @@ namespace Plataforma_TP2
         private void InitializeComponent()
         {
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.lblInstrucciones = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblDNI = new System.Windows.Forms.Label();
@@ -41,6 +40,7 @@ namespace Plataforma_TP2
             this.apellido = new System.Windows.Forms.TextBox();
             this.mail = new System.Windows.Forms.TextBox();
             this.pwd = new System.Windows.Forms.TextBox();
+            this.dni = new System.Windows.Forms.TextBox();
             this.tipoUsuario = new System.Windows.Forms.ComboBox();
             this.registrarUsuario = new System.Windows.Forms.Button();
             this.volver = new System.Windows.Forms.Button();
@@ -53,14 +53,6 @@ namespace Plataforma_TP2
             this.lblTitulo.Size = new System.Drawing.Size(100, 23);
             this.lblTitulo.TabIndex = 13;
             this.lblTitulo.Text = "Registro de Usuario";
-            // 
-            // lblInstrucciones
-            // 
-            this.lblInstrucciones.Location = new System.Drawing.Point(12, 61);
-            this.lblInstrucciones.Name = "lblInstrucciones";
-            this.lblInstrucciones.Size = new System.Drawing.Size(250, 23);
-            this.lblInstrucciones.TabIndex = 12;
-            this.lblInstrucciones.Text = "Completar los campos con la informacion solicitada.";
             // 
             // lblNombre
             // 
@@ -133,6 +125,14 @@ namespace Plataforma_TP2
             this.mail.Size = new System.Drawing.Size(100, 20);
             this.mail.TabIndex = 0;
             // 
+            // dni
+            // 
+            this.dni.Location = new System.Drawing.Point(127, 112);
+            this.dni.Margin = new System.Windows.Forms.Padding(2);
+            this.dni.Name = "dni";
+            this.dni.Size = new System.Drawing.Size(100, 20);
+            this.dni.TabIndex = 0;
+            // 
             // pwd
             // 
             this.pwd.Location = new System.Drawing.Point(127, 160);
@@ -186,13 +186,13 @@ namespace Plataforma_TP2
             this.Controls.Add(this.apellido);
             this.Controls.Add(this.mail);
             this.Controls.Add(this.pwd);
+            this.Controls.Add(this.dni);
             this.Controls.Add(this.lblMail);
             this.Controls.Add(this.lblPwd);
             this.Controls.Add(this.lblTipoUsuario);
             this.Controls.Add(this.lblDNI);
             this.Controls.Add(this.lblApellido);
             this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.lblInstrucciones);
             this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -212,6 +212,7 @@ namespace Plataforma_TP2
         private System.Windows.Forms.ComboBox tipoUsuario;
         private System.Windows.Forms.TextBox nombre;
         private System.Windows.Forms.TextBox apellido;
+        private System.Windows.Forms.TextBox dni;
         private System.Windows.Forms.TextBox mail;
         private System.Windows.Forms.TextBox pwd;
         private System.Windows.Forms.Label lblMail;
@@ -220,7 +221,6 @@ namespace Plataforma_TP2
         private System.Windows.Forms.Label lblDNI;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Label lblInstrucciones;
         private System.Windows.Forms.Label lblTitulo;
 
     }

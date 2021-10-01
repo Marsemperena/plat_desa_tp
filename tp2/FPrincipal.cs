@@ -22,13 +22,14 @@ namespace Plataforma_TP2
         {
             InitializeComponent();
             logued = false;
+            // LOGIN
             hijoLogin = new FLogin(new string[1]);
-
             hijoLogin.MdiParent = this;
             hijoLogin.TrasfEvento += TransfDelegado;
-
             hijoLogin.Show();
+
             touched = false;
+
         }
         private void TransfDelegado(string Usuario)
         {
@@ -42,6 +43,5 @@ namespace Plataforma_TP2
                 hijoMain.Show();
             }
         }
-
     }
 }

@@ -43,7 +43,9 @@ namespace Plataforma_TP2
 
         private void registro_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            FRegistro registro = new FRegistro();
+            registro.Show();
         }
     }
 }

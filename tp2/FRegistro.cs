@@ -19,11 +19,13 @@ namespace Plataforma_TP2
 
         private void FRegistro_Load(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Completar los campos con la informacion solicitada.");
         }
         private void volver_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            FPrincipal menuPrincipal = new FPrincipal();
+            menuPrincipal.Show();
         }
         private void registrarUsuario_Click(object sender, EventArgs e)
         {
