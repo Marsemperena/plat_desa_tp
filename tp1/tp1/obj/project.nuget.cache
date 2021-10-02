@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "G91pURxxHOmP35Sysyf22+QHfIk9Wed+hDt1b/Ak4zVmcq/dMGR1/mV97WgYw1IozGXoGulWGVI8W+XUdJ1gCw==",
+  "dgSpecHash": "zAqlB86BJK85J3zu9qaO85phCMEMafPw0NvNvP84EERw9WXZdKchIj1DxlYTCbHg7o9iMNwAy71sylPm1RhiTA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Luciano\\Source\\Repos\\plat_desa_tp\\tp1\\tp1\\tp1.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "E:\\Eze\\Analista de Sistemas DaVinci\\4to Cuatrimestre\\Plataformas de Desarrollo\\TP2\\plat_desa_tp\\tp1\\tp1\\tp1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\eze_p\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

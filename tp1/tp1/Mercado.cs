@@ -9,15 +9,16 @@ namespace tp1
     public class Mercado
     {
 
-            public const int MAX_CATEGORIAS  = 5;
-            public int cantCategorias { get; set; }
-            public Categoria[] categorias;
+       public const int MAX_CATEGORIAS  = 5;
+       public int cantCategorias { get; set; }
 
-        public List<Producto> producto = new List<Producto>();
+       public List<Categoria> categorias= new List<Categoria>();
+
+       public List<Producto> producto = new List<Producto>();
 
          
 
-        public List<Usuario> usuario = new List<Usuario>();
+       public List<Usuario> usuario = new List<Usuario>();
 
            
 
@@ -52,22 +53,21 @@ namespace tp1
             
             public bool agregarProducto (string nombre, double precio, int cantidad, int id_Categoria)
             {
-            int idActual = 0;
-            foreach (Producto prod in producto)
-            {
-
-                if (prod.id > idActual) { idActual = prod.id; }
-            }
-            try
-            {
-                this.producto.Add(new Producto(idActual +1,nombre, precio, cantidad, this.categorias[id_Categoria]));
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Ocurrio un error al intentar dar de alta el producto, por favor intente nuevamente");
-                return false;
-            }
+                int idActual = 0;
+                foreach (Producto prod in producto)
+                {
+                    if (prod.id > idActual) { idActual = prod.id; }
+                }
+                try
+                {
+                    this.producto.Add(new Producto(idActual +1,nombre, precio, cantidad, this.categorias[id_Categoria]));
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Ocurrio un error al intentar dar de alta el producto, por favor intente nuevamente");
+                    return false;
+                }
             }
 
 
@@ -344,20 +344,22 @@ namespace tp1
 
                     }
            
-                    if ( flag == true)
-                    {
-                        break;
-                    }
+                        if ( flag == true)
+                        {
+                            break;
+                        }
             
+                    }
+                } else
+                {
+                    Console.WriteLine("El nombre de la categoría no puede estar vacío.");
+                    flag = false;
                 }
-            } else
-            {
-                Console.WriteLine("El nombre de la categoría no puede estar vacío.");
-                flag = false;
+
+                return flag;
             }
 
-            return flag;
-        }
+            //private int verificarEspacio
 
 
             public bool modificarCategoria (int id, string nombre)

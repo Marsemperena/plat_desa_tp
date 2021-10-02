@@ -33,3 +33,10 @@ C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\bin\Debug\netcoreapp3.1\tp1.r
 C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\bin\Debug\netcoreapp3.1\tp1.dll
 C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\bin\Debug\netcoreapp3.1\tp1.pdb
 C:\Users\Luciano\Source\Repos\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.genruntimeconfig.cache
+E:\Eze\Analista de Sistemas DaVinci\4to Cuatrimestre\Plataformas de Desarrollo\TP2\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.csproj.AssemblyReference.cache
+E:\Eze\Analista de Sistemas DaVinci\4to Cuatrimestre\Plataformas de Desarrollo\TP2\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.GeneratedMSBuildEditorConfig.editorconfig
+E:\Eze\Analista de Sistemas DaVinci\4to Cuatrimestre\Plataformas de Desarrollo\TP2\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.AssemblyInfoInputs.cache
+E:\Eze\Analista de Sistemas DaVinci\4to Cuatrimestre\Plataformas de Desarrollo\TP2\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.AssemblyInfo.cs
+E:\Eze\Analista de Sistemas DaVinci\4to Cuatrimestre\Plataformas de Desarrollo\TP2\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.csproj.CoreCompileInputs.cache
+E:\Eze\Analista de Sistemas DaVinci\4to Cuatrimestre\Plataformas de Desarrollo\TP2\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.dll
+E:\Eze\Analista de Sistemas DaVinci\4to Cuatrimestre\Plataformas de Desarrollo\TP2\plat_desa_tp\tp1\tp1\obj\Debug\netcoreapp3.1\tp1.pdb
