@@ -26,20 +26,13 @@ namespace tp1
 
             public Mercado()
         {
-            this.categorias = new Categoria[MAX_CATEGORIAS];
+            this.categorias = new List<Categoria>();
             this.usuario = new List<Usuario>();
             this.compra = new List<Compra>();
 
-            this.categorias[0] = new Categoria(2, "categ 0");
-            this.categorias[1] = new Categoria(1, "categ 1");
-            this.categorias[2] = new Categoria(4, "categ 3");
-            for (var a = 0; a < categorias.Length; a++)
-            {
-                if  (categorias[a] != null)
-                {
-                    cantCategorias++;
-                }
-            }
+            this.categorias.Add(new Categoria(2, "categ 0"));
+            this.categorias.Add(new Categoria(3, "categ 1"));
+            this.categorias.Add(new Categoria(5, "categ 2"));
 
             this.usuario.Add(new Empresa(1,0, 234123, "test 0", "test 00", "mail@mail.com", "pass"));
             this.usuario.Add(new ClienteFinal(2, 1, 234123, "test 1", "test 00", "mail@gmail.com", "pkjj11"));
@@ -311,119 +304,76 @@ namespace tp1
             
             public bool agregarCategoria (string nombre)
             {
-            int id = 0;
-            bool flag = false;
-            if (!(string.IsNullOrEmpty(nombre))) { 
-                for (var i = 0; i < categorias.Length; i++)
-                {
-                    if (categorias[i] != null && categorias[i].nombre == nombre || MAX_CATEGORIAS == cantCategorias) {
-                        Console.WriteLine("La categoria ya existe");
-                        break;
-                
-                    } else
-                    {
-                        for (var a = 0; a < categorias.Length; a++)
-                        {
-                            if (categorias[a] == null)
-                            {
-                                for (var c = 0; c < categorias.Length; c++)
-                                {
-                                    if(categorias[c] != null && categorias[c].id >= id)
-                                    {
-                                        id = categorias[c].id;
-                                    }
-
-                                }
-                                categorias[a] = new Categoria(id+1,nombre);
-                                cantCategorias +=1;
-                                flag = true;
-                                break;
-                            }
-
-                        }
-
-                    }
-           
-                        if ( flag == true)
-                        {
-                            break;
-                        }
-            
-                    }
-                } else
-                {
-                    Console.WriteLine("El nombre de la categoría no puede estar vacío.");
-                    flag = false;
-                }
-
-                return flag;
+            int idActual = 0;
+            foreach (Categoria cat in categorias)
+            {
+                if (cat.id > idActual) { idActual = cat.id; }
             }
+            try
+            {
+                this.categorias.Add(new Categoria(idActual + 1, nombre));
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Ocurrio un error al intentar dar de alta la categoria, por favor intente nuevamente");
+                return false;
+            }
+        }
 
             //private int verificarEspacio
 
 
             public bool modificarCategoria (int id, string nombre)
             {
-                bool flag = false;
-
-                for(var i = 0; i < categorias.Length; i++)
+            foreach (Categoria cat in categorias)
+            {
+                if (cat.id == id)
                 {
-                    if (categorias[i] != null && categorias[i].id == id)
+                    if (!(string.IsNullOrEmpty(nombre)))
                     {
-                        categorias[i].nombre = nombre;
-                        flag = true;
+                        cat.nombre = nombre;
                     }
+                    return true;
                 }
 
-                return flag;
             }
+            return false;
+        }
 
 
             public bool eliminarCategoria (int id)
             {
             bool flag = false;
-            for(var i = 0; i < categorias.Length; i++)
+            int indice;
+            for (var i = 0; i < categorias.Count(); i++)
             {
                 if (categorias[i] != null && categorias[i].id == id)
                 {
-                    categorias[i] = null;
-                    cantCategorias -= 1;
+                    indice = categorias.IndexOf(categorias[i]);
+                    categorias.RemoveAt(indice);
                     flag = true;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("El id es invalido");
+                    break;
                 }
 
             }
-
             return flag;
         }
 
 
             public void mostrarCategoria() //MAL EN EL ENUNCIADO PERO MOSTRAR TODOS LAS CATEGORIAS ORDENADAS POR ID
             {
-            Categoria temp;
-            String cats = "";
-            for (int i = 0; i < categorias.Length - 1; i++) { 
-
-                for (int j = i + 1; j < categorias.Length; j++) {
-                    if  (categorias[i] != null && categorias[j] != null) { 
-                if (categorias[i].id > categorias[j].id)
-                    {
-
-                        temp = categorias[i];
-                        categorias[i] = categorias[j];
-                        categorias[j] = temp;
-                    }
-                    }
-                }
-            }
-
-            for (var i = 0; i < categorias.Length; i++)
+            categorias = categorias.OrderBy(o => o.id).ToList();
+            foreach (Categoria cat in categorias)
             {
-                if(categorias[i]!=null)
-                cats += categorias[i].toString() + " \n";
+                    Console.WriteLine(cat.toString());
 
             }
-
-            Console.WriteLine(cats);
         }
 
 
