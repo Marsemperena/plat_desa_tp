@@ -4,11 +4,14 @@ using System.Collections.Generic;
 
 namespace tp1
 {
+
+    [Serializable]
    public class Carro
     {
         public int id { get; set; }
         public Dictionary<Producto, int> productos { get; set; }
 
+        public Carro() { }
         public Carro(int id){
             this.id = id;
         }

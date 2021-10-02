@@ -18,7 +18,7 @@ namespace tp1
 
          
 
-        public List<Usuario> usuario = new List<Usuario>();
+       // public List<Usuario> usuario = new List<Usuario>();
 
            
 
@@ -27,7 +27,7 @@ namespace tp1
             public Mercado()
         {
             this.categorias = new Categoria[MAX_CATEGORIAS];
-            this.usuario = new List<Usuario>();
+          //  this.usuario = new List<Usuario>();
             this.compra = new List<Compra>();
 
             this.categorias[0] = new Categoria(2, "categ 0");
@@ -41,12 +41,12 @@ namespace tp1
                 }
             }
 
-            this.usuario.Add(new Empresa(1,0, 234123, "test 0", "test 00", "mail@mail.com", "pass"));
-            this.usuario.Add(new ClienteFinal(2, 1, 234123, "test 1", "test 00", "mail@gmail.com", "pkjj11"));
+           // this.usuario.Add(new Empresa(1,0, 234123, "test 0", "test 00", "mail@mail.com", "pass"));
+          //  this.usuario.Add(new ClienteFinal(2, 1, 234123, "test 1", "test 00", "mail@gmail.com", "pkjj11"));
 
-            this.producto.Add(new Producto(1,"producto 1", 1500, 10, this.categorias[0]));
-            this.producto.Add(new Producto(2,"producto 2", 1, 10, this.categorias[1]));
-            this.producto.Add(new Producto(4,"producto 2", 561, 10, this.categorias[1]));
+          //  this.producto.Add(new Producto(1,"producto 1", 1500, 10, this.categorias[0]));
+          //  this.producto.Add(new Producto(2,"producto 2", 1, 10, this.categorias[1]));
+//this.producto.Add(new Producto(4,"producto 2", 561, 10, this.categorias[1]));
 
 
         }
@@ -166,7 +166,7 @@ namespace tp1
             }
 
             
-            public bool agregarUsuario (int dni, string nombre, string apellido, string mail, string password, int cuit_Cuil, bool esEmpresa)
+           /* public bool agregarUsuario (int dni, string nombre, string apellido, string mail, string password, int cuit_Cuil, bool esEmpresa)
             {
             //calcular id
             //(int id, int cuit, int dni, string nombre, string mail, string password)
@@ -308,7 +308,7 @@ namespace tp1
 
             }
         }
-
+*/
             
             public bool agregarCategoria (string nombre)
             {

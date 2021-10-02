@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Carro.cs" />
+    <Compile Include="CompraDAO.cs" />
+    <Compile Include="CategoriaDAO.cs" />
     <Compile Include="CarroDAO.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="ClienteFinal.cs" />

@@ -1,25 +1,34 @@
 ﻿using System;
 using tp1;
 using Plataforma_TP2;
+using System.IO;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
-public static class CarroDAO
+public  class CarroDAO
 {
-	static readonly string fileName = "Carro";
+
+
+	static string fileName = Path.Combine(Environment.GetFolderPath(
+	   Environment.SpecialFolder.ApplicationData), "Carro.json");
 
 	static  CarroDAO()
 	{
 	}
 
-	public static Carro getAll()
+	public static List<Carro> getAll()
     {
-		Console.Write(fileName);
+		var carro = JsonConvert.DeserializeObject<Mercado>
+(File.ReadAllText(fileName));
+		Console.Write(carro);
+
 		return null;
     }
 
-	public static void saveAll()
+	public static void saveAll(List<Carro> carro)
     {
-		Console.Write(fileName);
-	
-    }
+		File.WriteAllText(fileName, JsonConvert.SerializeObject(carro));
+
+	}
 
 }

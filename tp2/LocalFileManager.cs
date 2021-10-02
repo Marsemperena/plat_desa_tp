@@ -8,13 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
+using tp1;
 
 namespace Plataforma_TP2
 {
     public  static class LocalFileManager
     {
-
-
 
          static LocalFileManager()
         {
@@ -79,6 +78,48 @@ namespace Plataforma_TP2
             }
 
             return objectOut;
+        }
+
+        public static string SerializeArrayList(ArrayList obj)
+
+        {
+
+            System.Xml.XmlDocument doc = new XmlDocument();
+
+            Type[] extraTypes = new Type[1];
+
+            extraTypes[0] = typeof(Empresa);
+
+            System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(ArrayList), extraTypes);
+
+            System.IO.MemoryStream stream = new System.IO.MemoryStream();
+
+            try
+
+            {
+
+                serializer.Serialize(stream, obj);
+
+                stream.Position = 0;
+
+                doc.Load(stream);
+
+                return doc.InnerXml;
+
+            }
+
+            catch { throw; }
+
+            finally
+
+            {
+
+                stream.Close();
+
+                stream.Dispose();
+
+            }
+
         }
 
 

@@ -3,6 +3,7 @@ using System;
 
 namespace tp1
 {
+    [Serializable]
     public class Producto
     {
         public int id;
