@@ -14,7 +14,7 @@ namespace tp1
             public int cantCategorias { get; set; }
             public Categoria[] categorias;
 
-        public List<Producto> producto = new List<Producto>();
+        public List<Producto> producto;
 
          
 
@@ -26,27 +26,19 @@ namespace tp1
 
             public Mercado()
         {
-            this.categorias = new Categoria[MAX_CATEGORIAS];
+            this.producto = ProductoDAO.getAll();
+            this.categorias = CategoriaDAO.getAll();
           //  this.usuario = new List<Usuario>();
-            this.compra = new List<Compra>();
+            this.compra = new List<Compra>(); //no es necesario levantar desde archivo
 
-            this.categorias[0] = new Categoria(2, "categ 0");
-            this.categorias[1] = new Categoria(1, "categ 1");
-            this.categorias[2] = new Categoria(4, "categ 3");
+            //revisar
             for (var a = 0; a < categorias.Length; a++)
             {
                 if  (categorias[a] != null)
                 {
                     cantCategorias++;
                 }
-            }
-
-           // this.usuario.Add(new Empresa(1,0, 234123, "test 0", "test 00", "mail@mail.com", "pass"));
-          //  this.usuario.Add(new ClienteFinal(2, 1, 234123, "test 1", "test 00", "mail@gmail.com", "pkjj11"));
-
-          //  this.producto.Add(new Producto(1,"producto 1", 1500, 10, this.categorias[0]));
-          //  this.producto.Add(new Producto(2,"producto 2", 1, 10, this.categorias[1]));
-//this.producto.Add(new Producto(4,"producto 2", 561, 10, this.categorias[1]));
+            }   
 
 
         }
@@ -62,6 +54,7 @@ namespace tp1
             try
             {
                 this.producto.Add(new Producto(idActual +1,nombre, precio, cantidad, this.categorias[id_Categoria]));
+                ProductoDAO.saveAll(this.producto);
                 return true;
             }
             catch (Exception e)
@@ -94,6 +87,7 @@ namespace tp1
                    {
                         prod.cat.id= id_Categoria;
                     }
+                    ProductoDAO.saveAll(this.producto);
                     return true;
                 }
 
@@ -109,7 +103,8 @@ namespace tp1
                     {
                          indice = producto.IndexOf(producto[i]);
                         producto.RemoveAt(indice);
-                        flag = true;
+                    ProductoDAO.saveAll(this.producto);
+                    flag = true;
                         break;
                     }
                     else
@@ -312,6 +307,9 @@ namespace tp1
             
             public bool agregarCategoria (string nombre)
             {
+
+
+
             int id = 0;
             bool flag = false;
             if (!(string.IsNullOrEmpty(nombre))) { 
@@ -337,6 +335,7 @@ namespace tp1
                                 }
                                 categorias[a] = new Categoria(id+1,nombre);
                                 cantCategorias +=1;
+                                CategoriaDAO.saveAll(this.categorias);
                                 flag = true;
                                 break;
                             }
@@ -370,7 +369,8 @@ namespace tp1
                     if (categorias[i] != null && categorias[i].id == id)
                     {
                         categorias[i].nombre = nombre;
-                        flag = true;
+                    CategoriaDAO.saveAll(this.categorias);
+                    flag = true;
                     }
                 }
 
@@ -387,6 +387,7 @@ namespace tp1
                 {
                     categorias[i] = null;
                     cantCategorias -= 1;
+                    CategoriaDAO.saveAll(this.categorias);
                     flag = true;
                 }
 
