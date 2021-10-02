@@ -14,6 +14,7 @@ namespace Plataforma_TP2
     {
         FLogin hijoLogin;
         FAdmin hijoMain;
+        FUser hijoMain2;
         internal string texto;
         string usuario;
         bool logued;
@@ -38,9 +39,19 @@ namespace Plataforma_TP2
             {
                 MessageBox.Show("Log-in correcto, Usuario: " + usuario);
                 hijoLogin.Close();
-                hijoMain = new FAdmin(new string[] { usuario });
-                hijoMain.MdiParent = this;
-                hijoMain.Show();
+
+                if (usuario == "admin") // CONDICION TEMPORAL TENDRÍA QUE VER SI EL USUARIO ES ADMIN O NO - AHORA SOLO SIRVE SI EL USUARIO SE LLAMA ADMIN
+                {
+                    hijoMain = new FAdmin(new string[] { usuario });
+                    hijoMain.MdiParent = this;
+                    hijoMain.Show();
+                }
+                else
+                {
+                    hijoMain2 = new FUser(new string[] { usuario });
+                    hijoMain2.MdiParent = this;
+                    hijoMain2.Show();
+                }
             }
         }
     }
