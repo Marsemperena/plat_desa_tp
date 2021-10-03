@@ -1,25 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Facultad\\Plataformas\\tp2\\plat_desa_tp\\tp1\\tp1\\tp1.csproj": {}
+    "E:\\Eze\\Analista de Sistemas DaVinci\\4to Cuatrimestre\\Plataformas de Desarrollo\\TP2\\plat_desa_tp\\tp1\\tp1\\tp1.csproj": {}
   },
   "projects": {
-    "G:\\Facultad\\Plataformas\\tp2\\plat_desa_tp\\tp1\\tp1\\tp1.csproj": {
+    "E:\\Eze\\Analista de Sistemas DaVinci\\4to Cuatrimestre\\Plataformas de Desarrollo\\TP2\\plat_desa_tp\\tp1\\tp1\\tp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Facultad\\Plataformas\\tp2\\plat_desa_tp\\tp1\\tp1\\tp1.csproj",
+        "projectUniqueName": "E:\\Eze\\Analista de Sistemas DaVinci\\4to Cuatrimestre\\Plataformas de Desarrollo\\TP2\\plat_desa_tp\\tp1\\tp1\\tp1.csproj",
         "projectName": "tp1",
-        "projectPath": "G:\\Facultad\\Plataformas\\tp2\\plat_desa_tp\\tp1\\tp1\\tp1.csproj",
-        "packagesPath": "C:\\Users\\paciu\\.nuget\\packages\\",
-        "outputPath": "G:\\Facultad\\Plataformas\\tp2\\plat_desa_tp\\tp1\\tp1\\obj\\",
+        "projectPath": "E:\\Eze\\Analista de Sistemas DaVinci\\4to Cuatrimestre\\Plataformas de Desarrollo\\TP2\\plat_desa_tp\\tp1\\tp1\\tp1.csproj",
+        "packagesPath": "C:\\Users\\eze_p\\.nuget\\packages\\",
+        "outputPath": "E:\\Eze\\Analista de Sistemas DaVinci\\4to Cuatrimestre\\Plataformas de Desarrollo\\TP2\\plat_desa_tp\\tp1\\tp1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "G:\\Programacion\\Visual Studio community\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\paciu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\eze_p\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"

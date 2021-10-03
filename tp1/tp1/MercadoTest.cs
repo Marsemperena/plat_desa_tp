@@ -64,9 +64,9 @@ namespace tp1
                         string apellido = "";
                         string mail = "";
                         string password = "";
-                        int cuit_Cuil = 0;
+                        string cuit_Cuil = "0";
+                        string tipo = "";
                         string boolaux = "";
-                        bool esEmpresa = false;
 
                         switch (inputUsuario)
                         {
@@ -103,14 +103,10 @@ namespace tp1
                                 Console.WriteLine("Alta de usuario - Ingrese el password");
                                 password = Console.ReadLine();
                                 Console.WriteLine("Alta de usuario - Ingrese el cuit/cuil ");
-                                cuit_Cuil = int.Parse(Console.ReadLine());
-                                Console.WriteLine("Alta de usuario - Ingrese: si es empresa o no (V/F)");
-                                boolaux = Console.ReadLine();
-                                if (boolaux.Equals("v", StringComparison.OrdinalIgnoreCase))
-                                {
-                                    esEmpresa = true;
-                                }
-                                comprobarFlag(mercado.agregarUsuario(dni, nombre, apellido, mail, password, cuit_Cuil, esEmpresa));
+                                cuit_Cuil = Console.ReadLine();
+                                Console.WriteLine("Alta de usuario - Ingrese: que tipo de usuario va a ser (Empresa o Cliente Final)");
+                                tipo = Console.ReadLine();
+                                comprobarFlag(mercado.agregarUsuario(dni, nombre, apellido, mail, password, cuit_Cuil, tipo));
                                 break;
                             case "6": //Eliminar Usuarios
                                 Console.WriteLine("Baja de usuario - Ingrese el ID del usuario a eliminar");
@@ -131,14 +127,11 @@ namespace tp1
                                 Console.WriteLine("Modificación de usuario - Ingrese el password");
                                 password = Console.ReadLine();
                                 Console.WriteLine("Modificación de usuario - Ingrese el cuit/cuil para mantener actual ingrese -1");
-                                cuit_Cuil = int.Parse(Console.ReadLine());
-                                Console.WriteLine("Modificación de usuario - Ingrese si es empresa o no (V/F)");
-                                boolaux = Console.ReadLine();
-                                if (boolaux.Equals("v", StringComparison.OrdinalIgnoreCase))
-                                {
-                                    esEmpresa = true;
-                                }
-                                comprobarFlag(mercado.modificarUsuario(id, dni, nombre, apellido, mail, password, cuit_Cuil, esEmpresa));
+                                cuit_Cuil = Console.ReadLine();
+                                Console.WriteLine("Alta de usuario - Ingrese: que tipo de usuario va a ser (Empresa o Cliente Final)");
+                                tipo = Console.ReadLine();
+                            
+                                comprobarFlag(mercado.modificarUsuario(id, dni, nombre, apellido, mail, password, cuit_Cuil, tipo));
                                 break;
                             case "8": //Mostrar Usuarios
                                 Console.WriteLine("Los usuarios existentes son:");

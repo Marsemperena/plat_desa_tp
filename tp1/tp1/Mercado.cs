@@ -34,8 +34,8 @@ namespace tp1
             this.categorias.Add(new Categoria(3, "categ 1"));
             this.categorias.Add(new Categoria(5, "categ 2"));
 
-            this.usuario.Add(new Empresa(1,0, 234123, "test 0", "test 00", "mail@mail.com", "pass"));
-            this.usuario.Add(new ClienteFinal(2, 1, 234123, "test 1", "test 00", "mail@gmail.com", "pkjj11"));
+            this.usuario.Add(new Usuario(1,0, "Empresa 1", "test 0",  "mail@mail.com", "test 00", "Empresa", "20356489567"));//Empresa
+            this.usuario.Add(new Usuario(2, 30654951, "Cliente Final 1", "test 1",  "mail@gmail.com", "test 00", "Cliente Final","25320660785"));//Cliente Final
 
             this.producto.Add(new Producto(1,"producto 1", 1500, 10, this.categorias[0]));
             this.producto.Add(new Producto(2,"producto 2", 1, 10, this.categorias[1]));
@@ -93,26 +93,26 @@ namespace tp1
             return false;
         }
                 public bool eliminarProducto (int id) { 
-                bool flag = false;
-                int indice;
-                for (var i = 0; i<producto.Count(); i++)
-                {
-                    if (producto[i] != null && producto[i].id == id)
+                    bool flag = false;
+                    int indice;
+                    for (var i = 0; i<producto.Count(); i++)
                     {
-                         indice = producto.IndexOf(producto[i]);
-                        producto.RemoveAt(indice);
-                        flag = true;
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("El id es invalido");
-                        break;
-                    }
+                        if (producto[i] != null && producto[i].id == id)
+                        {
+                             indice = producto.IndexOf(producto[i]);
+                            producto.RemoveAt(indice);
+                            flag = true;
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("El id es invalido");
+                            break;
+                        }
 
+                    }
+                return flag;
                 }
-            return flag;
-        }
 
             
             public void buscarProductos (string query) // ORDENADO POR NOMBRE LOS PRODUCTOS QUE CONTIENEN EN SU NOMBRE LA CADENA INGRESADA
@@ -136,210 +136,205 @@ namespace tp1
                     {
                         Console.WriteLine(pr.toString());
                     }
+                }
             }
-        }
 
 
             public void buscarProductosPorCategoria (int id_Categoria) //ORDENADO POR NOMBRE LOS PRODUCTOS QUE PERTENCEN A LA CATEGORIA CON EL ID INGRESADO
             {
-            List<Producto> listProd = new List<Producto>();
-            foreach (Producto pr in producto)
-            {
-                if(pr.cat.id == id_Categoria)
+                List<Producto> listProd = new List<Producto>();
+                foreach (Producto pr in producto)
                 {
-                    listProd.Add(pr);
-                }   
-            }
-            IEnumerable<Producto> resultado = listProd.OrderBy(pr => pr.nombre);
-            foreach (Producto resul in resultado)
-            {
-                Console.WriteLine(resul);
-            }    
+                    if(pr.cat.id == id_Categoria)
+                    {
+                        listProd.Add(pr);
+                    }   
+                }
+                IEnumerable<Producto> resultado = listProd.OrderBy(pr => pr.nombre);
+                foreach (Producto resul in resultado)
+                {
+                    Console.WriteLine(resul);
+                }    
             }
 
             
-            public bool agregarUsuario (int dni, string nombre, string apellido, string mail, string password, int cuit_Cuil, bool esEmpresa)
+            public bool agregarUsuario (int dni, string nombre, string apellido, string mail, string password, string cuit_Cuil, string tipo)
             {
-            //calcular id
-            //(int id, int cuit, int dni, string nombre, string mail, string password)
-            //int id, int cuit, int dni, string nombre, string mail, string password
-            Usuario us;
-            int idActual = 0;
-            foreach (Usuario user in usuario)
-            {
+                //calcular id
+                //(int id, int cuit, int dni, string nombre, string mail, string password)
+                //int id, int cuit, int dni, string nombre, string mail, string password
+                Usuario us;
+                int idActual = 0;
+                int erroresDeIngreso = verificarIngresoUsuario(idActual, dni, nombre, apellido, mail, password, cuit_Cuil, tipo);
+                foreach (Usuario user in usuario)
+                {
                 
-                if (user.id > idActual) { idActual = user.id; }
-            }
-            if (esEmpresa)
-            {   
-               us = new Empresa(idActual + 1, cuit_Cuil, dni, nombre, apellido, mail, password);
+                    if (user.id > idActual) { idActual = user.id; }
+                }
+                if (erroresDeIngreso > 0)
+                {
+                Console.WriteLine("usted tiene " + erroresDeIngreso + " errores que solucionar antes de poder crear su usuario");
+                }
 
-            }
-            else
-            {
-              us =  new ClienteFinal(idActual + 1, cuit_Cuil, dni, nombre, apellido, mail, password);
-            }
-
+            us = new Usuario(idActual + 1, dni, nombre, apellido, mail, password, cuit_Cuil, tipo);
             usuario.Add(us);
-           
+
             return true;
             }
 
 
-        public bool modificarUsuario(int id, int dni, string nombre, string apellido, string mail, string password, int cuit_Cuil, bool esEmpresa)
+        public bool modificarUsuario(int id, int dni, string nombre, string apellido, string mail, string password, string cuit_Cuil, string tipo)
         {
-            bool flag = false;
+            int contieneErrores = verificarIngresoUsuario(id, dni, nombre, apellido, mail, password, cuit_Cuil, tipo);
+            if (contieneErrores > 0)
+            {
+                //UPDATE
+                Console.WriteLine("usted tiene "+ contieneErrores + " errores que solucionar antes de poder modificar el usuario");
+                return false;
+            }
+            return true;
+        }
+
+        private int verificarIngresoUsuario(int id, int dni, string nombre, string apellido, string mail, string password, string cuit_Cuil, string tipo)
+        {
+            int contadorErrores = 0;
             foreach (Usuario us in usuario)
             {
                 if (us.id == id)
                 {
-
-                    if (cuit_Cuil > 0)
+                    if (cuit_Cuil.Length == 11)
                     {
-                        if (esEmpresa == true)
-                        {
-                            if (us is Empresa)
-                            {
-
-                                ((Empresa)us).cuit = cuit_Cuil;
-
-                            }
-                            else
-                            {
-                                Console.WriteLine("El id ingresado no corresponde a una empresa");
-                                flag = false;
-                                break;
-                            }
-                        }
-
-                        else
-                        {
-                            if (us is ClienteFinal)
-                            {
-                                ((ClienteFinal)us).cuil = cuit_Cuil;
-                            }
-                            else
-                            {
-                                Console.WriteLine("El id ingresado no corresponde a un ClienteFinal");
-                                flag = false;
-                                break;
-
-                            }
-                        }
+                        us.cuilCuit = cuit_Cuil;
+                    }
+                    else
+                    {
+                        Console.WriteLine("El Cuit/Cuil ingresado no es correcto, recuerde que debe tener 11 digitos");
+                        contadorErrores += 1;
                     }
 
-                    if (dni > 0)
-                     {
-                      us.dni = dni;
-                      }
+                    if (Math.Log10(dni) + 1 == 8)
+                    {
+                        us.dni = dni;
+                    }
+                    else
+                    {
+                        Console.WriteLine("El Dni ingresado no es correcto, recuerde que debe tener 8 digitos");
+                        contadorErrores += 1;
+                    }
 
                     if (!(string.IsNullOrEmpty(nombre)))
                     {
                         us.nombre = nombre;
                     }
-                      
+                    else
+                    {
+                        Console.WriteLine("El Nombre ingresado no puede estar vacio");
+                        contadorErrores += 1;
+                    }
+
                     if (!(string.IsNullOrEmpty(apellido)))
                     {
                         us.apellido = apellido;
                     }
+                    else
+                    {
+                        Console.WriteLine("El Apellido ingresado no puede estar vacio");
+                        contadorErrores += 1;
+                        break;
+                    }
+
                     if (!(string.IsNullOrEmpty(mail)))
                     {
                         us.mail = mail;
                     }
-                    if (!(string.IsNullOrEmpty(password)))
+                    else
+                    {
+                        Console.WriteLine("El Mail ingresado no es correcto");
+                        contadorErrores += 1;
+                    }
+
+                    if (!(string.IsNullOrEmpty(password)) && password.Length > 6)
                     {
                         us.password = password;
                     }
-
-
-                    flag = true;
+                    else
+                    {
+                        Console.WriteLine("El Password ingresado no es correcto, recuerde que debe tener 6 digitos");
+                        contadorErrores += 1;
+                    }
                 }
- 
             }
-            return flag;
+            return contadorErrores;
         }
-
 
             public bool eliminarUsuario (int id)
             {
-            bool flag = false;
-            int indice;
-            for (var i = 0; i < usuario.Count(); i++)
-            {
-                if (usuario[i] != null && usuario[i].id == id)
+                bool flag = false;
+                int indice;
+                for (var i = 0; i < usuario.Count(); i++)
                 {
-                     indice = usuario.IndexOf(usuario[i]);
-                    usuario.RemoveAt(indice);
-                    flag = true;
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("El id es invalido");
-                    break;
-                }
+                    if (usuario[i] != null && usuario[i].id == id)
+                    {
+                         indice = usuario.IndexOf(usuario[i]);
+                        usuario.RemoveAt(indice);
+                        flag = true;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("El id es invalido");
+                        break;
+                    }
 
+                }
+                return flag;
             }
-            return flag;
-        }
-
 
             public void mostrarUsuarios () // MUESTRA TODOS LOS USUARIOS ORDENADOS POR DNI
             {
-            usuario = usuario.OrderBy(o  =>  o.dni).ToList();
-             foreach(Usuario us in usuario)
-            {
-                if  (us is Empresa)
+                usuario = usuario.OrderBy(o  =>  o.dni).ToList();
+                 foreach(Usuario us in usuario)
                 {
-                    Console.WriteLine(((Empresa)us).toString());
+                    Console.WriteLine(us.toString());
                 }
-                else
-                {
-                    Console.WriteLine(((ClienteFinal)us).toString());
-                }
-
             }
-        }
-
-            
+ 
             public bool agregarCategoria (string nombre)
             {
-            int idActual = 0;
-            foreach (Categoria cat in categorias)
-            {
-                if (cat.id > idActual) { idActual = cat.id; }
+                int idActual = 0;
+                foreach (Categoria cat in categorias)
+                {
+                    if (cat.id > idActual) { idActual = cat.id; }
+                }
+                try
+                {
+                    this.categorias.Add(new Categoria(idActual + 1, nombre));
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Ocurrio un error al intentar dar de alta la categoria, por favor intente nuevamente");
+                    return false;
+                }
             }
-            try
-            {
-                this.categorias.Add(new Categoria(idActual + 1, nombre));
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Ocurrio un error al intentar dar de alta la categoria, por favor intente nuevamente");
-                return false;
-            }
-        }
-
             //private int verificarEspacio
-
 
             public bool modificarCategoria (int id, string nombre)
             {
-            foreach (Categoria cat in categorias)
-            {
-                if (cat.id == id)
+                foreach (Categoria cat in categorias)
                 {
-                    if (!(string.IsNullOrEmpty(nombre)))
+                    if (cat.id == id)
                     {
-                        cat.nombre = nombre;
+                        if (!(string.IsNullOrEmpty(nombre)))
+                        {
+                            cat.nombre = nombre;
+                        }
+                        return true;
                     }
-                    return true;
-                }
 
+                }
+                return false;
             }
-            return false;
-        }
 
 
             public bool eliminarCategoria (int id)
