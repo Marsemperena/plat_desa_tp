@@ -85,6 +85,7 @@ namespace Plataforma_TP2
             this.configurar.TabIndex = 4;
             this.configurar.Text = "Configurar";
             this.configurar.UseVisualStyleBackColor = true;
+            this.configurar.Click += new System.EventHandler(this.configurar_Click);
             // 
             // label1
             // 

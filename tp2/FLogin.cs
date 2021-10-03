@@ -47,5 +47,11 @@ namespace Plataforma_TP2
             FRegistro registro = new FRegistro();
             registro.Show();
         }
+
+        private void configurar_Click(object sender, EventArgs e)
+        {
+            FConfigurar configurar = new FConfigurar();
+            configurar.Show();
+        }
     }
 }

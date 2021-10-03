@@ -29,12 +29,7 @@ namespace Plataforma_TP2
         }
         private void registrarUsuario_Click(object sender, EventArgs e)
         {
-
         }
 
-        private void tipoUsuario_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
