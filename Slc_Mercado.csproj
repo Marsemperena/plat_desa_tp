@@ -49,72 +49,84 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Slc_Mercado\Backend\Carro.cs" />
-    <Compile Include="Slc_Mercado\Backend\Functions.cs" />
-    <Compile Include="Slc_Mercado\Backend\DAO_Files\CompraDAO.cs" />
-    <Compile Include="Slc_Mercado\Backend\DAO_Files\CategoriaDAO.cs" />
-    <Compile Include="Slc_Mercado\Backend\DAO_Files\CarroDAO.cs" />
-    <Compile Include="Slc_Mercado\Backend\Categoria.cs" />
-    <Compile Include="Slc_Mercado\Backend\ClienteFinal.cs" />
-    <Compile Include="Slc_Mercado\Backend\Compra.cs" />
-    <Compile Include="Slc_Mercado\Backend\Empresa.cs" />
-    <Compile Include="Slc_Mercado\Backend\LocalFileManager.cs" />
-    <Compile Include="Slc_Mercado\Backend\Mercado.cs" />
-    <Compile Include="Slc_Mercado\Backend\Producto.cs" />
-    <Compile Include="Slc_Mercado\Backend\DAO_Files\UsuarioDAO.cs" />
-    <Compile Include="Slc_Mercado\Backend\DAO_Files\ProductoDAO.cs" />
-    <Compile Include="Slc_Mercado\Program.cs" />
-    <Compile Include="Slc_Mercado\Properties\AssemblyInfo.cs" />
-    <Compile Include="Slc_Mercado\Backend\Usuario.cs" />
-    <Compile Include="Slc_Mercado\Frontend\FRegistro.cs" />
-    <Compile Include="Slc_Mercado\Frontend\FConfigurar.cs">
+    <Compile Include="Backend\Carro.cs" />
+    <Compile Include="Backend\DAO_Files\CompraDAO.cs" />
+    <Compile Include="Backend\DAO_Files\CategoriaDAO.cs" />
+    <Compile Include="Backend\DAO_Files\CarroDAO.cs" />
+    <Compile Include="Backend\Categoria.cs" />
+    <Compile Include="Backend\Functions1.cs" />
+    <Compile Include="Backend\Compra.cs" />
+    <Compile Include="Backend\LocalFileManager.cs" />
+    <Compile Include="Backend\Mercado.cs" />
+    <Compile Include="Backend\Producto.cs" />
+    <Compile Include="Backend\DAO_Files\UsuarioDAO.cs" />
+    <Compile Include="Backend\DAO_Files\ProductoDAO.cs" />
+    <Compile Include="Frontend\FUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Slc_Mercado\Frontend\FConfigurar.Designer.cs">
+    <Compile Include="Frontend\FUser.Designer.cs">
+      <DependentUpon>FUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Backend\Usuario.cs" />
+    <Compile Include="Frontend\FRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frontend\FConfigurar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frontend\FConfigurar.Designer.cs">
       <DependentUpon>FConfigurar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Slc_Mercado\Frontend\FConfigurar.resx">
+    <Compile Include="Frontend\FConfigurar.resx">
       <DependentUpon>FConfigurar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Slc_Mercado\Frontend\FRegistro.Designer.cs">
+    <Compile Include="Frontend\FRegistro.Designer.cs">
       <DependentUpon>FRegistro.cs</DependentUpon>
     </Compile>
-    <Compile Include="Slc_Mercado\Frontend\FPrincipal.cs" />
-    <Compile Include="Slc_Mercado\Frontend\FPrincipal.Designer.cs">
+    <Compile Include="Frontend\FPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frontend\FPrincipal.Designer.cs">
       <DependentUpon>FPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Slc_Mercado\Frontend\FLogin.cs" />
-    <Compile Include="Slc_Mercado\Frontend\FLogin.Designer.cs">
+    <Compile Include="Frontend\FLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frontend\FLogin.Designer.cs">
       <DependentUpon>FLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Slc_Mercado\Frontend\FAdmin.cs" />
-    <Compile Include="Slc_Mercado\Frontend\FAdmin.Designer.cs">
+    <Compile Include="Frontend\FAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frontend\FAdmin.Designer.cs">
       <DependentUpon>FAdmin.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Slc_Mercado\Frontend\FRegistro.resx">
+    <EmbeddedResource Include="Frontend\FRegistro.resx">
       <DependentUpon>FRegistro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Slc_Mercado\Properties\Resources.resx">
+    <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Slc_Mercado\Properties\Resources.Designer.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Slc_Mercado\Properties\Settings.settings">
+    <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Slc_Mercado\Properties\Settings.Designer.cs">
+    <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Slc_Mercado\App.config" />
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
