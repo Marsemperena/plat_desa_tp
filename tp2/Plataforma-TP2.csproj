@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +49,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Carro.cs" />
+    <Compile Include="CompraDAO.cs" />
+    <Compile Include="CategoriaDAO.cs" />
+    <Compile Include="CarroDAO.cs" />
+    <Compile Include="Categoria.cs" />
+    <Compile Include="ClienteFinal.cs" />
+    <Compile Include="Compra.cs" />
+    <Compile Include="Empresa.cs" />
+    <Compile Include="LocalFileManager.cs" />
     <Compile Include="FRegistro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,8 +82,11 @@
     <Compile Include="FAdmin.Designer.cs">
       <DependentUpon>FAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mercado.cs" />
+    <Compile Include="Producto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usuario.cs" />
     <EmbeddedResource Include="FLogin.resx">
       <DependentUpon>FLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -87,6 +102,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
