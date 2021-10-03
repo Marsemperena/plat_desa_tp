@@ -7,40 +7,40 @@ using System.Collections.Generic;
 
 namespace dao
 {
-	public class ProductoDAO
+	public class UsuarioDAO
 	{
 
 
 		static string fileName = Path.Combine(Environment.GetFolderPath(
-		   Environment.SpecialFolder.ApplicationData), "Categoria.json");
+		   Environment.SpecialFolder.ApplicationData), "Usuario.json");
 
-		static ProductoDAO()
+		static UsuarioDAO()
 		{
 		}
 
-		public static List<Producto> getAll()
+		public static List<Usuario> getAll()
 		{
-			List<Producto> productos;
+			List<Usuario> productos;
 			try
 			{
-				productos = JsonConvert.DeserializeObject<List<Producto>>
+				productos = JsonConvert.DeserializeObject<List<Usuario>>
 	(File.ReadAllText(fileName));
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine("archivo no encontrado, se inicializa un objeto vacio para productos");
-				productos = new List<Producto>();
+				productos = new List<Usuario>();
 			}
 
 
 			return productos;
 		}
 
-		public static void saveAll(List<Producto> producto)
+		public static void saveAll(List<Usuario> usuario)
 		{
 			try
 			{
-				File.WriteAllText(fileName, JsonConvert.SerializeObject(producto));
+				File.WriteAllText(fileName, JsonConvert.SerializeObject(usuario));
 			}
 			catch (Exception ex)
 			{

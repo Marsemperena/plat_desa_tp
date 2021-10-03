@@ -5,29 +5,34 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-public  class CarroDAO
+
+namespace dao
 {
-
-
-	static string fileName = Path.Combine(Environment.GetFolderPath(
-	   Environment.SpecialFolder.ApplicationData), "Carro.json");
-
-	static  CarroDAO()
+	public class CarroDAO
 	{
-	}
 
-	public static List<Carro> getAll()
-    {
-		var carro = JsonConvert.DeserializeObject<Mercado>
-(File.ReadAllText(fileName));
-		Console.Write(carro);
 
-		return null;
-    }
+		static string fileName = Path.Combine(Environment.GetFolderPath(
+		   Environment.SpecialFolder.ApplicationData), "Carro.json");
 
-	public static void saveAll(List<Carro> carro)
-    {
-		File.WriteAllText(fileName, JsonConvert.SerializeObject(carro));
+		static CarroDAO()
+		{
+		}
+
+		public static List<Carro> getAll()
+		{
+			var carro = JsonConvert.DeserializeObject<Mercado>
+	(File.ReadAllText(fileName));
+			Console.Write(carro);
+
+			return null;
+		}
+
+		public static void saveAll(List<Carro> carro)
+		{
+			File.WriteAllText(fileName, JsonConvert.SerializeObject(carro));
+
+		}
 
 	}
 

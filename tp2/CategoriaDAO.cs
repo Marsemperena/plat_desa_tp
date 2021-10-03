@@ -5,48 +5,52 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-public  class CategoriaDAO
+namespace dao
 {
-
-
-	static string fileName = Path.Combine(Environment.GetFolderPath(
-	   Environment.SpecialFolder.ApplicationData), "Categoria.json");
-
-	static CategoriaDAO()
+	public class CategoriaDAO
 	{
-	}
 
-	public static Categoria[] getAll()
-    {
-		Categoria[] categorias;
-        try
-        {
-			 categorias = JsonConvert.DeserializeObject<Categoria[]>
-(File.ReadAllText(fileName));
+
+		static string fileName = Path.Combine(Environment.GetFolderPath(
+		   Environment.SpecialFolder.ApplicationData), "Categoria.json");
+
+		static CategoriaDAO()
+		{
 		}
-		catch(Exception ex)
-        {
-			Console.WriteLine("archivo no encontrado, se inicializa array vacio para categoria");
-			int MAX_CATEGORIAS = 5;
-			categorias = new Categoria[MAX_CATEGORIAS];
-        }
+
+		public static Categoria[] getAll()
+		{
+			Categoria[] categorias;
+			try
+			{
+				categorias = JsonConvert.DeserializeObject<Categoria[]>
+   (File.ReadAllText(fileName));
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("archivo no encontrado, se inicializa array vacio para categoria");
+				int MAX_CATEGORIAS = 5;
+				categorias = new Categoria[MAX_CATEGORIAS];
+			}
 
 
-		return categorias;
-    }
-
-	public static void saveAll(Categoria[] categoria)
-    {
-        try
-        {
-			File.WriteAllText(fileName, JsonConvert.SerializeObject(categoria));
+			return categorias;
 		}
-		catch(Exception ex)
-        {
-			Console.WriteLine(ex.Message);
-			throw new Exception("ocurrio un error al guardar los datos");
-        }
-		
+
+		public static void saveAll(Categoria[] categoria)
+		{
+			try
+			{
+				File.WriteAllText(fileName, JsonConvert.SerializeObject(categoria));
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				throw new Exception("ocurrio un error al guardar los datos");
+			}
+
+
+		}
 
 	}
 

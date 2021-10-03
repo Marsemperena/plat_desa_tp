@@ -84,6 +84,8 @@
     </Compile>
     <Compile Include="Mercado.cs" />
     <Compile Include="Producto.cs" />
+    <Compile Include="UsuarioDAO.cs" />
+    <Compile Include="ProductoDAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario.cs" />

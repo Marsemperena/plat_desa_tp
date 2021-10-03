@@ -3,7 +3,7 @@
 
 namespace tp1
 {
-    public abstract class Usuario
+    public  class Usuario
     {
         public int id { get; set; }
         public int dni { get; set; }
