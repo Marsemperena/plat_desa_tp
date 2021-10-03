@@ -89,6 +89,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario.cs" />
+    <EmbeddedResource Include="FAdmin.resx">
+      <DependentUpon>FAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FLogin.resx">
       <DependentUpon>FLogin.cs</DependentUpon>
     </EmbeddedResource>

@@ -12,7 +12,7 @@ namespace dao
 
 
 		static string fileName = Path.Combine(Environment.GetFolderPath(
-		   Environment.SpecialFolder.ApplicationData), "Categoria.json");
+		   Environment.SpecialFolder.ApplicationData), "Producto.json");
 
 		static ProductoDAO()
 		{

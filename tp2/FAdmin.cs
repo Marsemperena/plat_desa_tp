@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using dao;
+using tp1;
 
 namespace Plataforma_TP2
 {
@@ -14,16 +16,24 @@ namespace Plataforma_TP2
     {
         public string[] argumentos;
         List<List<string>> datos;
+
+        public List<Producto> productos;
         public FAdmin(string[] args)
         {
+            productos = ProductoDAO.getAll();
             InitializeComponent();
             argumentos = args;
             label2.Text = args[0];
             datos = new List<List<string>>();
-            List<string> producto1 = new List<string>(new string[] { "TV", "50000", "200" });
-            List<string> producto2 = new List<string>(new string[] { "PC", "75000", "150" });
-            datos.Add(producto1);
-            datos.Add(producto2);
+            //List<string> producto1 = new List<string>(new string[] { "TV", "50000", "200" });
+            //List<string> producto2 = new List<string>(new string[] { "PC", "75000", "150" });
+            //datos.Add(producto1);
+            // datos.Add(producto2);
+
+
+            cargarProductos();
+            refreshData(datos);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -37,7 +47,19 @@ namespace Plataforma_TP2
             dataGridView1.Rows.Clear();
             //agrego lo nuevo
             foreach (List<string> producto in data)
-                dataGridView1.Rows.Add(producto.ToArray());
+             dataGridView1.Rows.Add(producto.ToArray());
+
+          
+
+           
+        }
+
+        private void cargarProductos()
+        {
+            foreach (Producto prod in productos)
+            {
+                datos.Add(new List<string>(new string[] { prod.nombre.ToString(), prod.precio.ToString(), prod.cantidad.ToString() }));
+            }
         }
     }
 }
