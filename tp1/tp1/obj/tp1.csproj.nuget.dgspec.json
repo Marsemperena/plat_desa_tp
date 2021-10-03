@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Eze\\Analista de Sistemas DaVinci\\4to Cuatrimestre\\Plataformas de Desarrollo\\TP2\\plat_desa_tp\\tp1\\tp1\\tp1.csproj": {}
+    "E:\\Eze\\Analista de Sistemas DaVinci\\4to Cuatrimestre\\Plataformas de Desarrollo\\TP2\\prueba\\plat_desa_tp\\tp1\\tp1\\tp1.csproj": {}
   },
   "projects": {
-    "E:\\Eze\\Analista de Sistemas DaVinci\\4to Cuatrimestre\\Plataformas de Desarrollo\\TP2\\plat_desa_tp\\tp1\\tp1\\tp1.csproj": {
+    "E:\\Eze\\Analista de Sistemas DaVinci\\4to Cuatrimestre\\Plataformas de Desarrollo\\TP2\\prueba\\plat_desa_tp\\tp1\\tp1\\tp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Eze\\Analista de Sistemas DaVinci\\4to Cuatrimestre\\Plataformas de Desarrollo\\TP2\\plat_desa_tp\\tp1\\tp1\\tp1.csproj",
+        "projectUniqueName": "E:\\Eze\\Analista de Sistemas DaVinci\\4to Cuatrimestre\\Plataformas de Desarrollo\\TP2\\prueba\\plat_desa_tp\\tp1\\tp1\\tp1.csproj",
         "projectName": "tp1",
-        "projectPath": "E:\\Eze\\Analista de Sistemas DaVinci\\4to Cuatrimestre\\Plataformas de Desarrollo\\TP2\\plat_desa_tp\\tp1\\tp1\\tp1.csproj",
+        "projectPath": "E:\\Eze\\Analista de Sistemas DaVinci\\4to Cuatrimestre\\Plataformas de Desarrollo\\TP2\\prueba\\plat_desa_tp\\tp1\\tp1\\tp1.csproj",
         "packagesPath": "C:\\Users\\eze_p\\.nuget\\packages\\",
-        "outputPath": "E:\\Eze\\Analista de Sistemas DaVinci\\4to Cuatrimestre\\Plataformas de Desarrollo\\TP2\\plat_desa_tp\\tp1\\tp1\\obj\\",
+        "outputPath": "E:\\Eze\\Analista de Sistemas DaVinci\\4to Cuatrimestre\\Plataformas de Desarrollo\\TP2\\prueba\\plat_desa_tp\\tp1\\tp1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

@@ -14,32 +14,32 @@ namespace tp1
 
        public List<Categoria> categorias= new List<Categoria>();
 
-       public List<Producto> producto = new List<Producto>();
+       public List<Producto> productos = new List<Producto>();
 
          
 
-       public List<Usuario> usuario = new List<Usuario>();
+       public List<Usuario> usuarios = new List<Usuario>();
 
            
 
-       public List<Compra> compra;
+       public List<Compra> compras;
 
             public Mercado()
         {
             this.categorias = new List<Categoria>();
-            this.usuario = new List<Usuario>();
-            this.compra = new List<Compra>();
+            this.usuarios = new List<Usuario>();
+            this.compras = new List<Compra>();
 
             this.categorias.Add(new Categoria(2, "categ 0"));
             this.categorias.Add(new Categoria(3, "categ 1"));
             this.categorias.Add(new Categoria(5, "categ 2"));
 
-            this.usuario.Add(new Usuario(1,0, "Empresa 1", "test 0",  "mail@mail.com", "test 00", "Empresa", "20356489567"));//Empresa
-            this.usuario.Add(new Usuario(2, 30654951, "Cliente Final 1", "test 1",  "mail@gmail.com", "test 00", "Cliente Final","25320660785"));//Cliente Final
+            this.usuarios.Add(new Usuario(1,0, "Empresa 1", "test 0",  "mail@mail.com", "test 00", "Empresa", "20356489567"));//Empresa
+            this.usuarios.Add(new Usuario(2, 30654951, "Cliente Final 1", "test 1",  "mail@gmail.com", "test 00", "Cliente Final","25320660785"));//Cliente Final
 
-            this.producto.Add(new Producto(1,"producto 1", 1500, 10, this.categorias[0]));
-            this.producto.Add(new Producto(2,"producto 2", 1, 10, this.categorias[1]));
-            this.producto.Add(new Producto(4,"producto 2", 561, 10, this.categorias[1]));
+            this.productos.Add(new Producto(1,"producto 1", 1500, 10, this.categorias[0]));
+            this.productos.Add(new Producto(2,"producto 2", 1, 10, this.categorias[1]));
+            this.productos.Add(new Producto(4,"producto 2", 561, 10, this.categorias[1]));
 
 
         }
@@ -47,13 +47,13 @@ namespace tp1
             public bool agregarProducto (string nombre, double precio, int cantidad, int id_Categoria)
             {
                 int idActual = 0;
-                foreach (Producto prod in producto)
+                foreach (Producto prod in productos)
                 {
                     if (prod.id > idActual) { idActual = prod.id; }
                 }
                 try
                 {
-                    this.producto.Add(new Producto(idActual +1,nombre, precio, cantidad, this.categorias[id_Categoria]));
+                    this.productos.Add(new Producto(idActual +1,nombre, precio, cantidad, this.categorias[id_Categoria]));
                     return true;
                 }
                 catch (Exception e)
@@ -66,7 +66,7 @@ namespace tp1
 
         public bool modificarProducto(int id, string nombre, double precio, int cantidad, int id_Categoria)
         {
-            foreach (Producto prod in producto)
+            foreach (Producto prod in productos)
             {
                 if (prod.id == id)
                 {
@@ -88,19 +88,19 @@ namespace tp1
                     }
                     return true;
                 }
-
             }
             return false;
         }
+
                 public bool eliminarProducto (int id) { 
                     bool flag = false;
                     int indice;
-                    for (var i = 0; i<producto.Count(); i++)
+                    for (var i = 0; i<productos.Count(); i++)
                     {
-                        if (producto[i] != null && producto[i].id == id)
+                        if (productos[i] != null && productos[i].id == id)
                         {
-                             indice = producto.IndexOf(producto[i]);
-                            producto.RemoveAt(indice);
+                             indice = productos.IndexOf(productos[i]);
+                            productos.RemoveAt(indice);
                             flag = true;
                             break;
                         }
@@ -117,7 +117,7 @@ namespace tp1
             
             public void buscarProductos (string query) // ORDENADO POR NOMBRE LOS PRODUCTOS QUE CONTIENEN EN SU NOMBRE LA CADENA INGRESADA
             {
-                foreach(Producto pr in producto)
+                foreach(Producto pr in productos)
                 {
                     if (pr.nombre.Contains(query))
                     {
@@ -129,7 +129,7 @@ namespace tp1
 
             public void buscarProductosPorPrecio (string query) //ORDENADO POR PRECIO DE MENOR A MAYOR LOS PRODUCTOS QUE CONTIENEN EN SU NOMBRE LA CADENA INGRESADA
             {
-                IEnumerable<Producto> aux = producto.OrderBy(pr => pr.precio);
+                IEnumerable<Producto> aux = productos.OrderBy(pr => pr.precio);
                 foreach (Producto pr in aux)
                 {
                     if (pr.nombre.Contains(query))
@@ -143,7 +143,7 @@ namespace tp1
             public void buscarProductosPorCategoria (int id_Categoria) //ORDENADO POR NOMBRE LOS PRODUCTOS QUE PERTENCEN A LA CATEGORIA CON EL ID INGRESADO
             {
                 List<Producto> listProd = new List<Producto>();
-                foreach (Producto pr in producto)
+                foreach (Producto pr in productos)
                 {
                     if(pr.cat.id == id_Categoria)
                     {
@@ -166,7 +166,7 @@ namespace tp1
                 Usuario us;
                 int idActual = 0;
                 int erroresDeIngreso = verificarIngresoUsuario(idActual, dni, nombre, apellido, mail, password, cuit_Cuil, tipo);
-                foreach (Usuario user in usuario)
+                foreach (Usuario user in usuarios)
                 {
                 
                     if (user.id > idActual) { idActual = user.id; }
@@ -177,7 +177,7 @@ namespace tp1
                 }
 
             us = new Usuario(idActual + 1, dni, nombre, apellido, mail, password, cuit_Cuil, tipo);
-            usuario.Add(us);
+            usuarios.Add(us);
 
             return true;
             }
@@ -198,7 +198,7 @@ namespace tp1
         private int verificarIngresoUsuario(int id, int dni, string nombre, string apellido, string mail, string password, string cuit_Cuil, string tipo)
         {
             int contadorErrores = 0;
-            foreach (Usuario us in usuario)
+            foreach (Usuario us in usuarios)
             {
                 if (us.id == id)
                 {
@@ -271,12 +271,12 @@ namespace tp1
             {
                 bool flag = false;
                 int indice;
-                for (var i = 0; i < usuario.Count(); i++)
+                for (var i = 0; i < usuarios.Count(); i++)
                 {
-                    if (usuario[i] != null && usuario[i].id == id)
+                    if (usuarios[i] != null && usuarios[i].id == id)
                     {
-                         indice = usuario.IndexOf(usuario[i]);
-                        usuario.RemoveAt(indice);
+                         indice = usuarios.IndexOf(usuarios[i]);
+                        usuarios.RemoveAt(indice);
                         flag = true;
                         break;
                     }
@@ -290,13 +290,14 @@ namespace tp1
                 return flag;
             }
 
-            public void mostrarUsuarios () // MUESTRA TODOS LOS USUARIOS ORDENADOS POR DNI
+            public List<Usuario> mostrarUsuarios () // MUESTRA TODOS LOS USUARIOS ORDENADOS POR DNI
             {
-                usuario = usuario.OrderBy(o  =>  o.dni).ToList();
-                 foreach(Usuario us in usuario)
+                usuarios = usuarios.OrderBy(o  =>  o.dni).ToList();
+                return usuarios;     
+            /*foreach(Usuario us in usuario)
                 {
                     Console.WriteLine(us.toString());
-                }
+                }*/
             }
  
             public bool agregarCategoria (string nombre)
@@ -361,14 +362,15 @@ namespace tp1
         }
 
 
-            public void mostrarCategoria() //MAL EN EL ENUNCIADO PERO MOSTRAR TODOS LAS CATEGORIAS ORDENADAS POR ID
+            public List<Categoria> mostrarCategorias() //MAL EN EL ENUNCIADO PERO MOSTRAR TODOS LAS CATEGORIAS ORDENADAS POR ID
             {
             categorias = categorias.OrderBy(o => o.id).ToList();
-            foreach (Categoria cat in categorias)
+            return categorias;
+            /*foreach (Categoria cat in categorias)
             {
                     Console.WriteLine(cat.toString());
 
-            }
+            }*/
         }
 
 
@@ -387,14 +389,15 @@ namespace tp1
             public bool EliminarCompra (int id){}
 
         */
-            public void mostrarTodosProductos()
+            public List<Producto> mostrarTodosProductos()
         {
-            producto.Sort((a, b) => a.id.CompareTo(b.id));
-            foreach (Producto pr in producto)
+            productos.Sort((a, b) => a.id.CompareTo(b.id));
+            return productos;
+            /*foreach (Producto pr in producto)
             {
                 Console.WriteLine(pr.toString());
 
-            }
+            }*/
 
         }
 
@@ -402,7 +405,7 @@ namespace tp1
             {
 
 
-            IEnumerable<Producto> aux = producto.OrderBy(pr => pr.precio);
+            IEnumerable<Producto> aux = productos.OrderBy(pr => pr.precio);
             foreach (Producto pr in aux)
             {
                 Console.WriteLine(pr.toString());
@@ -413,7 +416,7 @@ namespace tp1
 
             public void mostrarTodosProductosPorCategoria() //MUESTRA TODAS LAS CATEGORIAS DEL MERCADO Y PARA CADA UNA DE ELLAS, LOS PRODUCTOS DENTRO DE LA MISMA.
             {
-            IEnumerable<Producto> aux = producto.OrderBy(pr => pr.cat.id);
+            IEnumerable<Producto> aux = productos.OrderBy(pr => pr.cat.id);
             foreach (Producto pr in aux)
             {
                 Console.WriteLine(pr.toString());
