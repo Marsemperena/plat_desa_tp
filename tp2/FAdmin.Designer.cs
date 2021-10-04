@@ -1,5 +1,5 @@
 ﻿
-namespace Plataforma_TP2
+namespace Slc_Mercado
 {
     partial class FAdmin
     {

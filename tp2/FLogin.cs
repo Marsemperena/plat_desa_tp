@@ -7,10 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using dao;
-using tp1;
 
-namespace Plataforma_TP2
+namespace Slc_Mercado
 {
     public partial class FLogin : Form
     {
@@ -27,33 +25,14 @@ namespace Plataforma_TP2
         }
         private void login_Click(object sender, EventArgs e)
         {
-            //cargar todos los usurios y revisar si existe el user ingresado
-            List<Usuario> usuarios = UsuarioDAO.getAll();
-
-            Boolean loginOK = false;
-            
-            foreach (Usuario us in usuarios)
-            {
-                int dni_;
-                bool dniOK = Int32.TryParse(dni.Text,out dni_);
-               if(dniOK && us.dni == dni_ && us.password == pass.Text)
-                {
-                    //encontron al usuario
-                    usuario = us.nombre;
-                    loginOK = true;
-                    break;
-                }
-            }
-
-
-           
-            if (loginOK)
+            usuario = username.Text;
+            if (usuario != null && usuario != "")
             {
                 this.TrasfEvento(usuario);
                 this.Close();
             }
             else
-                MessageBox.Show("Ocurrio un error al intentar realizar el login");
+                MessageBox.Show("Debe ingresar un usuario!");
 
         }
 
@@ -67,6 +46,12 @@ namespace Plataforma_TP2
             this.Close();
             FRegistro registro = new FRegistro();
             registro.Show();
+        }
+
+        private void configurar_Click(object sender, EventArgs e)
+        {
+            FConfigurar configurar = new FConfigurar();
+            configurar.Show();
         }
     }
 }

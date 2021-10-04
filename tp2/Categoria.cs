@@ -1,6 +1,7 @@
 ﻿using System;
 
-namespace tp1
+
+namespace Slc_Mercado
 {
     [Serializable]
     public class Categoria

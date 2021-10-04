@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using tp1;
 
-namespace Plataforma_TP2
+
+namespace Slc_Mercado
 {
     public  static class LocalFileManager
     {
@@ -88,7 +88,7 @@ namespace Plataforma_TP2
 
             Type[] extraTypes = new Type[1];
 
-            extraTypes[0] = typeof(Empresa);
+            //extraTypes[0] = typeof(); //extraTypes[0] = typeof(Empresa);
 
             System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(ArrayList), extraTypes);
 

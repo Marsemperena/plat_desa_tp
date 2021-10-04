@@ -1,5 +1,5 @@
 ﻿
-namespace Plataforma_TP2
+namespace Slc_Mercado
 {
     partial class FLogin
     {
@@ -30,8 +30,8 @@ namespace Plataforma_TP2
         private void InitializeComponent()
         {
             this.login = new System.Windows.Forms.Button();
-            this.pass = new System.Windows.Forms.TextBox();
-            this.dni = new System.Windows.Forms.TextBox();
+            this.username = new System.Windows.Forms.TextBox();
+            this.pwd = new System.Windows.Forms.TextBox();
             this.registro = new System.Windows.Forms.Button();
             this.configurar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,21 +49,21 @@ namespace Plataforma_TP2
             this.login.UseVisualStyleBackColor = true;
             this.login.Click += new System.EventHandler(this.login_Click);
             // 
-            // pass
+            // username
             // 
-            this.pass.Location = new System.Drawing.Point(321, 256);
-            this.pass.Margin = new System.Windows.Forms.Padding(2);
-            this.pass.Name = "pass";
-            this.pass.Size = new System.Drawing.Size(95, 20);
-            this.pass.TabIndex = 1;
+            this.username.Location = new System.Drawing.Point(321, 256);
+            this.username.Margin = new System.Windows.Forms.Padding(2);
+            this.username.Name = "username";
+            this.username.Size = new System.Drawing.Size(95, 20);
+            this.username.TabIndex = 1;
             // 
-            // dni
+            // pwd
             // 
-            this.dni.Location = new System.Drawing.Point(321, 197);
-            this.dni.Margin = new System.Windows.Forms.Padding(2);
-            this.dni.Name = "dni";
-            this.dni.Size = new System.Drawing.Size(95, 20);
-            this.dni.TabIndex = 2;
+            this.pwd.Location = new System.Drawing.Point(321, 197);
+            this.pwd.Margin = new System.Windows.Forms.Padding(2);
+            this.pwd.Name = "pwd";
+            this.pwd.Size = new System.Drawing.Size(95, 20);
+            this.pwd.TabIndex = 2;
             // 
             // registro
             // 
@@ -85,6 +85,7 @@ namespace Plataforma_TP2
             this.configurar.TabIndex = 4;
             this.configurar.Text = "Configurar";
             this.configurar.UseVisualStyleBackColor = true;
+            this.configurar.Click += new System.EventHandler(this.configurar_Click);
             // 
             // label1
             // 
@@ -109,8 +110,8 @@ namespace Plataforma_TP2
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.configurar);
             this.Controls.Add(this.registro);
-            this.Controls.Add(this.dni);
-            this.Controls.Add(this.pass);
+            this.Controls.Add(this.pwd);
+            this.Controls.Add(this.username);
             this.Controls.Add(this.login);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
@@ -129,8 +130,8 @@ namespace Plataforma_TP2
         #endregion
 
         private System.Windows.Forms.Button login;
-        private System.Windows.Forms.TextBox pass;
-        private System.Windows.Forms.TextBox dni;
+        private System.Windows.Forms.TextBox username;
+        private System.Windows.Forms.TextBox pwd;
         private System.Windows.Forms.Button registro;
         private System.Windows.Forms.Button configurar;
         private System.Windows.Forms.Label label1;

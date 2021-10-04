@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 
 
-namespace tp1
+namespace Slc_Mercado
+
 {
 
     [Serializable]

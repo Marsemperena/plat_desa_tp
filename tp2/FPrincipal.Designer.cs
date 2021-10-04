@@ -1,5 +1,6 @@
-﻿
-namespace Plataforma_TP2
+﻿using System;
+
+namespace Slc_Mercado
 {
     partial class FPrincipal
     {

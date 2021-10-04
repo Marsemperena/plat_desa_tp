@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using dao;
 
 
-namespace tp1
+
+namespace Slc_Mercado
 {
     [Serializable]
     public class Mercado

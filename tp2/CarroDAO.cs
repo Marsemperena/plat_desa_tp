@@ -1,12 +1,12 @@
 ﻿using System;
-using tp1;
+
 using Plataforma_TP2;
 using System.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 
-namespace dao
+namespace Slc_Mercado
 {
 	public class CarroDAO
 	{

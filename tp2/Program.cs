@@ -6,10 +6,10 @@ using System.Windows.Forms;
 using System.IO;
 using System.Collections;
 
-using tp1;
+
 using Newtonsoft.Json;
 
-namespace Plataforma_TP2
+namespace Slc_Mercado
 {
     static class Program
     {

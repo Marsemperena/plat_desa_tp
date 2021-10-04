@@ -1,6 +1,8 @@
-﻿using System;
+using System;
 
-namespace Plataforma_TP2
+using System.IO;
+
+namespace Slc_Mercado
 {
     public class Functions1
     {
