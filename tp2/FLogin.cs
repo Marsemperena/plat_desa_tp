@@ -25,14 +25,33 @@ namespace Slc_Mercado
         }
         private void login_Click(object sender, EventArgs e)
         {
-            usuario = username.Text;
-            if (usuario != null && usuario != "")
+            //cargar todos los usurios y revisar si existe el user ingresado
+            List<Usuario> usuarios = UsuarioDAO.getAll();
+
+            Boolean loginOK = false;
+
+            foreach (Usuario us in usuarios)
+            {
+                int dni_;
+                bool dniOK = Int32.TryParse(dni.Text, out dni_);
+                if (dniOK && us.dni == dni_ && us.password == pass.Text)
+                {
+                    //encontron al usuario
+                    usuario = us.nombre;
+                    loginOK = true;
+                    break;
+                }
+            }
+
+
+
+            if (loginOK)
             {
                 this.TrasfEvento(usuario);
                 this.Close();
             }
             else
-                MessageBox.Show("Debe ingresar un usuario!");
+                MessageBox.Show("Ocurrio un error al intentar realizar el login");
 
         }
 
