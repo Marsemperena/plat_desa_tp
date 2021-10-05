@@ -380,7 +380,7 @@ namespace tp1
 
          //ESTOS SON OPCIONALES EN LA PRIMER ENTREGA
          
-            public bool AgregarAlCarro (int id_Producto, int cantidad, int id_Usuario){
+            public bool agregarAlCarro (int id_Producto, int cantidad, int id_Usuario){
                 bool flag = false;
                 for (var i = 0; i < usuarios.Count(); i++){
                 if(usuarios[i].id == id_Usuario ) {
@@ -403,7 +403,7 @@ namespace tp1
         }
         
             
-            public bool QuitarDelCarro (int id_Producto, int cantidad, int id_Usuario){
+            public bool quitarDelCarro (int id_Producto, int cantidad, int id_Usuario){
             bool flag = false;
             for (var i = 0; i < usuarios.Count(); i++)
             {
@@ -432,7 +432,7 @@ namespace tp1
 
 
 
-        public bool VaciarCarro (int id_Usuario){
+        public bool vaciarCarro (int id_Usuario){
             bool flag = false;
                 for (var i = 0; i < usuarios.Count(); i++){
                 if(usuarios[i].id == id_Usuario ) {
@@ -448,15 +448,34 @@ namespace tp1
             }
           
         
+        
+            public bool comprar(int id_Usuario){
+            double total= 0;
+            bool flag = false;
+            for (var i = 0; i < usuarios.Count(); i++)
+            {
+                if (usuarios[i].id == id_Usuario) {
+                    foreach (KeyValuePair<Producto, int> prod in usuarios[i].MiCarro.productos) {
+                        total = total + prod.Key.precio * prod.Value;
+                    }
+
+                        compras = CompraDAO.getAll();
+                        compras.Add(new Compra(usuarios[i], total, usuarios[i].MiCarro.productos));
+                        CompraDAO.saveAll(compras);
+                    flag = true;
+                
+                }
+            }
+
+                return flag;
+            }
         /*
-            public bool Comprar(int id_Usuario){}
+        public bool ModificarCompra ( int id, double total){}
 
-            public bool ModificarCompra ( int id, double total){}
+        public bool EliminarCompra (int id){}
 
-            public bool EliminarCompra (int id){}
-
-        */
-            public List<Producto> mostrarTodosProductos()
+    */
+        public List<Producto> mostrarTodosProductos()
         {
             productos.Sort((a, b) => a.id.CompareTo(b.id));
             return productos;
