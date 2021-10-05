@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using tp1;
+using dao;
 
 namespace Slc_Mercado
 {
@@ -17,9 +18,16 @@ namespace Slc_Mercado
         List<List<string>> datos;
 
         public List<Producto> productos;
+        public List<Categoria> categorias;
+        public List<Usuario> usuarios;
+
+
         public FAdmin(string[] args)
         {
             productos = ProductoDAO.getAll();
+            categorias = CategoriaDAO.getAll();
+            usuarios = UsuarioDAO.getAll();
+
             InitializeComponent();
             argumentos = args;
             label2.Text = args[0];
@@ -28,10 +36,6 @@ namespace Slc_Mercado
             //List<string> producto2 = new List<string>(new string[] { "PC", "75000", "150" });
             //datos.Add(producto1);
             // datos.Add(producto2);
-
-
-            cargarProductos();
-            refreshData(datos);
 
         }
 
@@ -43,19 +47,47 @@ namespace Slc_Mercado
         private void refreshData(List<List<string>> data)
         {
             //borro los datos
-            dataGridView1.Rows.Clear();
+            tabla.Rows.Clear();
             //agrego lo nuevo
-            foreach (List<string> producto in data)
-                dataGridView1.Rows.Add(producto.ToArray());
+            foreach (List<string> item in data)
+                tabla.Rows.Add(item.ToArray());
 
         }
 
-        private void cargarProductos()
+        private void tablaDatosRefresh(object sender, EventArgs e)
         {
-            foreach (Producto prod in productos)
+            ComboBox comboBox = (ComboBox)sender;
+            string tabla = (string)tablaDatos.SelectedItem;
+
+            if (tabla == "Tabla_Usuarios")
             {
-                datos.Add(new List<string>(new string[] { prod.nombre.ToString(), prod.precio.ToString(), prod.cantidad.ToString() }));
+                foreach (Usuario user in usuarios)
+                {
+                    datos.Add(new List<string>(new string[] { user.id.ToString(), user.dni.ToString(), user.nombre.ToString(), user.apellido.ToString(), user.mail.ToString(), user.password.ToString(), user.tipo.ToString(), user.cuilCuit.ToString(), }));
+                }
+
             }
+            if (tabla == "Tabla_Productos")
+            {
+                foreach (Producto prod in productos)
+                {
+                    datos.Add(new List<string>(new string[] { prod.nombre.ToString(), prod.precio.ToString(), prod.cantidad.ToString() }));
+                }
+
+            }
+            if (tabla == "Tabla_Categorias")
+            {
+                foreach (Categoria cat in categorias)
+                {
+                    datos.Add(new List<string>(new string[] { cat.id.ToString(), cat.nombre.ToString() }));
+                }
+
+            }
+
+            refreshData(datos);
+
         }
+
     }
+}
 }
