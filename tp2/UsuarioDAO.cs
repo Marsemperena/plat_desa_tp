@@ -22,21 +22,25 @@ namespace dao
 		public static List<Usuario> getAll()
 		{
 			
-			List<Usuario> productos;
+			List<Usuario> usuarios;
 			try
 			{
-				productos = JsonConvert.DeserializeObject<List<Usuario>>
+				usuarios = JsonConvert.DeserializeObject<List<Usuario>>
 	(File.ReadAllText(fileName));
 			}
 			catch (Exception ex)
 			{
+
+				//en caso de no haber datos se genera un admin y se guarda en el archivo
 				Console.WriteLine("archivo no encontrado, se inicializa un objeto vacio para productos");
-				productos = new List<Usuario>();
-				productos.Add(new Usuario(0, 0000, "admin", "admin", "admin@gmail.com", "admin", "admin", "000"));
+				usuarios = new List<Usuario>();
+				usuarios.Add(new Usuario(0, 0000, "admin", "admin", "admin@gmail.com", "admin", "admin", "000"));
+
+				saveAll(usuarios);
 			}
 
 
-			return productos;
+			return usuarios;
 		}
 
 		public static void saveAll(List<Usuario> usuario)
