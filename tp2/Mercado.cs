@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Slc_Mercado;
+using dao;
 
 
 
@@ -42,7 +43,7 @@ namespace tp1
 
             this.productos = ProductoDAO.getAll();
             this.categorias = CategoriaDAO.getAll();
-            //  this.usuario = new List<Usuario>();
+            this.usuarios = UsuarioDAO.getAll();
             this.compras = new List<Compra>(); //no es necesario levantar desde archivo
 
         }
