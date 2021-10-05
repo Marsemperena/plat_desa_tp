@@ -30,9 +30,13 @@ namespace dao
 			}
 			catch (Exception ex)
 			{
+
+				//en caso de no haber datos se genera un admin y se guarda en el archivo
 				Console.WriteLine("archivo no encontrado, se inicializa un objeto vacio para productos");
 				usuarios = new List<Usuario>();
 				usuarios.Add(new Usuario(0, 0000, "admin", "admin", "admin@gmail.com", "admin", "admin", "000"));
+
+				saveAll(usuarios);
 			}
 
 

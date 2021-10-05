@@ -16,6 +16,7 @@ namespace Slc_Mercado
     {
         public string[] argumentos;
         List<List<string>> datos;
+        List<string> columnas;
 
         public List<Producto> productos;
         public List<Categoria> categorias;
@@ -32,24 +33,22 @@ namespace Slc_Mercado
             argumentos = args;
             label2.Text = args[0];
             datos = new List<List<string>>();
-            //List<string> producto1 = new List<string>(new string[] { "TV", "50000", "200" });
-            //List<string> producto2 = new List<string>(new string[] { "PC", "75000", "150" });
-            //datos.Add(producto1);
-            // datos.Add(producto2);
+            columnas = new List<string>();
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void refreshData(List<List<string>> objData, List<string> columnas)
         {
-            refreshData(datos);
-        }
 
-        private void refreshData(List<List<string>> data)
-        {
             //borro los datos
             tabla.Rows.Clear();
-            //agrego lo nuevo
-            foreach (List<string> item in data)
+
+            // agrego las columnas dependiendo de la tabla
+            for (var i = 0; i < columnas.Count(); i++)
+                tabla.Columns.Add(columnas[i], columnas[i]);
+
+            //agrego las filas con los objetos
+            foreach (List<string> item in objData)
                 tabla.Rows.Add(item.ToArray());
 
         }
@@ -61,6 +60,14 @@ namespace Slc_Mercado
 
             if (tabla == "Tabla_Usuarios")
             {
+                columnas.Add("ID");
+                columnas.Add("DNI");
+                columnas.Add("Nombre");
+                columnas.Add("Apellido");
+                columnas.Add("Mail");
+                columnas.Add("Password");
+                columnas.Add("Tipo");
+                columnas.Add("Cuil-Cuit");
                 foreach (Usuario user in usuarios)
                 {
                     datos.Add(new List<string>(new string[] { user.id.ToString(), user.dni.ToString(), user.nombre.ToString(), user.apellido.ToString(), user.mail.ToString(), user.password.ToString(), user.tipo.ToString(), user.cuilCuit.ToString(), }));
@@ -69,6 +76,10 @@ namespace Slc_Mercado
             }
             if (tabla == "Tabla_Productos")
             {
+                columnas.Add("ID");
+                columnas.Add("Nombre");
+                columnas.Add("Precio");
+                columnas.Add("Cantidad");
                 foreach (Producto prod in productos)
                 {
                     datos.Add(new List<string>(new string[] { prod.nombre.ToString(), prod.precio.ToString(), prod.cantidad.ToString() }));
@@ -77,6 +88,8 @@ namespace Slc_Mercado
             }
             if (tabla == "Tabla_Categorias")
             {
+                columnas.Add("ID");
+                columnas.Add("Nombre");
                 foreach (Categoria cat in categorias)
                 {
                     datos.Add(new List<string>(new string[] { cat.id.ToString(), cat.nombre.ToString() }));
@@ -84,10 +97,24 @@ namespace Slc_Mercado
 
             }
 
-            refreshData(datos);
+            refreshData(datos, columnas);
 
         }
 
+        private void agregarObj(object sender, EventArgs e)
+        {
+
+        }
+
+        private void suprimirObj(object sender, EventArgs e)
+        {
+
+        }
+
+        private void modificarObj(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

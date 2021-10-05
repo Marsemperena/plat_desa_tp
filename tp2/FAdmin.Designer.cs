@@ -30,54 +30,25 @@ namespace Slc_Mercado
         private void InitializeComponent()
         {
             this.tabla = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.tablaDatos = new System.Windows.Forms.ComboBox();
+            this.agregar = new System.Windows.Forms.Button();
+            this.suprimir = new System.Windows.Forms.Button();
+            this.modificar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tabla)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // tabla
             // 
             this.tabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            this.tabla.Location = new System.Drawing.Point(20, 84);
+            this.tabla.Location = new System.Drawing.Point(20, 77);
             this.tabla.Margin = new System.Windows.Forms.Padding(2);
             this.tabla.Name = "tabla";
             this.tabla.RowHeadersWidth = 51;
             this.tabla.RowTemplate.Height = 29;
-            this.tabla.Size = new System.Drawing.Size(769, 505);
+            this.tabla.Size = new System.Drawing.Size(769, 512);
             this.tabla.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Nombre";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 125;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Precio";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 125;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Cantidad";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 125;
             // 
             // label1
             // 
@@ -98,35 +69,58 @@ namespace Slc_Mercado
             this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 2;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(512, 35);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 19);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Mostrar Datos";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // tablaDatos
             // 
-            string[] tablas = new string[] { "Tabla_Usuarios", "Tabla_Productos", "Tabla_Categorias" };
-            this.tablaDatos.Items.AddRange(tablas);
             this.tablaDatos.FormattingEnabled = true;
-            this.tablaDatos.Location = new System.Drawing.Point(353, 35);
+            this.tablaDatos.Items.AddRange(new object[] {
+            "Tabla_Usuarios",
+            "Tabla_Productos",
+            "Tabla_Categorias"});
+            this.tablaDatos.Location = new System.Drawing.Point(303, 38);
             this.tablaDatos.Name = "tablaDatos";
             this.tablaDatos.Size = new System.Drawing.Size(121, 21);
             this.tablaDatos.TabIndex = 4;
             this.tablaDatos.SelectedIndexChanged += new System.EventHandler(this.tablaDatosRefresh);
+            // 
+            // agregar
+            // 
+            this.agregar.Location = new System.Drawing.Point(509, 38);
+            this.agregar.Name = "agregar";
+            this.agregar.Size = new System.Drawing.Size(75, 23);
+            this.agregar.TabIndex = 5;
+            this.agregar.Text = "Agregar";
+            this.agregar.UseVisualStyleBackColor = true;
+            this.agregar.Click += new System.EventHandler(this.agregarObj);
+            // 
+            // suprimir
+            // 
+            this.suprimir.Location = new System.Drawing.Point(605, 38);
+            this.suprimir.Name = "suprimir";
+            this.suprimir.Size = new System.Drawing.Size(75, 23);
+            this.suprimir.TabIndex = 6;
+            this.suprimir.Text = "Suprimir";
+            this.suprimir.UseVisualStyleBackColor = true;
+            this.suprimir.Click += new System.EventHandler(this.suprimirObj);
+            // 
+            // modificar
+            // 
+            this.modificar.Location = new System.Drawing.Point(702, 38);
+            this.modificar.Name = "modificar";
+            this.modificar.Size = new System.Drawing.Size(75, 23);
+            this.modificar.TabIndex = 7;
+            this.modificar.Text = "Modificar";
+            this.modificar.UseVisualStyleBackColor = true;
+            this.modificar.Click += new System.EventHandler(this.modificarObj);
             // 
             // FAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.modificar);
+            this.Controls.Add(this.suprimir);
+            this.Controls.Add(this.agregar);
             this.Controls.Add(this.tablaDatos);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabla);
@@ -147,10 +141,9 @@ namespace Slc_Mercado
         private System.Windows.Forms.DataGridView tabla;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.ComboBox tablaDatos;
+        private System.Windows.Forms.Button agregar;
+        private System.Windows.Forms.Button suprimir;
+        private System.Windows.Forms.Button modificar;
     }
 }
