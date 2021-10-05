@@ -5,14 +5,14 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using tp1;
+using config;
 
 
 public class CompraDAO
 {
 
 
-	static string fileName = Path.Combine(Environment.GetFolderPath(
-	   Environment.SpecialFolder.ApplicationData), "Compra.json");
+	static string fileName = Path.Combine(LocalFileManager.userpath, "Compra.json");
 
 	static CompraDAO()
 	{
