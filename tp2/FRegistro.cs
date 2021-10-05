@@ -17,7 +17,9 @@ namespace Slc_Mercado
     {
         public FRegistro()
         {
+            
             InitializeComponent();
+   
         }
 
         private void FRegistro_Load(object sender, EventArgs e)
@@ -39,15 +41,16 @@ namespace Slc_Mercado
             //agregar usuario al array temporal
             int id = 0;
             int dni;
-            int.TryParse(dni_.Text, out dni);
+            int.TryParse(cuit.Text, out dni);
             string nombre = nombre_.Text;
             string apellido = apellido_.Text;
             string mail = mail_.Text;
             string password = pass.Text;
             Carro MiCarro = null;
-           
-            usuarios.Add(new Usuario(id, dni, nombre, apellido, mail, password,"", ""));
 
+            if (validar())
+                usuarios.Add(new Usuario(id, dni, nombre, apellido, mail, password, tipoUsuario.SelectedItem.ToString(), cuit.Text));
+            else return;
 
             //guardar
 
@@ -57,6 +60,19 @@ namespace Slc_Mercado
             this.Close();
             FPrincipal menuPrincipal = new FPrincipal();
             menuPrincipal.Show();
+        }
+
+        private bool validar()
+        {
+            if(dni.Text!="" && cuit.Text!="" && nombre_.Text!="" && apellido_.Text != "" && mail_.Text != "" && pass.Text != "" && tipoUsuario.SelectedItem!=null && !"".Equals(tipoUsuario.SelectedItem.ToString()) )
+
+            return true;
+
+            else
+            {
+                MessageBox.Show("Por favor completar todos los campos con la informacion solicitada.");
+                return false;
+            }
         }
 
         private void tipoUsuario_SelectedIndexChanged(object sender, EventArgs e)
