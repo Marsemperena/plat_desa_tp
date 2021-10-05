@@ -13,8 +13,7 @@ namespace dao
 	{
 	
 		
-		static string fileName = Path.Combine(Environment.GetFolderPath(
-		   Environment.SpecialFolder.ApplicationData), "Usuario.json");
+		static string fileName = Path.Combine(LocalFileManager.userpath, "Usuario.json");
 
 		static UsuarioDAO()
 		{

@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 
 using tp1;
+using config;
 
 namespace Slc_Mercado
 {
@@ -13,8 +14,7 @@ namespace Slc_Mercado
 	{
 
 
-		static string fileName = Path.Combine(Environment.GetFolderPath(
-		   Environment.SpecialFolder.ApplicationData), "Carro.json");
+		static string fileName = Path.Combine(LocalFileManager.userpath, "Carro.json");
 
 		static CarroDAO()
 		{
