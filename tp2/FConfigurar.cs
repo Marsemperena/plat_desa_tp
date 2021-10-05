@@ -30,16 +30,16 @@ namespace Slc_Mercado
                 "seleccionar carpeta para guardar datos locales";
 
 
-          
+
 
             DialogResult resultado = ofd.ShowDialog();
-            
+
             if (resultado == DialogResult.OK)
             {
                 string folderName = ofd.SelectedPath;
                 LocalFileManager.userpath = folderName;
             }
-            
+
         }
 
         private void volver_Click(object sender, EventArgs e)
@@ -61,4 +61,3 @@ namespace Slc_Mercado
 
     }
 }
-

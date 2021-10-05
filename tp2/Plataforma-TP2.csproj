@@ -58,11 +58,8 @@
     <Compile Include="FConfigurar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FConfigurar.Designer.cs" />
-    <Compile Include="FConfigurar1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FConfigurar.resx</DependentUpon>
+    <Compile Include="FConfigurar.Designer.cs">
+      <DependentUpon>FConfigurar.cs</DependentUpon>
     </Compile>
     <Compile Include="Functions1.cs" />
     <Compile Include="FUser.cs">
@@ -105,10 +102,6 @@
     <Compile Include="Usuario.cs" />
     <EmbeddedResource Include="FAdmin.resx">
       <DependentUpon>FAdmin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FConfigurar.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>FConfigurar1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="FLogin.resx">
       <DependentUpon>FLogin.cs</DependentUpon>
