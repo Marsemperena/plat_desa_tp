@@ -37,15 +37,17 @@ namespace Slc_Mercado
             this.lblTipoUsuario = new System.Windows.Forms.Label();
             this.lblPwd = new System.Windows.Forms.Label();
             this.lblMail = new System.Windows.Forms.Label();
-            this.nombre = new System.Windows.Forms.TextBox();
-            this.apellido = new System.Windows.Forms.TextBox();
-            this.mail = new System.Windows.Forms.TextBox();
-            this.pwd = new System.Windows.Forms.TextBox();
+            this.pass = new System.Windows.Forms.TextBox();
+            this.dni = new System.Windows.Forms.TextBox();
+            this.nombre_ = new System.Windows.Forms.TextBox();
+            this.apellido_ = new System.Windows.Forms.TextBox();
             this.tipoUsuario = new System.Windows.Forms.ComboBox();
             this.registrarUsuario = new System.Windows.Forms.Button();
             this.volver = new System.Windows.Forms.Button();
-            this.cuil_cuit = new System.Windows.Forms.TextBox();
+            this.dni_ = new System.Windows.Forms.TextBox();
             this.lblCuil_cuit = new System.Windows.Forms.Label();
+            this.mail_ = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -103,37 +105,37 @@ namespace Slc_Mercado
             this.lblMail.Size = new System.Drawing.Size(100, 23);
             this.lblMail.TabIndex = 5;
             // 
-            // nombre
+            // pass
             // 
-            this.nombre.Location = new System.Drawing.Point(498, 222);
-            this.nombre.Margin = new System.Windows.Forms.Padding(2);
-            this.nombre.Name = "nombre";
-            this.nombre.Size = new System.Drawing.Size(100, 20);
-            this.nombre.TabIndex = 0;
+            this.pass.Location = new System.Drawing.Point(498, 222);
+            this.pass.Margin = new System.Windows.Forms.Padding(2);
+            this.pass.Name = "pass";
+            this.pass.Size = new System.Drawing.Size(100, 20);
+            this.pass.TabIndex = 0;
             // 
-            // apellido
+            // dni
             // 
-            this.apellido.Location = new System.Drawing.Point(127, 222);
-            this.apellido.Margin = new System.Windows.Forms.Padding(2);
-            this.apellido.Name = "apellido";
-            this.apellido.Size = new System.Drawing.Size(100, 20);
-            this.apellido.TabIndex = 0;
+            this.dni.Location = new System.Drawing.Point(127, 222);
+            this.dni.Margin = new System.Windows.Forms.Padding(2);
+            this.dni.Name = "dni";
+            this.dni.Size = new System.Drawing.Size(100, 20);
+            this.dni.TabIndex = 0;
             // 
-            // mail
+            // nombre_
             // 
-            this.mail.Location = new System.Drawing.Point(127, 97);
-            this.mail.Margin = new System.Windows.Forms.Padding(2);
-            this.mail.Name = "mail";
-            this.mail.Size = new System.Drawing.Size(100, 20);
-            this.mail.TabIndex = 0;
+            this.nombre_.Location = new System.Drawing.Point(127, 97);
+            this.nombre_.Margin = new System.Windows.Forms.Padding(2);
+            this.nombre_.Name = "nombre_";
+            this.nombre_.Size = new System.Drawing.Size(100, 20);
+            this.nombre_.TabIndex = 0;
             // 
-            // pwd
+            // apellido_
             // 
-            this.pwd.Location = new System.Drawing.Point(127, 159);
-            this.pwd.Margin = new System.Windows.Forms.Padding(2);
-            this.pwd.Name = "pwd";
-            this.pwd.Size = new System.Drawing.Size(100, 20);
-            this.pwd.TabIndex = 0;
+            this.apellido_.Location = new System.Drawing.Point(127, 159);
+            this.apellido_.Margin = new System.Windows.Forms.Padding(2);
+            this.apellido_.Name = "apellido_";
+            this.apellido_.Size = new System.Drawing.Size(100, 20);
+            this.apellido_.TabIndex = 0;
             // 
             // tipoUsuario
             // 
@@ -167,13 +169,13 @@ namespace Slc_Mercado
             this.volver.UseVisualStyleBackColor = true;
             this.volver.Click += new System.EventHandler(this.volver_Click);
             // 
-            // cuil_cuit
+            // dni_
             // 
-            this.cuil_cuit.Location = new System.Drawing.Point(498, 97);
-            this.cuil_cuit.Margin = new System.Windows.Forms.Padding(2);
-            this.cuil_cuit.Name = "cuil_cuit";
-            this.cuil_cuit.Size = new System.Drawing.Size(100, 20);
-            this.cuil_cuit.TabIndex = 14;
+            this.dni_.Location = new System.Drawing.Point(498, 97);
+            this.dni_.Margin = new System.Windows.Forms.Padding(2);
+            this.dni_.Name = "dni_";
+            this.dni_.Size = new System.Drawing.Size(100, 20);
+            this.dni_.TabIndex = 14;
             // 
             // lblCuil_cuit
             // 
@@ -183,20 +185,40 @@ namespace Slc_Mercado
             this.lblCuil_cuit.TabIndex = 15;
             this.lblCuil_cuit.Text = "Ingrese el CUIT/CUIL";
             // 
+            // mail_
+            // 
+            this.mail_.Location = new System.Drawing.Point(127, 264);
+            this.mail_.Margin = new System.Windows.Forms.Padding(2);
+            this.mail_.Name = "mail_";
+            this.mail_.Size = new System.Drawing.Size(100, 20);
+            this.mail_.TabIndex = 16;
+            this.mail_.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(43, 267);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 23);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "mail";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            // 
             // FRegistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(681, 453);
+            this.Controls.Add(this.mail_);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblCuil_cuit);
-            this.Controls.Add(this.cuil_cuit);
+            this.Controls.Add(this.dni_);
             this.Controls.Add(this.registrarUsuario);
             this.Controls.Add(this.volver);
             this.Controls.Add(this.tipoUsuario);
-            this.Controls.Add(this.nombre);
-            this.Controls.Add(this.apellido);
-            this.Controls.Add(this.mail);
-            this.Controls.Add(this.pwd);
+            this.Controls.Add(this.pass);
+            this.Controls.Add(this.dni);
+            this.Controls.Add(this.nombre_);
+            this.Controls.Add(this.apellido_);
             this.Controls.Add(this.lblMail);
             this.Controls.Add(this.lblPwd);
             this.Controls.Add(this.lblTipoUsuario);
@@ -220,10 +242,10 @@ namespace Slc_Mercado
         private System.Windows.Forms.Button registrarUsuario;
         private System.Windows.Forms.Button volver;
         private System.Windows.Forms.ComboBox tipoUsuario;
-        private System.Windows.Forms.TextBox nombre;
-        private System.Windows.Forms.TextBox apellido;
-        private System.Windows.Forms.TextBox mail;
-        private System.Windows.Forms.TextBox pwd;
+        private System.Windows.Forms.TextBox pass;
+        private System.Windows.Forms.TextBox dni;
+        private System.Windows.Forms.TextBox nombre_;
+        private System.Windows.Forms.TextBox apellido_;
         private System.Windows.Forms.Label lblMail;
         private System.Windows.Forms.Label lblPwd;
         private System.Windows.Forms.Label lblTipoUsuario;
@@ -231,7 +253,9 @@ namespace Slc_Mercado
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.TextBox cuil_cuit;
+        private System.Windows.Forms.TextBox dni_;
         private System.Windows.Forms.Label lblCuil_cuit;
+        private System.Windows.Forms.TextBox mail_;
+        private System.Windows.Forms.Label label1;
     }
 }

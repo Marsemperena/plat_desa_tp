@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace Slc_Mercado
+namespace tp1
 
 {
 

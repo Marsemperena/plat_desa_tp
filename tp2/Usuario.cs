@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Slc_Mercado
+namespace tp1
 {
 
     public class Usuario
