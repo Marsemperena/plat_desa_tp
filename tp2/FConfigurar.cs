@@ -44,7 +44,7 @@ namespace Slc_Mercado
 
         private void volver_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("saliendo");
+            Console.WriteLine("");
             this.Close();
             FPrincipal menuPrincipal = new FPrincipal();
             menuPrincipal.Show();

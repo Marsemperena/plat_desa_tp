@@ -31,6 +31,10 @@ namespace Slc_Mercado
 			{
 				Console.WriteLine("archivo no encontrado, se inicializa un objeto vacio para productos");
 				productos = new List<Producto>();
+				Categoria cat = new Categoria(0, "electro");
+				Categoria cat2 = new Categoria(1, "deco");
+				productos.Add(new Producto(0, "tv", 10, 10, cat));
+				productos.Add(new Producto(0, "silla", 15, 30, cat2));
 			}
 
 

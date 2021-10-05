@@ -32,6 +32,10 @@ namespace Slc_Mercado
 				Console.WriteLine("archivo no encontrado, se inicializa array vacio para categoria");
 		
 				categorias = new List<Categoria>();
+				Categoria cat = new Categoria(0, "electro");
+				Categoria cat2 = new Categoria(1, "deco");
+				categorias.Add(cat);
+				categorias.Add(cat2);
 			}
 
 
