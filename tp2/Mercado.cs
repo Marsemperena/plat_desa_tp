@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Slc_Mercado;
+using dao;
 
 
 
@@ -24,11 +25,11 @@ namespace tp1
 
             public Mercado()
             {
-                this.categorias = new List<Categoria>();
-                this.usuarios = new List<Usuario>();
-                this.compras = new List<Compra>();
+               // this.categorias = new List<Categoria>();
+               // this.usuarios = new List<Usuario>();
+               // this.compras = new List<Compra>();
 
-                this.categorias.Add(new Categoria(2, "categ 0"));
+                /*this.categorias.Add(new Categoria(2, "categ 0"));
                 this.categorias.Add(new Categoria(3, "categ 1"));
                 this.categorias.Add(new Categoria(5, "categ 2"));
 
@@ -38,8 +39,14 @@ namespace tp1
                 this.productos.Add(new Producto(1,"producto 1", 1500, 10, this.categorias[0]));
                 this.productos.Add(new Producto(2,"producto 2", 1, 10, this.categorias[1]));
                 this.productos.Add(new Producto(4,"producto 2", 561, 10, this.categorias[1]));
+                */
 
-            }
+            this.productos = ProductoDAO.getAll();
+            this.categorias = CategoriaDAO.getAll();
+            this.usuarios = UsuarioDAO.getAll();
+            this.compras = new List<Compra>(); //no es necesario levantar desde archivo
+
+        }
             
             public bool agregarProducto (string nombre, double precio, int cantidad, int id_Categoria)
             {

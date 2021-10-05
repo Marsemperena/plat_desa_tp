@@ -19,26 +19,26 @@ namespace Slc_Mercado
 		{
 		}
 
-		public static Categoria[] getAll()
+		public static List<Categoria> getAll()
 		{
-			Categoria[] categorias;
+			List<Categoria> categorias;
 			try
 			{
-				categorias = JsonConvert.DeserializeObject<Categoria[]>
+				categorias = JsonConvert.DeserializeObject<List<Categoria>>
    (File.ReadAllText(fileName));
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine("archivo no encontrado, se inicializa array vacio para categoria");
-				int MAX_CATEGORIAS = 5;
-				categorias = new Categoria[MAX_CATEGORIAS];
+		
+				categorias = new List<Categoria>();
 			}
 
 
 			return categorias;
 		}
 
-		public static void saveAll(Categoria[] categoria)
+		public static void saveAll(List<Categoria> categoria)
 		{
 			try
 			{
