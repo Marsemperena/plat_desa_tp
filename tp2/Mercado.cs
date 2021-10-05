@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Slc_Mercado;
 using dao;
 
 
@@ -515,7 +514,7 @@ namespace tp1
 
             public List<Producto> mostrarTodosProductosPorPrecio() //MUESTRA TODOS LOS PRODUCTOS DEL MERCADO, ORDENADO POR PRECIO
             {
-                return productos.OrderBy(pr => pr.precio).ToList();
+                  return productos.OrderBy(pr => pr.precio).ToList();
             }
 
 
