@@ -371,14 +371,52 @@ namespace tp1
         }
 
 
-        /* ESTOS SON OPCIONALES EN LA PRIMER ENTREGA
+         //ESTOS SON OPCIONALES EN LA PRIMER ENTREGA
          
-            public bool AgregarAlCarro (int id_Producto, int cantidad, int id_Usuario){}
+            public bool AgregarAlCarro (int id_Producto, int cantidad, int id_Usuario){
+
+                for (var i = 0; i < usuarios.Count(); i++){
+                if(usuarios[i] = id_Usuario ) {
+
+                    usuarios[i].MiCarro.agregarProducto(id_Producto,cantidad);
+                    break;
+
+                   }
+                }
             
-            public bool QuitarDelCarro (int id_Producto, int Cantidad, int id_Usuario){}
+        
+            }
+        
+            
+            public bool QuitarDelCarro (int id_Producto, int Cantidad, int id_Usuario){
+                for (var i = 0; i < usuarios.Count(); i++){
+                if(usuarios[i] = id_Usuario ) {
 
-            public bool VaciarCarro (int id_Usuario){}
+                    usuarios[i].MiCarro.agregarProducto(id_Producto,cantidad);
+                    break;
 
+                   }
+                }
+        
+            }
+        
+      
+
+            public bool VaciarCarro (int id_Usuario){
+                for (var i = 0; i < usuarios.Count(); i++){
+                if(usuarios[i] = id_Usuario ) {
+
+                    usuarios[i].MiCarro = new Carro(id_Usuario);
+                    break;
+
+                   }
+                }
+                
+        
+            }
+          
+        
+        /*
             public bool Comprar(int id_Usuario){}
 
             public bool ModificarCompra ( int id, double total){}
