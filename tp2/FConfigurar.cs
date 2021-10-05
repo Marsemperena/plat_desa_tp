@@ -27,7 +27,7 @@ namespace Slc_Mercado
         {
             FolderBrowserDialog ofd = new FolderBrowserDialog();
             ofd.Description =
-    "seleccionar carpeta para guardar datos locales";
+                "seleccionar carpeta para guardar datos locales";
 
 
           
@@ -41,6 +41,24 @@ namespace Slc_Mercado
             }
             
         }
+
+        private void volver_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("saliendo");
+            this.Close();
+            FPrincipal menuPrincipal = new FPrincipal();
+            menuPrincipal.Show();
+
+        }
+
+        /*volver atras
+         
+            this.Close();
+            FPrincipal menuPrincipal = new FPrincipal();
+            menuPrincipal.Show();
+         
+         */
+
     }
-    }
+}
 
