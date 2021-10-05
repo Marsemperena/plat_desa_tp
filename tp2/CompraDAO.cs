@@ -4,8 +4,10 @@ using Slc_Mercado;
 using System.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using tp1;
 
-public  class CompraDAO
+
+public class CompraDAO
 {
 
 

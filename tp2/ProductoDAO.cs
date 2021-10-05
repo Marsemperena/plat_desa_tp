@@ -4,6 +4,8 @@
 using System.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using tp1;
+
 
 namespace Slc_Mercado
 {
