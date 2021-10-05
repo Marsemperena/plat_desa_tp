@@ -23,15 +23,15 @@ namespace Slc_Mercado
         public List<Usuario> usuarios;
 
 
-        public FAdmin(string[] args)
+        public FAdmin(Usuario usuario)
         {
             productos = ProductoDAO.getAll();
             categorias = CategoriaDAO.getAll();
             usuarios = UsuarioDAO.getAll();
 
             InitializeComponent();
-            argumentos = args;
-            label2.Text = args[0];
+            //argumentos = args;   VERIFICAR
+            label2.Text = usuario.nombre;
             datos = new List<List<string>>();
             columnas = new List<string>();
 

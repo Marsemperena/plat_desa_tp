@@ -35,7 +35,7 @@ namespace dao
 				Console.WriteLine("archivo no encontrado, se inicializa un objeto vacio para productos");
 				usuarios = new List<Usuario>();
 				usuarios.Add(new Usuario(0, 0000, "admin", "admin", "admin@gmail.com", "admin", "admin", "000"));
-
+				usuarios.Add(new Usuario(1, 0001, "cliente", "cliente", "cliente@gmail.com", "cliente", "cliente", "001"));
 				saveAll(usuarios);
 			}
 

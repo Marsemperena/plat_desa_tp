@@ -16,8 +16,8 @@ namespace Slc_Mercado
     {
         private bool logued;
         private string[] argumentos;
-        private string usuario;
-        public delegate void TransfDelegado(string usuario);
+        private Usuario usuario;
+        public delegate void TransfDelegado(Usuario usuario);
         public TransfDelegado TrasfEvento;
         public FLogin(string[] args)
         {
@@ -39,13 +39,11 @@ namespace Slc_Mercado
                 if (dniOK && us.dni == dni_ && us.password == pass.Text)
                 {
                     //encontron al usuario
-                    usuario = us.nombre;
+                    usuario = us;
                     loginOK = true;
                     break;
                 }
             }
-
-
 
             if (loginOK)
             {

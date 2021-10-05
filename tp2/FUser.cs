@@ -16,20 +16,21 @@ namespace Slc_Mercado
         public string[] argumentos;
         List<List<string>> datos;
         public List<Producto> productos;
+        Mercado mercado;
+        Usuario usuario;
 
-
-        public FUser(string[] args)
+        public FUser(Usuario usuario)
         {
+
             productos = ProductoDAO.getAll();
             InitializeComponent();
-            argumentos = args;
-            label2.Text = args[0];
+            //argumentos = args;   VERIFICAR
+            label2.Text = usuario.nombre;
             datos = new List<List<string>>();
             //List<string> producto1 = new List<string>(new string[] { "TV", "50000", "200" });
             //List<string> producto2 = new List<string>(new string[] { "PC", "75000", "150" });
             //datos.Add(producto1);
             // datos.Add(producto2);
-
 
             cargarProductos();
             refreshData(datos);
@@ -37,7 +38,7 @@ namespace Slc_Mercado
 
         private void button1_Click(object sender, EventArgs e)
         {
-            refreshData(datos);
+            mercado.comprar(usuario.id);
         }
 
 
@@ -72,6 +73,26 @@ namespace Slc_Mercado
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mercado.vaciarCarro(usuario.id);
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            mercado.agregarAlCarro(mercado.buscarProductoPorNombre(dataGridViewTextBoxColumn1.DataGridView.Rows.ToString()).id, dataGridViewTextBoxColumn3.DataGridView.FirstDisplayedScrollingRowIndex ,usuario.id);
         }
     }
 }

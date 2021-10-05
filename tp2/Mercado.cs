@@ -155,8 +155,20 @@ namespace tp1
             return listProd;
             }
 
-            
-            public bool agregarUsuario (int dni, string nombre, string apellido, string mail, string password, string cuit_Cuil, string tipo)
+        public Producto buscarProductoPorNombre(string id_Nombre) //ORDENADO POR NOMBRE LOS PRODUCTOS QUE PERTENCEN A LA CATEGORIA CON EL ID INGRESADO
+        {
+            foreach (Producto pr in productos)
+            {
+                if (pr.nombre == id_Nombre)
+                {
+                    return pr;
+                }
+            }
+            return null;
+        }
+
+
+        public bool agregarUsuario (int dni, string nombre, string apellido, string mail, string password, string cuit_Cuil, string tipo)
             {
                 //calcular id
                 //(int id, int cuit, int dni, string nombre, string mail, string password)
