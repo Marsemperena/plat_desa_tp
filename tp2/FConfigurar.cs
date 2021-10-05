@@ -16,6 +16,7 @@ namespace Slc_Mercado
         public FConfigurar()
         {
             InitializeComponent();
+            ruta.Text = LocalFileManager.userpath;
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
