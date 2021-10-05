@@ -119,32 +119,29 @@ namespace tp1
                 }
 
             
-            public void buscarProductos (string query) // ORDENADO POR NOMBRE LOS PRODUCTOS QUE CONTIENEN EN SU NOMBRE LA CADENA INGRESADA
+            public List<Producto> buscarProductos(string query) // ORDENADO POR NOMBRE LOS PRODUCTOS QUE CONTIENEN EN SU NOMBRE LA CADENA INGRESADA
             {
+                List<Producto> productoPorNombre = new List<Producto>();
                 foreach(Producto pr in productos)
                 {
                     if (pr.nombre.Contains(query))
                     {
-                    Console.WriteLine(pr.toString());
+                    productoPorNombre.Add(pr);
                     }
                 }
+            return productoPorNombre;
             }
 
 
-            public void buscarProductosPorPrecio (string query) //ORDENADO POR PRECIO DE MENOR A MAYOR LOS PRODUCTOS QUE CONTIENEN EN SU NOMBRE LA CADENA INGRESADA
+            public List<Producto> buscarProductosPorPrecio (string query) //ORDENADO POR PRECIO DE MENOR A MAYOR LOS PRODUCTOS QUE CONTIENEN EN SU NOMBRE LA CADENA INGRESADA
             {
                 IEnumerable<Producto> aux = productos.OrderBy(pr => pr.precio);
-                foreach (Producto pr in aux)
-                {
-                    if (pr.nombre.Contains(query))
-                    {
-                        Console.WriteLine(pr.toString());
-                    }
-                }
+                List<Producto> listProductos = aux.ToList();
+                return listProductos;
             }
 
 
-            public void buscarProductosPorCategoria (int id_Categoria) //ORDENADO POR NOMBRE LOS PRODUCTOS QUE PERTENCEN A LA CATEGORIA CON EL ID INGRESADO
+            public List<Producto> buscarProductosPorCategoria (int id_Categoria) //ORDENADO POR NOMBRE LOS PRODUCTOS QUE PERTENCEN A LA CATEGORIA CON EL ID INGRESADO
             {
                 List<Producto> listProd = new List<Producto>();
                 foreach (Producto pr in productos)
@@ -154,11 +151,9 @@ namespace tp1
                         listProd.Add(pr);
                     }   
                 }
-                IEnumerable<Producto> resultado = listProd.OrderBy(pr => pr.nombre);
-                foreach (Producto resul in resultado)
-                {
-                    Console.WriteLine(resul);
-                }    
+            listProd = listProd.OrderBy(pr => pr.nombre).ToList();
+                
+            return listProd;
             }
 
             
@@ -518,27 +513,16 @@ namespace tp1
 
         }
 
-            public void mostrarTodosProductosPorPrecio() //MUESTRA TODOS LOS PRODUCTOS DEL MERCADO, ORDENADO POR PRECIO
+            public List<Producto> mostrarTodosProductosPorPrecio() //MUESTRA TODOS LOS PRODUCTOS DEL MERCADO, ORDENADO POR PRECIO
             {
-
-
-            IEnumerable<Producto> aux = productos.OrderBy(pr => pr.precio);
-            foreach (Producto pr in aux)
-            {
-                Console.WriteLine(pr.toString());
+                return productos.OrderBy(pr => pr.precio).ToList();
             }
 
-        }
 
-
-            public void mostrarTodosProductosPorCategoria() //MUESTRA TODAS LAS CATEGORIAS DEL MERCADO Y PARA CADA UNA DE ELLAS, LOS PRODUCTOS DENTRO DE LA MISMA.
+            public List<Producto> mostrarTodosProductosPorCategoria() //MUESTRA TODAS LAS CATEGORIAS DEL MERCADO Y PARA CADA UNA DE ELLAS, LOS PRODUCTOS DENTRO DE LA MISMA.
             {
-            IEnumerable<Producto> aux = productos.OrderBy(pr => pr.cat.id);
-            foreach (Producto pr in aux)
-            {
-                Console.WriteLine(pr.toString());
+            return productos.OrderBy(pr => pr.cat.id).ToList();
             }
-        }
 
 
     }
