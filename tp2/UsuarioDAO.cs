@@ -4,13 +4,15 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using tp1;
+using config;
+using System;
 
 namespace dao
 {
 	public class UsuarioDAO
 	{
-
-
+	
+		
 		static string fileName = Path.Combine(Environment.GetFolderPath(
 		   Environment.SpecialFolder.ApplicationData), "Usuario.json");
 
@@ -20,6 +22,7 @@ namespace dao
 
 		public static List<Usuario> getAll()
 		{
+			
 			List<Usuario> productos;
 			try
 			{
