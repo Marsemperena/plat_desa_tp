@@ -381,45 +381,70 @@ namespace tp1
          //ESTOS SON OPCIONALES EN LA PRIMER ENTREGA
          
             public bool AgregarAlCarro (int id_Producto, int cantidad, int id_Usuario){
-
+                bool flag = false;
                 for (var i = 0; i < usuarios.Count(); i++){
-                if(usuarios[i] = id_Usuario ) {
-
-                    usuarios[i].MiCarro.agregarProducto(id_Producto,cantidad);
+                if(usuarios[i].id == id_Usuario ) {
+                    for (var a = 0; a < productos.Count(); a++){
+                        if (productos[a].id == id_Producto){
+                            usuarios[i].MiCarro.agregarProducto(productos[a], cantidad);
+                            flag = true;
+                            break;
+                         }
+                    }
+                  }
+                if (flag == true) {
+                    
                     break;
-
-                   }
                 }
             
-        
             }
+
+            return flag;
+        }
         
             
-            public bool QuitarDelCarro (int id_Producto, int Cantidad, int id_Usuario){
-                for (var i = 0; i < usuarios.Count(); i++){
-                if(usuarios[i] = id_Usuario ) {
-
-                    usuarios[i].MiCarro.agregarProducto(id_Producto,cantidad);
-                    break;
-
-                   }
+            public bool QuitarDelCarro (int id_Producto, int cantidad, int id_Usuario){
+            bool flag = false;
+            for (var i = 0; i < usuarios.Count(); i++)
+            {
+                if (usuarios[i].id == id_Usuario)
+                {
+                    for (var a = 0; a < productos.Count(); a++)
+                    {
+                        if (productos[a].id == id_Producto)
+                        {
+                            usuarios[i].MiCarro.sacarProductos(productos[a], cantidad);
+                            flag = true;
+                            break;
+                        }
+                    }
                 }
-        
-            }
-        
-      
+                if (flag == true)
+                {
 
-            public bool VaciarCarro (int id_Usuario){
+                    break;
+                }
+
+            }
+
+            return flag;
+        }
+
+
+
+        public bool VaciarCarro (int id_Usuario){
+            bool flag = false;
                 for (var i = 0; i < usuarios.Count(); i++){
-                if(usuarios[i] = id_Usuario ) {
+                if(usuarios[i].id == id_Usuario ) {
 
                     usuarios[i].MiCarro = new Carro(id_Usuario);
+                    flag = true;
                     break;
 
                    }
                 }
-                
-        
+
+            return flag;
             }
           
         
