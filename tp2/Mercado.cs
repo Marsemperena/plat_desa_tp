@@ -450,31 +450,62 @@ namespace tp1
         
         
             public bool comprar(int id_Usuario){
-            double total= 0;
             bool flag = false;
+            int idActual=0;
             for (var i = 0; i < usuarios.Count(); i++)
             {
                 if (usuarios[i].id == id_Usuario) {
-                    foreach (KeyValuePair<Producto, int> prod in usuarios[i].MiCarro.productos) {
-                        total = total + prod.Key.precio * prod.Value;
-                    }
-
                         compras = CompraDAO.getAll();
-                        compras.Add(new Compra(usuarios[i], total, usuarios[i].MiCarro.productos));
+                        foreach (Compra comp in compras)
+                        {
+                        if (comp.id > idActual) { idActual = comp.id; }
+                        }
+                        compras.Add(new Compra(idActual +1, usuarios[i],usuarios[i].MiCarro.productos));
                         CompraDAO.saveAll(compras);
-                    flag = true;
-                
+                        flag = true;
+                        break;
+
                 }
             }
 
                 return flag;
             }
-        /*
-        public bool ModificarCompra ( int id, double total){}
+        
+        public bool modificarCompra ( int id, double total){
+            bool flag = false;
+            compras = CompraDAO.getAll();
+            for (var i = 0; i < compras.Count(); i++)
+            {
+                if (compras[i].id == id) {
+                    compras[i].total = total;
+                    flag = true;
+                    CompraDAO.saveAll(compras);
+                    break;
+                }
+            
+            
+            }
+            return flag;
+            }
 
-        public bool EliminarCompra (int id){}
+        
+        public bool eliminarCompra (int id){
+            bool flag = false;
+            compras = CompraDAO.getAll();
+            for (var i = 0; i < compras.Count(); i++)
+            {
+                if (compras[i].id == id) {
+                    compras.RemoveAt(compras.IndexOf(compras[i]));
+                    flag = true;
+                    CompraDAO.saveAll(compras);
+                    break;
+                }
+            }
+            return flag;
 
-    */
+            }
+
+  
         public List<Producto> mostrarTodosProductos()
         {
             productos.Sort((a, b) => a.id.CompareTo(b.id));

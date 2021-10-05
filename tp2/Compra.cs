@@ -12,11 +12,9 @@ namespace Slc_Mercado
         public Dictionary <Producto,int> productos;
         public double total { get; set; }
 
-        public Compra(Usuario comprador, double total, Dictionary<Producto,int> productosCarrito) {
+        public Compra(int id,Usuario comprador, Dictionary<Producto,int> productosCarrito) {
             this.comprador = comprador;
             this.productos = productosCarrito;
-            this.total = total;
-
             foreach (KeyValuePair<Producto, int> kvp in productosCarrito)
             {
                 this.total += kvp.Key.precio * kvp.Value; //revisar getter
