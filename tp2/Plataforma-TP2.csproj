@@ -103,6 +103,9 @@
     <EmbeddedResource Include="FAdmin.resx">
       <DependentUpon>FAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FConfigurar.resx">
+      <DependentUpon>FConfigurar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FLogin.resx">
       <DependentUpon>FLogin.cs</DependentUpon>
     </EmbeddedResource>

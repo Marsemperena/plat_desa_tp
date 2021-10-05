@@ -16,6 +16,7 @@ namespace Slc_Mercado
         public FConfigurar()
         {
             InitializeComponent();
+            ruta.Text = LocalFileManager.userpath;
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
@@ -37,6 +38,7 @@ namespace Slc_Mercado
             if (resultado == DialogResult.OK)
             {
                 string folderName = ofd.SelectedPath;
+                ruta.Text = folderName;
                 LocalFileManager.userpath = folderName;
             }
 
@@ -48,6 +50,19 @@ namespace Slc_Mercado
             this.Close();
             FPrincipal menuPrincipal = new FPrincipal();
             menuPrincipal.Show();
+
+        }
+
+        private void volver_Click_1(object sender, EventArgs e)
+        {
+
+            this.Close();
+            FPrincipal menuPrincipal = new FPrincipal();
+            menuPrincipal.Show();
+        }
+
+        private void ruta_TextChanged(object sender, EventArgs e)
+        {
 
         }
 
