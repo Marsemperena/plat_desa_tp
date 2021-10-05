@@ -18,12 +18,12 @@ public class CompraDAO
 	{
 	}
 
-	public static Compra getAll()
+	public static List<Compra> getAll()
     {
-		Compra compra;
+		List<Compra> compra;
         try
         {
-			 compra = JsonConvert.DeserializeObject<Compra>
+			 compra = JsonConvert.DeserializeObject<List<Compra>>
 (File.ReadAllText(fileName));
 		}
 		catch(Exception ex)
