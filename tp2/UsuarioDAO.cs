@@ -31,8 +31,8 @@ namespace dao
 			catch (Exception ex)
 			{
 				Console.WriteLine("archivo no encontrado, se inicializa un objeto vacio para productos");
-				productos = new List<Usuario>();
-				productos.Add(new Usuario(0, 0000, "admin", "admin", "admin@gmail.com", "admin", "admin", "000"));
+				usuarios = new List<Usuario>();
+				usuarios.Add(new Usuario(0, 0000, "admin", "admin", "admin@gmail.com", "admin", "admin", "000"));
 			}
 
 
