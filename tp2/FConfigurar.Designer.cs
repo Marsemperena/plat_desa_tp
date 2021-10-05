@@ -63,15 +63,15 @@ namespace Slc_Mercado
             this.volver.TabIndex = 2;
             this.volver.Text = "Volver atrás";
             this.volver.UseVisualStyleBackColor = true;
+            this.volver.Click += new System.EventHandler(this.volver_Click_1);
             // 
             // ruta
             // 
             this.ruta.Location = new System.Drawing.Point(24, 68);
             this.ruta.Name = "ruta";
-            /// ESTOY HAY QUE ARREGLARLO
-            this.ruta.Text = "";
             this.ruta.Size = new System.Drawing.Size(285, 20);
             this.ruta.TabIndex = 3;
+            this.ruta.TextChanged += new System.EventHandler(this.ruta_TextChanged);
             // 
             // FConfigurar
             // 
