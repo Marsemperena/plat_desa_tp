@@ -44,7 +44,7 @@ namespace Slc_Mercado
             this.tipoUsuario = new System.Windows.Forms.ComboBox();
             this.registrarUsuario = new System.Windows.Forms.Button();
             this.volver = new System.Windows.Forms.Button();
-            this.dni_ = new System.Windows.Forms.TextBox();
+            this.cuit = new System.Windows.Forms.TextBox();
             this.lblCuil_cuit = new System.Windows.Forms.Label();
             this.mail_ = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -169,13 +169,13 @@ namespace Slc_Mercado
             this.volver.UseVisualStyleBackColor = true;
             this.volver.Click += new System.EventHandler(this.volver_Click);
             // 
-            // dni_
+            // cuit
             // 
-            this.dni_.Location = new System.Drawing.Point(498, 97);
-            this.dni_.Margin = new System.Windows.Forms.Padding(2);
-            this.dni_.Name = "dni_";
-            this.dni_.Size = new System.Drawing.Size(100, 20);
-            this.dni_.TabIndex = 14;
+            this.cuit.Location = new System.Drawing.Point(498, 97);
+            this.cuit.Margin = new System.Windows.Forms.Padding(2);
+            this.cuit.Name = "cuit";
+            this.cuit.Size = new System.Drawing.Size(100, 20);
+            this.cuit.TabIndex = 14;
             // 
             // lblCuil_cuit
             // 
@@ -211,7 +211,7 @@ namespace Slc_Mercado
             this.Controls.Add(this.mail_);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblCuil_cuit);
-            this.Controls.Add(this.dni_);
+            this.Controls.Add(this.cuit);
             this.Controls.Add(this.registrarUsuario);
             this.Controls.Add(this.volver);
             this.Controls.Add(this.tipoUsuario);
@@ -253,7 +253,7 @@ namespace Slc_Mercado
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.TextBox dni_;
+        private System.Windows.Forms.TextBox cuit;
         private System.Windows.Forms.Label lblCuil_cuit;
         private System.Windows.Forms.TextBox mail_;
         private System.Windows.Forms.Label label1;
