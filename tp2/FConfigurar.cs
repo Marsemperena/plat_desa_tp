@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using config;
 
 namespace Slc_Mercado
 {
@@ -25,14 +26,20 @@ namespace Slc_Mercado
         private void seleccionar_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog ofd = new FolderBrowserDialog();
-            DialogResult resultado = ofd.ShowDialog();
+            ofd.Description =
+    "seleccionar carpeta para guardar datos locales";
 
-            /*
+
+          
+
+            DialogResult resultado = ofd.ShowDialog();
+            
             if (resultado == DialogResult.OK)
             {
-                Console.WriteLine("algo");
+                string folderName = ofd.SelectedPath;
+                LocalFileManager.userpath = folderName;
             }
-            */
+            
         }
     }
     }
