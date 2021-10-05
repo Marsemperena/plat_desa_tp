@@ -463,7 +463,8 @@ namespace tp1
                         compras.Add(new Compra(idActual +1, usuarios[i],usuarios[i].MiCarro.productos));
                         CompraDAO.saveAll(compras);
                         flag = true;
-                
+                        break;
+
                 }
             }
 
@@ -479,6 +480,7 @@ namespace tp1
                     compras[i].total = total;
                     flag = true;
                     CompraDAO.saveAll(compras);
+                    break;
                 }
             
             
@@ -496,6 +498,7 @@ namespace tp1
                     compras.RemoveAt(compras.IndexOf(compras[i]));
                     flag = true;
                     CompraDAO.saveAll(compras);
+                    break;
                 }
             }
             return flag;
