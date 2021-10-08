@@ -57,6 +57,7 @@ namespace tp1
                 try
                 {
                     this.productos.Add(new Producto(idActual +1,nombre, precio, cantidad, this.categorias[id_Categoria]));
+                    ProductoDAO.saveAll(productos);
                     return true;
                 }
                 catch (Exception e)
@@ -175,7 +176,8 @@ namespace tp1
                 //int id, int cuit, int dni, string nombre, string mail, string password
                 Usuario us;
                 int idActual = 0;
-                int erroresDeIngreso = verificarIngresoUsuario(idActual, dni, nombre, apellido, mail, password, cuit_Cuil, tipo);
+            // int erroresDeIngreso = verificarIngresoUsuario(idActual, dni, nombre, apellido, mail, password, cuit_Cuil, tipo); //descomentar
+            int erroresDeIngreso = 0;
                 foreach (Usuario user in usuarios)
                 {
                 
@@ -188,6 +190,7 @@ namespace tp1
 
             us = new Usuario(idActual + 1, dni, nombre, apellido, mail, password, cuit_Cuil, tipo);
             usuarios.Add(us);
+            UsuarioDAO.saveAll(usuarios);
 
             return true;
             }
@@ -320,6 +323,7 @@ namespace tp1
                 try
                 {
                     this.categorias.Add(new Categoria(idActual + 1, nombre));
+                CategoriaDAO.saveAll(categorias);
                     return true;
                 }
                 catch (Exception e)
@@ -340,6 +344,7 @@ namespace tp1
                         {
                             cat.nombre = nombre;
                         }
+                    CategoriaDAO.saveAll(categorias);
                         return true;
                     }
 

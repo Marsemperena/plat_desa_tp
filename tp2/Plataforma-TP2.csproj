@@ -109,6 +109,9 @@
     <EmbeddedResource Include="FLogin.resx">
       <DependentUpon>FLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FPrincipal.resx">
+      <DependentUpon>FPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRegistro.resx">
       <DependentUpon>FRegistro.cs</DependentUpon>
     </EmbeddedResource>

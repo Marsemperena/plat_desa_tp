@@ -47,8 +47,9 @@ namespace Slc_Mercado
             this.tabla.Name = "tabla";
             this.tabla.RowHeadersWidth = 51;
             this.tabla.RowTemplate.Height = 29;
-            this.tabla.Size = new System.Drawing.Size(769, 512);
+            this.tabla.Size = new System.Drawing.Size(1114, 512);
             this.tabla.TabIndex = 0;
+            this.tabla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabla_CellClick);
             // 
             // label1
             // 
@@ -116,7 +117,7 @@ namespace Slc_Mercado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1168, 600);
             this.Controls.Add(this.modificar);
             this.Controls.Add(this.suprimir);
             this.Controls.Add(this.agregar);
