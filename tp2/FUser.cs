@@ -23,6 +23,7 @@ namespace Slc_Mercado
         {
 
             productos = ProductoDAO.getAll();
+            mercado = new Mercado();
             InitializeComponent();
             //argumentos = args;   VERIFICAR
             label2.Text = usuario.nombre;
@@ -56,7 +57,7 @@ namespace Slc_Mercado
         {
             foreach (Producto prod in productos)
             {
-                datos.Add(new List<string>(new string[] { prod.nombre.ToString(), prod.precio.ToString(), prod.cantidad.ToString() }));
+                datos.Add(new List<string>(new string[] { prod.id.ToString(), prod.nombre.ToString(), prod.precio.ToString(), prod.cantidad.ToString() }));
             }
         }
 
@@ -67,6 +68,15 @@ namespace Slc_Mercado
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            ///nombre del prod
+            string nombreProd = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+            string idProd = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            //buscar id de producto
+            dataGridView2.Rows[0].Cells[1].Value = nombreProd;
+
+            dataGridView2.Rows[0].Cells[0].Value = idProd;
+
+            dataGridView2.Rows[0].Cells[2].Value = 1;
 
         }
 
@@ -92,7 +102,26 @@ namespace Slc_Mercado
 
         private void button3_Click(object sender, EventArgs e)
         {
-            mercado.agregarAlCarro(mercado.buscarProductoPorNombre(dataGridViewTextBoxColumn1.DataGridView.Rows.ToString()).id, dataGridViewTextBoxColumn3.DataGridView.FirstDisplayedScrollingRowIndex ,usuario.id);
+            int id_producto;
+            
+            int idUsuario = 0; // aca deberia ir el usuario
+            int cantidadProd;
+
+            int.TryParse(dataGridView2.Rows[0].Cells[0].Value.ToString(), out id_producto);
+                string test = dataGridView2.Rows[0].Cells[1].Value.ToString();
+            int.TryParse(dataGridView2.Rows[0].Cells[2].Value.ToString(), out cantidadProd);
+
+            //mercado.agregarAlCarro(mercado.buscarProductoPorNombre(dataGridViewTextBoxColumn1.DataGridView.Rows.ToString()).id, dataGridViewTextBoxColumn3.DataGridView.FirstDisplayedScrollingRowIndex ,usuario.id);
+            mercado.agregarAlCarro(id_producto, cantidadProd, idUsuario);
+        }
+
+
+        private void dataGridView2_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            // For any other operation except, StateChanged, do nothing
+            if (e.StateChanged != DataGridViewElementStates.Selected) return;
+
+            // Calculate amount code goes here
         }
     }
 }
