@@ -17,19 +17,28 @@ namespace Slc_Mercado
             this.productos = productosCarrito;
             foreach (KeyValuePair<Producto, int> kvp in productosCarrito)
             {
-                this.total += kvp.Key.precio * kvp.Value; //revisar getter
+                this.total += kvp.Key.precio * kvp.Value; 
 
             }
 
 
         }
 
-        string  toString()
+        public string toString()
         {
             return "ID: "+ this.id + "- Usuario: " + this.comprador.ToString() + "- Productos: " + this.productos.ToString() + "- Total: " + this.total;
         }
 
+        internal double calcularCompra()
+        {
+            double suma = 0;
+            foreach (KeyValuePair<Producto, int> kvp in productos)
+            {
+                suma += kvp.Key.precio * kvp.Value; //revisar getter
 
+            }
 
+            return suma;
+        }
     }
 }

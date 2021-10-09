@@ -7,19 +7,23 @@ namespace tp1
 {
 
     [Serializable]
-   public class Carro
+    public class Carro
     {
         public int id { get; set; }
         public Dictionary<Producto, int> productos { get; set; }
 
-        public Carro() { }
-        public Carro(int id){
+        public Carro() {
             this.id = id;
+            this.productos = new Dictionary<Producto, int>();
+        }
+        public Carro(int id) {
+            this.id = id;
+            this.productos = new Dictionary<Producto, int>();
         }
 
-        public bool agregarProducto(Producto producto,int cantidad){
+        public bool agregarProducto(Producto producto, int cantidad) {
             Producto prod1 = buscarProducto(producto);
-            if (prod1!=null)
+            if (prod1 != null)
             {
                 this.productos[prod1] = prod1.cantidad + cantidad;
             }
@@ -27,12 +31,12 @@ namespace tp1
             {
                 productos.Add(producto, cantidad);
             }
-           return true;
+            return true;
         }
-        public bool sacarProductos(Producto producto, int cantidad){
-            foreach(KeyValuePair<Producto,int> prod in productos)
+        public bool sacarProductos(Producto producto, int cantidad) {
+            foreach (KeyValuePair<Producto, int> prod in productos)
             {
-                if (prod.Key == producto) { 
+                if (prod.Key == producto) {
                     if (prod.Value <= cantidad)
                     {
                         productos.Remove(producto);
@@ -62,14 +66,44 @@ namespace tp1
         {
             foreach (KeyValuePair<Producto, int> prod in productos)
             {
-                    prod.Key.ToString();
+                prod.Key.ToString();
             }
         }
 
-
-        /*public  string toString()
+        internal double calcularTotal()
         {
-            return "Carro: " + this.id + " - " + this.productos.ToString();
-        }*/
+            double total = 0;
+            foreach (KeyValuePair<Producto, int> prod in productos)
+            {
+                total += (prod.Key.precio * prod.Value);
+            }
+
+            return total;
+        }
+
+        internal int cantidadArticulos()
+        {
+            int cant = 0;
+            foreach (KeyValuePair<Producto, int> prod in productos)
+            {
+                cant +=  prod.Value;
+            }
+
+            return cant;
+        }
+
+        public string toString()
+        {
+            //return "Carro: " + this.id + " - " + this.productos.ToString();
+            string aux = "";
+            foreach (KeyValuePair<Producto, int> prod in productos)
+            {
+                aux += prod.Key.nombre + " " + prod.Value.ToString() + "u * $" + prod.Key.precio.ToString() + "\n";
+            }
+            aux += "Total a pagar: ";
+            aux += calcularTotal().ToString();
+
+            return aux;
+        }
     }
 }

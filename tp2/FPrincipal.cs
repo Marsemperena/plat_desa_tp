@@ -38,7 +38,7 @@ namespace Slc_Mercado
             this.usuario = usuario;
             if (usuario != null && usuario.nombre != "")
             {
-                MessageBox.Show("Log-in correcto, Usuario: " + usuario);
+                MessageBox.Show("Log-in correcto, Usuario: " + usuario.nombre);
                 hijoLogin.Close();
 
                 if (usuario.tipo == "admin") // CONDICION TEMPORAL TENDRÍA QUE VER SI EL USUARIO ES ADMIN O NO - AHORA SOLO SIRVE SI EL USUARIO SE LLAMA ADMIN

@@ -28,24 +28,26 @@ namespace Slc_Mercado
         private void login_Click(object sender, EventArgs e)
         {
             //cargar todos los usurios y revisar si existe el user ingresado
-            List<Usuario> usuarios = UsuarioDAO.getAll();
+            //List<Usuario> usuarios = UsuarioDAO.getAll();
 
             Boolean loginOK = false;
+            Mercado mercado = new Mercado();
 
-            foreach (Usuario us in usuarios)
-            {
+
+        
                 int dni_;
                 bool dniOK = Int32.TryParse(dni.Text, out dni_);
-                if (dniOK && us.dni == dni_ && us.password == pass.Text)
+            
+                if (dniOK &&  pass.Text!="")
                 {
-                    //encontron al usuario
-                    usuario = us;
-                    loginOK = true;
-                    break;
+                int idUser = mercado.iniciarSesion(dni_, pass.Text);
+                //encontron al usuario
+                loginOK = idUser != -1;
+                usuario = mercado.getUsuario(idUser);
                 }
-            }
+            
 
-            if (loginOK)
+            if (loginOK && usuario!=null)
             {
                 this.TrasfEvento(usuario);
                 this.Close();

@@ -28,18 +28,44 @@ namespace Slc_Mercado
             //argumentos = args;   VERIFICAR
             label2.Text = usuario.nombre;
             datos = new List<List<string>>();
-            //List<string> producto1 = new List<string>(new string[] { "TV", "50000", "200" });
-            //List<string> producto2 = new List<string>(new string[] { "PC", "75000", "150" });
-            //datos.Add(producto1);
-            // datos.Add(producto2);
+
 
             cargarProductos();
             refreshData(datos);
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            mercado.comprar(usuario.id);
+            int idUsuario = 0;
+
+            string message = mercado.mostrarCarro(idUsuario);
+            string caption = "Desea confirmar la compra?";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+
+            // Displays the MessageBox.
+            result = MessageBox.Show(message, caption, buttons);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                try
+                {
+                    //mercado.comprar(usuario.id);
+
+                    mercado.comprar(0);
+                    MessageBox.Show("Compra realizada con exito!");
+                    mercado.vaciarCarro(idUsuario);
+                    textBox1.Text = mercado.calcularCompra(idUsuario).ToString();
+                    button1.Text = "Ver carrito";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocurrio un error al intentar realizar la compra");
+                }
+            }
+
+           
+         
         }
 
 
@@ -92,7 +118,12 @@ namespace Slc_Mercado
 
         private void button2_Click(object sender, EventArgs e)
         {
-            mercado.vaciarCarro(usuario.id);
+            int idUsuario = 0;
+            //usuario.id = 0; //sacar esto
+            //mercado.vaciarCarro(usuario.id);
+            mercado.vaciarCarro(0);
+            textBox1.Text = mercado.calcularCompra(idUsuario).ToString();
+            MessageBox.Show("Carrito vaciado con exito");
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -102,17 +133,28 @@ namespace Slc_Mercado
 
         private void button3_Click(object sender, EventArgs e)
         {
-            int id_producto;
-            
-            int idUsuario = 0; // aca deberia ir el usuario
-            int cantidadProd;
+            try
+            {
+                int id_producto;
 
-            int.TryParse(dataGridView2.Rows[0].Cells[0].Value.ToString(), out id_producto);
+                int idUsuario = 0; // aca deberia ir el usuario
+                int cantidadProd;
+
+                int.TryParse(dataGridView2.Rows[0].Cells[0].Value.ToString(), out id_producto);
                 string test = dataGridView2.Rows[0].Cells[1].Value.ToString();
-            int.TryParse(dataGridView2.Rows[0].Cells[2].Value.ToString(), out cantidadProd);
+                int.TryParse(dataGridView2.Rows[0].Cells[2].Value.ToString(), out cantidadProd);
 
-            //mercado.agregarAlCarro(mercado.buscarProductoPorNombre(dataGridViewTextBoxColumn1.DataGridView.Rows.ToString()).id, dataGridViewTextBoxColumn3.DataGridView.FirstDisplayedScrollingRowIndex ,usuario.id);
-            mercado.agregarAlCarro(id_producto, cantidadProd, idUsuario);
+                //mercado.agregarAlCarro(mercado.buscarProductoPorNombre(dataGridViewTextBoxColumn1.DataGridView.Rows.ToString()).id, dataGridViewTextBoxColumn3.DataGridView.FirstDisplayedScrollingRowIndex ,usuario.id);
+                mercado.agregarAlCarro(id_producto, cantidadProd, idUsuario);
+
+                textBox1.Text = mercado.calcularCompra(idUsuario).ToString();
+                button1.Text = "Ver carrito (" + mercado.cantidadArticulos(idUsuario).ToString() + ")";
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("ocurrio un error por favor intente nuevamente");
+            }
+            
         }
 
 

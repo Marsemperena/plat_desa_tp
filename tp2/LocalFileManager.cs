@@ -19,7 +19,8 @@ namespace config
         static LocalFileManager()
         {
             userpath = Environment.GetFolderPath(
-            Environment.SpecialFolder.ApplicationData);
+            Environment.SpecialFolder.ApplicationData) + @"\\Mercado";
+         
 
         }
     }

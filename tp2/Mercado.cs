@@ -43,11 +43,23 @@ namespace tp1
             this.productos = ProductoDAO.getAll();
             this.categorias = CategoriaDAO.getAll();
             this.usuarios = UsuarioDAO.getAll();
-            this.compras = new List<Compra>(); //no es necesario levantar desde archivo
+            this.compras = new List<Compra>(); //no es necesario levantar desde 
+
+            foreach (Usuario us in usuarios) us.MiCarro = new Carro();
 
         }
-            
-            public bool agregarProducto (string nombre, double precio, int cantidad, int id_Categoria)
+
+        internal string mostrarCarro(int idUsuario)
+        {
+            return usuarios[idUsuario].MiCarro.toString();
+        }
+
+        internal int cantidadArticulos(int idUsuario)
+        {
+            return usuarios[idUsuario].MiCarro.cantidadArticulos();
+        }
+
+        public bool agregarProducto (string nombre, double precio, int cantidad, int id_Categoria)
             {
                 int idActual = 0;
                 foreach (Producto prod in productos)
@@ -118,8 +130,12 @@ namespace tp1
                 return flag;
                 }
 
-            
-            public List<Producto> buscarProductos(string query) // ORDENADO POR NOMBRE LOS PRODUCTOS QUE CONTIENEN EN SU NOMBRE LA CADENA INGRESADA
+        internal double calcularCompra(int idUsuario)
+        {
+            return usuarios[idUsuario].MiCarro.calcularTotal();
+        }
+
+        public List<Producto> buscarProductos(string query) // ORDENADO POR NOMBRE LOS PRODUCTOS QUE CONTIENEN EN SU NOMBRE LA CADENA INGRESADA
             {
                 List<Producto> productoPorNombre = new List<Producto>();
                 foreach(Producto pr in productos)
@@ -466,13 +482,15 @@ namespace tp1
             for (var i = 0; i < usuarios.Count(); i++)
             {
                 if (usuarios[i].id == id_Usuario) {
-                        compras = CompraDAO.getAll();
+                       
                         foreach (Compra comp in compras)
                         {
                         if (comp.id > idActual) { idActual = comp.id; }
                         }
-                        compras.Add(new Compra(idActual +1, usuarios[i],usuarios[i].MiCarro.productos));
-                        CompraDAO.saveAll(compras);
+                    List<Compra> comprasAux = CompraDAO.getAll();
+                    compras.Add(new Compra(idActual +1, usuarios[i],usuarios[i].MiCarro.productos));
+                    comprasAux.Add(new Compra(idActual + 1, usuarios[i], usuarios[i].MiCarro.productos));
+                        CompraDAO.saveAll(comprasAux);
                         flag = true;
                         break;
 
@@ -541,5 +559,33 @@ namespace tp1
             }
 
 
+        public int iniciarSesion(int dni,string pass)
+        {
+            foreach (Usuario us in usuarios)
+            {
+                if (us.dni == dni && us.password == pass) return us.id;
+            }
+                return -1;
+        }
+
+        public bool esAdmin(int idUsuario)
+        {
+            foreach (Usuario us in usuarios)
+            {
+                if (us.id == idUsuario ) return us.tipo == "admin";
+            }
+
+            return false;
+        }
+
+        public Usuario getUsuario(int id)
+        {
+            foreach (Usuario us in usuarios)
+            {
+                if (us.id == id) return us;
+            }
+
+            return null;
+        }
     }
 }

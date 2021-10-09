@@ -27,6 +27,7 @@ namespace tp1
             this.password = password;
             this.tipo = tipo;
             this.cuilCuit = cuilCuit;
+            this.MiCarro = new Carro();
         }
 
         public string toString()

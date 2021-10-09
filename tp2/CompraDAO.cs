@@ -30,7 +30,7 @@ public class CompraDAO
         {
 			Console.WriteLine("archivo no encontrado, se inicializa un objeto vacio para compra");
 
-			compra = null;
+			compra = new List<Compra>();
         }
 		return compra;
     }
