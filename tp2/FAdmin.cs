@@ -92,6 +92,14 @@ namespace Slc_Mercado
             datos = new List<List<string>>();
             string tabla1 = (string)tablaDatos.SelectedItem;
 
+            recargarDatosPorTabla(tabla1);
+
+            refreshData(datos, columnas);
+
+        }
+
+        private void recargarDatosPorTabla(string tabla1)
+        {
             if (tabla1 == "Tabla_Usuarios")
             {
                 columnas.Clear();
@@ -119,7 +127,7 @@ namespace Slc_Mercado
                 columnas.Add("Categoria");
                 foreach (Producto prod in productos)
                 {
-                    datos.Add(new List<string>(new string[] { prod.id.ToString(), prod.nombre.ToString(), prod.precio.ToString(), prod.cantidad.ToString(), prod.cat.id.ToString()}));
+                    datos.Add(new List<string>(new string[] { prod.id.ToString(), prod.nombre.ToString(), prod.precio.ToString(), prod.cantidad.ToString(), prod.cat.id.ToString() }));
                 }
 
             }
@@ -134,9 +142,6 @@ namespace Slc_Mercado
                 }
 
             }
-
-            refreshData(datos, columnas);
-
         }
 
         private void agregarObj(object sender, EventArgs e)
@@ -190,6 +195,9 @@ namespace Slc_Mercado
 
                 }
 
+                recargarDatosPorTabla(tabla1);
+                refreshData(datos, columnas);
+
             }
             catch(Exception ex)
             {
@@ -238,7 +246,7 @@ namespace Slc_Mercado
                     }
 
 
-                    if (tabla1 == "Tabla_Categoria")
+                    if (tabla1 == "Tabla_Categorias")
                     {
                         bool idOK = int.TryParse(tabla.Rows[e.RowIndex].Cells[0].Value.ToString(), out id);
                         nombreCat = tabla.Rows[e.RowIndex].Cells[1].Value.ToString();
@@ -264,7 +272,7 @@ namespace Slc_Mercado
                 {
                    
 
-                    if (tabla1 == "Tabla_Categoria")
+                    if (tabla1 == "Tabla_Categorias")
                     {
                         int.TryParse(tabla.Rows[e.RowIndex].Cells[0].Value.ToString(), out id);
                         Console.WriteLine("borrando categoria");

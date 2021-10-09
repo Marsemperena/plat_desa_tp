@@ -20,8 +20,11 @@ namespace config
         {
             userpath = Environment.GetFolderPath(
             Environment.SpecialFolder.ApplicationData) + @"\\Mercado";
-         
 
+            if (!Directory.Exists(userpath))
+            {
+                Directory.CreateDirectory(userpath);
+            }
         }
     }
 }

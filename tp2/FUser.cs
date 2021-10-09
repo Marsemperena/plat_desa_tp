@@ -94,15 +94,22 @@ namespace Slc_Mercado
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            ///nombre del prod
-            string nombreProd = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            string idProd = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            //buscar id de producto
-            dataGridView2.Rows[0].Cells[1].Value = nombreProd;
+            try
+            {
+                string nombreProd = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                string idProd = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                //buscar id de producto
+                dataGridView2.Rows[0].Cells[1].Value = nombreProd;
 
-            dataGridView2.Rows[0].Cells[0].Value = idProd;
+                dataGridView2.Rows[0].Cells[0].Value = idProd;
 
-            dataGridView2.Rows[0].Cells[2].Value = 1;
+                dataGridView2.Rows[0].Cells[2].Value = 1;
+            }
+            catch(Exception ex)
+            {
+                //MessageBox.Show("Carrito vaciado con exito");
+            }
+            
 
         }
 

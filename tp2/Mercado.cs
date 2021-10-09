@@ -214,12 +214,26 @@ namespace tp1
 
         public bool modificarUsuario(int id, int dni, string nombre, string apellido, string mail, string password, string cuit_Cuil, string tipo)
         {
-            int contieneErrores = verificarIngresoUsuario(id, dni, nombre, apellido, mail, password, cuit_Cuil, tipo);
+            //int contieneErrores = verificarIngresoUsuario(id, dni, nombre, apellido, mail, password, cuit_Cuil, tipo);
+            int contieneErrores = 0;
             if (contieneErrores > 0)
             {
                 //UPDATE
                 Console.WriteLine("usted tiene "+ contieneErrores + " errores que solucionar antes de poder modificar el usuario");
                 return false;
+            }
+            else
+            {
+                int index = 0;
+                foreach(Usuario us in usuarios)
+                {
+                    if(us!=null && us.id == id)
+                    {
+                        usuarios[index] = new Usuario(id, dni, nombre, apellido, mail, password, tipo, cuit_Cuil);
+                        break;
+                    }
+                    index++;
+                }
             }
             return true;
         }
@@ -299,24 +313,19 @@ namespace tp1
             public bool eliminarUsuario (int id)
             {
                 bool flag = false;
-                int indice;
-                for (var i = 0; i < usuarios.Count(); i++)
+                int indice = 0;
+            foreach (Usuario us in usuarios)
+            {
+                if(us!=null && us.id == id)
                 {
-                    if (usuarios[i] != null && usuarios[i].id == id)
-                    {
-                         indice = usuarios.IndexOf(usuarios[i]);
-                        usuarios.RemoveAt(indice);
-                        flag = true;
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("El id es invalido");
-                        break;
-                    }
-
+                    flag = true;
+                    usuarios.RemoveAt(indice);
+                    UsuarioDAO.saveAll(usuarios);
+                    break;
                 }
-                return flag;
+                indice++;
+            }
+            return flag;
             }
 
             public List<Usuario> mostrarUsuarios () // MUESTRA TODOS LOS USUARIOS ORDENADOS POR DNI
@@ -372,24 +381,19 @@ namespace tp1
             public bool eliminarCategoria (int id)
             {
             bool flag = false;
-            int indice;
-            for (var i = 0; i < categorias.Count(); i++)
+            int indice = 0;
+            foreach (Categoria cat in categorias)
             {
-                if (categorias[i] != null && categorias[i].id == id)
+                if (cat != null && cat.id == id)
                 {
-                    indice = categorias.IndexOf(categorias[i]);
                     categorias.RemoveAt(indice);
+                    CategoriaDAO.saveAll(categorias);
                     flag = true;
-                    break;
                 }
-                else
-                {
-                    Console.WriteLine("El id es invalido");
-                    break;
-                }
-
+                indice++;
             }
             return flag;
+      
         }
 
 

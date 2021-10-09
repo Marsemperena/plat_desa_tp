@@ -35,13 +35,14 @@ namespace Slc_Mercado
         }
         private void TransfDelegado(Usuario usuario)
         {
+            Mercado mercado = new Mercado();
             this.usuario = usuario;
             if (usuario != null && usuario.nombre != "")
             {
                 MessageBox.Show("Log-in correcto, Usuario: " + usuario.nombre);
                 hijoLogin.Close();
 
-                if (usuario.tipo == "admin") // CONDICION TEMPORAL TENDRÍA QUE VER SI EL USUARIO ES ADMIN O NO - AHORA SOLO SIRVE SI EL USUARIO SE LLAMA ADMIN
+                if (mercado.esAdmin(usuario.id))// CONDICION TEMPORAL TENDRÍA QUE VER SI EL USUARIO ES ADMIN O NO - AHORA SOLO SIRVE SI EL USUARIO SE LLAMA ADMIN
                 {
                     hijoMain = new FAdmin(usuario);
                     hijoMain.MdiParent = this;
