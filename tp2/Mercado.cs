@@ -547,7 +547,7 @@ namespace tp1
                     List<List<String>> comprasAux = CompraDAO.getAllText();
                     compras.Add(new Compra(idActual +1, usuarios[i],usuarios[i].MiCarro.productos));
                     //comprasAux.Add(new Compra(idActual + 1, usuarios[i], usuarios[i].MiCarro.productos));
-                   CompraDAO.saveAllText(compras);
+                    CompraDAO.saveAllText(compras);
                         flag = true;
                         break;
 
@@ -632,12 +632,6 @@ namespace tp1
         public bool esAdmin(int idUsuario)
         {
             Usuario user = getUsuario(idUsuario);
-            Console.WriteLine("Aca esta por validar el id");
-            Console.WriteLine(user.tipo);
-            Console.WriteLine(user.id);
-            Console.WriteLine(user.nombre);
-
-
             if (user.tipo == "admin")
             {
                 return true;
