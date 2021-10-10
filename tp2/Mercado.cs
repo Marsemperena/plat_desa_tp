@@ -631,12 +631,27 @@ namespace tp1
 
         public bool esAdmin(int idUsuario)
         {
-            foreach (Usuario us in usuarios)
+            Usuario user = getUsuario(idUsuario);
+            Console.WriteLine("Aca esta por validar el id");
+            Console.WriteLine(user.tipo);
+            Console.WriteLine(user.id);
+            Console.WriteLine(user.nombre);
+
+
+            if (user.tipo == "admin")
             {
-                if (us.id == idUsuario ) return us.tipo == "admin";
+                return true;
+            }
+            else
+            {
+                return false;
             }
 
-            return false;
+            //List<Usuario> usuarios = UsuarioDAO.getAll();
+            //foreach (Usuario us in usuarios)
+            //{
+              //  if (us.id == idUsuario ) return us.tipo;
+            //}
         }
 
         public Usuario getUsuario(int id)

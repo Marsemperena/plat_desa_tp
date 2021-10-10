@@ -19,6 +19,18 @@ namespace dao
 		{
 		}
 
+		public static Usuario getUserById(int userId)
+        {
+			List<Usuario> usuarios;
+			Usuario user;
+				
+			usuarios = JsonConvert.DeserializeObject<List<Usuario>>
+						(File.ReadAllText(fileName));
+            user = usuarios.Find(e => e.id == userId);
+			return user;
+
+		}
+
 		public static List<Usuario> getAll()
 		{
 			

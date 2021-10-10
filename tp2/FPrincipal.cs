@@ -37,6 +37,7 @@ namespace Slc_Mercado
         {
             Mercado mercado = new Mercado();
             this.usuario = usuario;
+            Console.WriteLine(usuario.nombre);
             if (usuario != null && usuario.nombre != "")
             {
                 MessageBox.Show("Log-in correcto, Usuario: " + usuario.nombre);
