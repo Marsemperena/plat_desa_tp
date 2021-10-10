@@ -21,6 +21,7 @@ namespace Slc_Mercado
         public List<Producto> productos;
         public List<Categoria> categorias;
         public List<Usuario> usuarios;
+        public List<List<string>> compras;
 
         public Mercado mercado;
 
@@ -32,6 +33,7 @@ namespace Slc_Mercado
             productos = ProductoDAO.getAll();
             categorias = CategoriaDAO.getAll();
             usuarios = UsuarioDAO.getAll();
+            compras = CompraDAO.getAllText();
 
             InitializeComponent();
             //argumentos = args;   VERIFICAR
@@ -47,6 +49,7 @@ namespace Slc_Mercado
             productos = ProductoDAO.getAll();
             categorias = CategoriaDAO.getAll();
             usuarios = UsuarioDAO.getAll();
+            compras = CompraDAO.getAllText();
 
             //borro los 
             tabla.Rows.Clear();
@@ -142,6 +145,18 @@ namespace Slc_Mercado
                 }
 
             }
+
+            if (tabla1 == "Tabla_Compras")
+            {
+                columnas.Clear();
+                columnas.Add("ID");
+                columnas.Add("info");
+
+                foreach(List<string> lista in compras)
+                {
+                    datos.Add(lista);
+                }
+            }
         }
 
         private void agregarObj(object sender, EventArgs e)
@@ -173,12 +188,6 @@ namespace Slc_Mercado
                 if (tabla1 == "Tabla_Usuarios")
                 {
 
-                 
-                    Console.WriteLine(tabla.Rows[index]);
-                    Console.WriteLine(tabla.Rows[index].Cells[1].Value.ToString());
-                    string nombre = tabla.Rows[index].Cells[1].Value.ToString();
-
-                    mercado.agregarCategoria(nombre);
 
                     int dniUser;
 
@@ -193,6 +202,15 @@ namespace Slc_Mercado
 
                     mercado.agregarUsuario(dniUser, nombreUser, apellidoUser, mailUser, password, cuit_cuil, tipo);
 
+                }
+
+                if (tabla1 == "Tabla_Categorias")
+                {
+                    Console.WriteLine(tabla.Rows[index]);
+                    Console.WriteLine(tabla.Rows[index].Cells[1].Value.ToString());
+                    string nombre = tabla.Rows[index].Cells[1].Value.ToString();
+
+                    mercado.agregarCategoria(nombre);
                 }
 
                 recargarDatosPorTabla(tabla1);
@@ -255,12 +273,24 @@ namespace Slc_Mercado
                     }
 
 
-                    if (tabla1 == "Tabla_Categoria")
+                    if (tabla1 == "Tabla_Usuarios")
                     {
-                        bool idOK = int.TryParse(tabla.Rows[e.RowIndex].Cells[0].Value.ToString(), out id);
-                        nombreCat = tabla.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        int dniUser;
 
-                        if (idOK && nombreCat != "") mercado.modificarCategoria(id, nombreCat);
+                        bool idOK = int.TryParse(tabla.Rows[e.RowIndex].Cells[0].Value.ToString(), out id);
+                        bool dniOk = int.TryParse(tabla.Rows[e.RowIndex].Cells[1].Value.ToString(), out dniUser);
+                        string nombreUser = tabla.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        string apellidoUser = tabla.Rows[e.RowIndex].Cells[3].Value.ToString();
+                        string mailUser = tabla.Rows[e.RowIndex].Cells[4].Value.ToString();
+                        string password = tabla.Rows[e.RowIndex].Cells[5].Value.ToString();
+                        string cuit_cuil = tabla.Rows[e.RowIndex].Cells[7].Value.ToString();
+                        string tipo = tabla.Rows[e.RowIndex].Cells[6].Value.ToString();
+
+                        
+
+                        int.TryParse(tabla.Rows[e.RowIndex].Cells[0].Value.ToString(), out id);
+
+                        mercado.modificarUsuario(id,dniUser,nombreUser,apellidoUser,mailUser,password,cuit_cuil,tipo);
                     }
 
 
@@ -292,6 +322,13 @@ namespace Slc_Mercado
                         int.TryParse(tabla.Rows[e.RowIndex].Cells[0].Value.ToString(), out id);
                         Console.WriteLine("borrando producto");
                         mercado.eliminarProducto(id);
+                    }
+
+                    if (tabla1 == "Tabla_Compras")
+                    {
+                        int.TryParse(tabla.Rows[e.RowIndex].Cells[0].Value.ToString(), out id);
+                        Console.WriteLine("borrando producto");
+                        mercado.eliminarCompra(id);
                     }
 
 

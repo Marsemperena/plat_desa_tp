@@ -76,7 +76,8 @@ namespace Slc_Mercado
             this.tablaDatos.Items.AddRange(new object[] {
             "Tabla_Usuarios",
             "Tabla_Productos",
-            "Tabla_Categorias"});
+            "Tabla_Categorias",
+            "Tabla_Compras"});
             this.tablaDatos.Location = new System.Drawing.Point(303, 38);
             this.tablaDatos.Name = "tablaDatos";
             this.tablaDatos.Size = new System.Drawing.Size(121, 21);

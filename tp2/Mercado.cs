@@ -82,6 +82,7 @@ namespace tp1
 
         public bool modificarProducto(int id, string nombre, double precio, int cantidad, int id_Categoria)
         {
+            int indice = 0;
             foreach (Producto prod in productos)
             {
                 if (prod.id == id)
@@ -102,12 +103,26 @@ namespace tp1
                    {
                         prod.cat.id= id_Categoria;
                     }
+                    productos[indice] = new Producto(id, nombre, precio, cantidad, buscarCategoria(id_Categoria));
+                    ProductoDAO.saveAll(productos);
                     return true;
                 }
+                indice++;
             }
             return false;
         }
 
+        public Categoria buscarCategoria(int id)
+        {
+            foreach(Categoria cat in categorias)
+            {
+                if(cat!=null && cat.id==id)
+                {
+                    return cat;
+                }
+            }
+            return null;
+        }
                 public bool eliminarProducto (int id) { 
                     bool flag = false;
                     int indice;
@@ -230,6 +245,7 @@ namespace tp1
                     if(us!=null && us.id == id)
                     {
                         usuarios[index] = new Usuario(id, dni, nombre, apellido, mail, password, tipo, cuit_Cuil);
+                        UsuarioDAO.saveAll(usuarios);
                         break;
                     }
                     index++;
@@ -408,9 +424,23 @@ namespace tp1
             }*/
         }
 
+        public List<Categoria> buscarProductosPorCategoria(string nombreCateg) 
+        {
+            categorias = categorias.OrderBy(o => o.id).ToList();
+            List<Producto> aux = new List<Producto>();
+            foreach (Producto prod in productos)
+            {
+                if(prod.cat.nombre == nombreCateg)
+                {
+                    aux.Add(prod);
+                }
+            }
+            return categorias;
+        }
 
-         //ESTOS SON OPCIONALES EN LA PRIMER ENTREGA
-         
+
+            //ESTOS SON OPCIONALES EN LA PRIMER ENTREGA
+
             public bool agregarAlCarro (int id_Producto, int cantidad, int id_Usuario){
                 bool flag = false;
                 for (var i = 0; i < usuarios.Count(); i++){
@@ -462,7 +492,30 @@ namespace tp1
         }
 
 
+        public List<string> getListaNombreCategorias()
+        {
+            List<string> lista = new List<string>();
+            foreach(Categoria cat in categorias)
+            {
+                lista.Add(cat.nombre);
+            }
 
+            return lista;
+        }
+
+        public List<Producto> buscarProductosPorNombre(string nombre)
+        {
+            List<Producto> aux = new List<Producto>();
+            foreach (Producto prod in productos)
+            {
+                if (prod.nombre == nombre)
+                {
+                    aux.Add(prod);
+                }
+            }
+
+            return aux;
+        }
         public bool vaciarCarro (int id_Usuario){
             bool flag = false;
                 for (var i = 0; i < usuarios.Count(); i++){
@@ -491,10 +544,10 @@ namespace tp1
                         {
                         if (comp.id > idActual) { idActual = comp.id; }
                         }
-                    List<Compra> comprasAux = CompraDAO.getAll();
+                    List<List<String>> comprasAux = CompraDAO.getAllText();
                     compras.Add(new Compra(idActual +1, usuarios[i],usuarios[i].MiCarro.productos));
-                    comprasAux.Add(new Compra(idActual + 1, usuarios[i], usuarios[i].MiCarro.productos));
-                        CompraDAO.saveAll(comprasAux);
+                    //comprasAux.Add(new Compra(idActual + 1, usuarios[i], usuarios[i].MiCarro.productos));
+                   CompraDAO.saveAllText(compras);
                         flag = true;
                         break;
 
@@ -506,7 +559,7 @@ namespace tp1
         
         public bool modificarCompra ( int id, double total){
             bool flag = false;
-            compras = CompraDAO.getAll();
+           // compras = CompraDAO.getAllText();
             for (var i = 0; i < compras.Count(); i++)
             {
                 if (compras[i].id == id) {
@@ -524,15 +577,19 @@ namespace tp1
         
         public bool eliminarCompra (int id){
             bool flag = false;
-            compras = CompraDAO.getAll();
-            for (var i = 0; i < compras.Count(); i++)
+            List<List<string>> comprasText = CompraDAO.getAllText();
+            int index = 0;
+            foreach(List<string> lista in comprasText)
             {
-                if (compras[i].id == id) {
-                    compras.RemoveAt(compras.IndexOf(compras[i]));
+                if(lista[0] == id.ToString())
+                {
+                    comprasText.RemoveAt(index);
+                    //compras.RemoveAt(index);
                     flag = true;
-                    CompraDAO.saveAll(compras);
-                    break;
+                    CompraDAO.saveAllText1(comprasText);
+
                 }
+                index++;
             }
             return flag;
 

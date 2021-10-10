@@ -40,5 +40,20 @@ namespace Slc_Mercado
 
             return suma;
         }
+
+        public string listaDeProductos()
+        {
+            string aux = "";
+
+            foreach (KeyValuePair<Producto, int> kvp in productos)
+            {
+                aux  += "id: "+kvp.Key.id + " nombre: "+kvp.Key.nombre + " precio: "+kvp.Key.precio + " cantidad:"+ kvp.Value; 
+
+            }
+            return aux;
+        }
+
     }
+
+
 }

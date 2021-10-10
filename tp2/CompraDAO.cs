@@ -50,4 +50,61 @@ public class CompraDAO
 
 	}
 
+
+
+	public static List<List<string>> getAllText()
+	{
+		List<List<string>> compra;
+		try
+		{
+			compra = JsonConvert.DeserializeObject<List<List<string>>>
+(File.ReadAllText(fileName));
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine("archivo no encontrado, se inicializa un objeto vacio para compra");
+
+			compra = new List<List<string>>();
+		}
+		return compra;
+	}
+
+	public static void saveAllText(List<Compra> compra)
+	{
+		List<List<string>> compraText = new List<List<string>>();
+		Random rnd = new Random();
+		foreach (Compra comp in compra)
+        {
+			int id = rnd.Next(0, 9999); //generar autoincremental con la base
+			List<string> aux = new List<string>();
+			aux.Add(id.ToString());
+			aux.Add(comp.comprador.toString());
+			aux.Add(comp.listaDeProductos());
+			compraText.Add(aux);
+        }
+		try
+		{
+			File.WriteAllText(fileName, JsonConvert.SerializeObject(compraText));
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine(ex.Message);
+			throw new Exception("ocurrio un error al guardar los datos");
+		}
+
+
+	}
+
+    internal static void saveAllText1(List<List<string>> compras)
+    {
+		try
+		{
+			File.WriteAllText(fileName, JsonConvert.SerializeObject(compras));
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine(ex.Message);
+			throw new Exception("ocurrio un error al guardar los datos");
+		}
+	}
 }
