@@ -439,26 +439,24 @@ namespace tp1
         }
 
 
-            //ESTOS SON OPCIONALES EN LA PRIMER ENTREGA
+           
 
             public bool agregarAlCarro (int id_Producto, int cantidad, int id_Usuario){
-                bool flag = false;
-                for (var i = 0; i < usuarios.Count(); i++){
-                if(usuarios[i].id == id_Usuario ) {
-                    for (var a = 0; a < productos.Count(); a++){
-                        if (productos[a].id == id_Producto){
-                            usuarios[i].MiCarro.agregarProducto(productos[a], cantidad);
-                            flag = true;
-                            break;
-                         }
-                    }
-                  }
-                if (flag == true) {
-                    
-                    break;
-                }
-            
+                bool flag = true;
+
+            Usuario usuario = getUsuario(id_Usuario);
+
+            try
+            {
+                usuario.MiCarro.agregarProducto(getProductoById(id_Producto), cantidad);
             }
+            catch(Exception ex)
+            {
+                flag = false;
+            }
+            
+
+              
 
             return flag;
         }
@@ -536,6 +534,31 @@ namespace tp1
             public bool comprar(int id_Usuario){
             bool flag = false;
             int idActual=0;
+            Usuario usuario = getUsuario(id_Usuario);
+            if (checkCarrito(usuario.MiCarro.productos))
+            {
+                List<Producto> productos = ProductoDAO.getAll();
+
+                foreach (KeyValuePair<Producto, int> prod in usuario.MiCarro.productos)
+                {
+                    //poco performante pero se optimiza cuando pasemos a sql
+                   foreach(Producto stock in productos)
+                    {
+                        if (stock.id == prod.Key.id) stock.cantidad -= prod.Value;
+                    }
+
+
+                }
+
+                ProductoDAO.saveAll(productos);
+            }
+            else
+            {
+                return false;
+            }
+
+
+            //revisar despues
             for (var i = 0; i < usuarios.Count(); i++)
             {
                 if (usuarios[i].id == id_Usuario) {
@@ -556,6 +579,60 @@ namespace tp1
 
                 return flag;
             }
+
+        public bool checkCarrito(Dictionary<Producto,int> lista)
+        {
+            bool flag = true;
+            foreach (KeyValuePair<Producto, int> prod in lista)
+            {
+
+                int cantidadSolicitada = prod.Key.cantidad;
+                int cantidadActual = getProductoById(prod.Key.id).cantidad;
+
+                if ((cantidadSolicitada < cantidadActual))
+                {
+                    flag = false;
+                    break;
+                }
+               
+            }
+            return flag;
+        }
+
+        //pasar al dao
+        public Producto getProductoById(int id)
+        {
+            List<Producto> prodcutos = ProductoDAO.getAll();
+            foreach (Producto prod in productos)
+            {
+                if (prod.id == id) return prod;
+            }
+            return null;
+        }
+
+
+        public bool comprar2(int id_usuario)
+        {
+            Usuario usuario = getUsuario(id_usuario);
+            //foreach()
+
+                return false;
+        }
+
+       
+
+        public int cantidadStockPorProducto(int idProd)
+        {
+            foreach(Producto prod in productos)
+            {
+                if(prod.id == idProd)
+                {
+                    return prod.cantidad;
+                }
+            }
+
+            return -1;
+        }
         
         public bool modificarCompra ( int id, double total){
             bool flag = false;

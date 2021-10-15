@@ -19,6 +19,7 @@ namespace Slc_Mercado
         Mercado mercado;
         Usuario usuario;
 
+
         public FUser(Usuario usuario)
         {
 
@@ -28,7 +29,6 @@ namespace Slc_Mercado
             //argumentos = args;   VERIFICAR
             label2.Text = usuario.nombre;
             datos = new List<List<string>>();
-
 
             cargarProductos();
             refreshData(datos);
@@ -52,11 +52,17 @@ namespace Slc_Mercado
                 {
                     //mercado.comprar(usuario.id);
 
-                    mercado.comprar(0);
-                    MessageBox.Show("Compra realizada con exito!");
-                    mercado.vaciarCarro(idUsuario);
-                    textBox1.Text = mercado.calcularCompra(idUsuario).ToString();
-                    button1.Text = "Ver carrito";
+                    if (mercado.comprar(0))
+                    {
+                        MessageBox.Show("Compra realizada con exito!");
+                        mercado.vaciarCarro(idUsuario);
+                        textBox1.Text = mercado.calcularCompra(idUsuario).ToString();
+                        button1.Text = "Ver carrito";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocurrio un error al realizar la compra");
+                    }
                 }
                 catch (Exception ex)
                 {

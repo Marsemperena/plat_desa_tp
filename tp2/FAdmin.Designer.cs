@@ -34,8 +34,6 @@ namespace Slc_Mercado
             this.label2 = new System.Windows.Forms.Label();
             this.tablaDatos = new System.Windows.Forms.ComboBox();
             this.agregar = new System.Windows.Forms.Button();
-            this.suprimir = new System.Windows.Forms.Button();
-            this.modificar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tabla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,33 +92,11 @@ namespace Slc_Mercado
             this.agregar.UseVisualStyleBackColor = true;
             this.agregar.Click += new System.EventHandler(this.agregarObj);
             // 
-            // suprimir
-            // 
-            this.suprimir.Location = new System.Drawing.Point(605, 38);
-            this.suprimir.Name = "suprimir";
-            this.suprimir.Size = new System.Drawing.Size(75, 23);
-            this.suprimir.TabIndex = 6;
-            this.suprimir.Text = "Suprimir";
-            this.suprimir.UseVisualStyleBackColor = true;
-            this.suprimir.Click += new System.EventHandler(this.suprimirObj);
-            // 
-            // modificar
-            // 
-            this.modificar.Location = new System.Drawing.Point(702, 38);
-            this.modificar.Name = "modificar";
-            this.modificar.Size = new System.Drawing.Size(75, 23);
-            this.modificar.TabIndex = 7;
-            this.modificar.Text = "Modificar";
-            this.modificar.UseVisualStyleBackColor = true;
-            this.modificar.Click += new System.EventHandler(this.modificarObj);
-            // 
             // FAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1168, 600);
-            this.Controls.Add(this.modificar);
-            this.Controls.Add(this.suprimir);
             this.Controls.Add(this.agregar);
             this.Controls.Add(this.tablaDatos);
             this.Controls.Add(this.label2);
@@ -145,7 +121,5 @@ namespace Slc_Mercado
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox tablaDatos;
         private System.Windows.Forms.Button agregar;
-        private System.Windows.Forms.Button suprimir;
-        private System.Windows.Forms.Button modificar;
     }
 }

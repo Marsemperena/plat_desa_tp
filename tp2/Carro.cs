@@ -22,10 +22,10 @@ namespace tp1
         }
 
         public bool agregarProducto(Producto producto, int cantidad) {
-            Producto prod1 = buscarProducto(producto);
-            if (prod1 != null)
+            
+            if ( this.productos.ContainsKey(producto))
             {
-                this.productos[prod1] = prod1.cantidad + cantidad;
+                this.productos[producto] = this.productos[producto] + cantidad;
             }
             else
             {

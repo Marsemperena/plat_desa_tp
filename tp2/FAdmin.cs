@@ -30,6 +30,7 @@ namespace Slc_Mercado
         {
             mercado = new Mercado();
 
+            // TODO llamarlos desde mercado no desde formulario 
             productos = ProductoDAO.getAll();
             categorias = CategoriaDAO.getAll();
             usuarios = UsuarioDAO.getAll();
