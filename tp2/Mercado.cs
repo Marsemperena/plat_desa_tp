@@ -24,26 +24,12 @@ namespace tp1
 
             public Mercado()
             {
-               // this.categorias = new List<Categoria>();
-               // this.usuarios = new List<Usuario>();
-               // this.compras = new List<Compra>();
 
-                /*this.categorias.Add(new Categoria(2, "categ 0"));
-                this.categorias.Add(new Categoria(3, "categ 1"));
-                this.categorias.Add(new Categoria(5, "categ 2"));
-
-                this.usuarios.Add(new Usuario(1,0, "Empresa 1", "test 0",  "mail@mail.com", "test 00", "Empresa", "20356489567"));//Empresa
-                this.usuarios.Add(new Usuario(2, 30654951, "Cliente Final 1", "test 1",  "mail@gmail.com", "test 00", "Cliente Final","25320660785"));//Cliente Final
-
-                this.productos.Add(new Producto(1,"producto 1", 1500, 10, this.categorias[0]));
-                this.productos.Add(new Producto(2,"producto 2", 1, 10, this.categorias[1]));
-                this.productos.Add(new Producto(4,"producto 2", 561, 10, this.categorias[1]));
-                */
 
             this.productos = ProductoDAO.getAll();
             this.categorias = CategoriaDAO.getAll();
             this.usuarios = UsuarioDAO.getAll();
-            this.compras = new List<Compra>(); //no es necesario levantar desde 
+            this.compras = new List<Compra>(); 
 
             foreach (Usuario us in usuarios) us.MiCarro = new Carro();
 
@@ -586,10 +572,10 @@ namespace tp1
             foreach (KeyValuePair<Producto, int> prod in lista)
             {
 
-                int cantidadSolicitada = prod.Key.cantidad;
-                int cantidadActual = getProductoById(prod.Key.id).cantidad;
+                int pedido = prod.Value;
+                int stock = getProductoById(prod.Key.id).cantidad;
 
-                if ((cantidadSolicitada < cantidadActual))
+                if ((stock < pedido))
                 {
                     flag = false;
                     break;
